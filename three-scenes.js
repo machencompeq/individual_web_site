@@ -1,6 +1,7 @@
 /* 載入 Blender 匯出的 .glb，用 three.js 顯示可互動的 3D。
    失敗時（沒有 WebGL、離線）保留原本的 Blender 渲染圖，頁面一樣完整。 */
 (function () {
+  window.__initStages = () => {};
   if (!window.THREE || !THREE.GLTFLoader) return;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const loader = new THREE.GLTFLoader();
@@ -224,13 +225,16 @@
   }
 
   // 依序初始化：先 hero，其他等捲到附近再載入
-  const stages = [...document.querySelectorAll('.stage[data-model]')];
+  // 視窗是之後才打開的，所以提供 __initStages(root) 讓桌面系統呼叫
   const lazy = new IntersectionObserver(es => {
     es.forEach(e => {
       if (!e.isIntersecting) return;
       lazy.unobserve(e.target);
       Stage(e.target);
     });
-  }, { rootMargin: '400px' });
-  stages.forEach(s => lazy.observe(s));
+  }, { rootMargin: '200px' });
+  window.__initStages = (root = document) => {
+    root.querySelectorAll('.stage[data-model]:not([data-3d])').forEach(s => { s.dataset['3d'] = '1'; lazy.observe(s); });
+  };
+  window.__initStages();
 })();

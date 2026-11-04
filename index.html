@@ -1,410 +1,322 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="xp">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>陳洺安 Ming-An Chen</title>
+<title>MingAn OS</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="陳洺安（Ming-An Chen）：中原大學資工 × 資管畢業，現在在葡萄王。會寫程式、會導覽、會做咖啡，還會跳很高。">
-<meta name="theme-color" content="#050806">
+<meta name="description" content="陳洺安（Ming-An Chen）的個人網站：做成一台電腦。打開視窗看作品、相簿、獎狀，按 / 輸入指令。">
+<meta name="theme-color" content="#245edb">
 <link rel="icon" href="./image/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
-<link rel="stylesheet" href="./skins.css">
 <script>
-  // 先套用風格，避免閃一下：預設 hacker
-  (function () { var s = 'hacker'; try { s = localStorage.getItem('skin') || s; } catch (e) {} if (!/^(hacker|cyber|pop)$/.test(s)) s = 'hacker'; document.documentElement.dataset.skin = s; })();
+  (function () {
+    var t = 'xp';
+    try { t = localStorage.getItem('os-theme') || t; } catch (e) {}
+    if (!/^(xp|win98|mac|hacker)$/.test(t)) t = 'xp';
+    document.documentElement.dataset.theme = t;
+  })();
 </script>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
-  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.5 21.8c.6.1.8-.2.8-.5v-2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3.1 1.2a10.7 10.7 0 0 1 5.6 0c2.1-1.5 3.1-1.2 3.1-1.2.6 1.6.2 2.7.1 3 .7.8 1.2 1.8 1.2 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .3.2.6.8.5A11.2 11.2 0 0 0 12 .8z"/></symbol>
-  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></symbol>
-  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21z"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m3.5 6 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.5-2.3 1.5a11 11 0 0 0 6.5 6.5l1.5-2.3 4.5 1.8V19a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
-</svg>
+<!-- ================= 開機畫面 ================= -->
+<div class="boot" id="boot" hidden>
+  <div class="boot-in">
+    <p class="boot-logo">◉ MingAn OS</p>
+    <pre class="boot-log" id="bootLog"></pre>
+    <div class="boot-bar"><span id="bootBar"></span></div>
+    <p class="boot-skip">按任意鍵或點一下跳過</p>
+  </div>
+</div>
 
-<canvas class="fx" id="fx" aria-hidden="true"></canvas>
+<!-- ================= 桌面 ================= -->
+<div class="os" id="os">
+  <canvas class="matrix" id="matrix" aria-hidden="true"></canvas>
 
-<header class="nav-wrap">
-  <nav class="nav" id="nav" aria-label="主選單">
-    <a class="nav-logo" href="#hi">洺安<span>.</span></a>
-    <div class="nav-links">
-      <a href="#term">終端機</a>
-      <a href="#card">關於</a>
-      <a href="#toys">玩具間</a>
-      <a href="#road">一路走來</a>
-      <a href="#now">現在</a>
-      <a href="#album">相簿</a>
-      <a href="#awards">獎狀</a>
-      <a href="#projects">作品</a>
-      <a href="#hello" class="nav-cta">打招呼</a>
+  <header class="menubar">
+    <button type="button" class="mb-logo" data-act="start">◉ MingAn OS</button>
+    <div class="mb-menu">
+      <button type="button" class="mb-item" data-menu="theme">主題</button>
+      <button type="button" class="mb-item" data-act="palette">指令 /</button>
+      <button type="button" class="mb-item" data-act="cv">一般模式</button>
     </div>
-    <button type="button" class="skin-btn" id="skinBtn" aria-label="切換網站風格"><i></i><span id="skinName">hacker</span></button>
+    <div class="mb-right"><span class="mb-status">葡萄王 · 上班中</span><span class="clock"></span></div>
+    <div class="dropdown" id="themeMenu" hidden>
+      <button type="button" data-theme-set="xp">XP 綠色山丘</button>
+      <button type="button" data-theme-set="win98">Win98 經典</button>
+      <button type="button" data-theme-set="mac">Mac Aqua</button>
+      <button type="button" data-theme-set="hacker">Hacker</button>
+    </div>
+  </header>
+
+  <div class="wallname" aria-hidden="true"><b>陳洺安</b><span>ming-an.chen // CSIE × IM</span></div>
+
+  <nav class="desktop" id="desktop" aria-label="桌面圖示">
+    <button type="button" class="icon" data-app="about"><span class="ic-file">TXT</span><span class="label">關於我.txt</span></button>
+    <button type="button" class="icon" data-app="terminal"><span class="ic-term">&gt;_</span><span class="label">終端機</span></button>
+    <button type="button" class="icon" data-app="projects"><img src="./assets/3d/tree23.png" alt=""><span class="label">作品/</span></button>
+    <button type="button" class="icon" data-app="album"><img src="./assets/3d/icon_camera.png" alt=""><span class="label">相簿.app</span></button>
+    <button type="button" class="icon" data-app="awards"><img src="./assets/3d/icon_trophy.png" alt=""><span class="label">獎狀/</span></button>
+    <button type="button" class="icon" data-app="journey"><img src="./assets/3d/icon_stairs.png" alt=""><span class="label">一路走來.log</span></button>
+    <button type="button" class="icon" data-app="skills"><img src="./assets/3d/icon_keycaps.png" alt=""><span class="label">技能.sh</span></button>
+    <button type="button" class="icon" data-app="toys"><img src="./assets/3d/heap.png" alt=""><span class="label">玩具間.app</span></button>
+    <button type="button" class="icon" data-app="contact"><img src="./assets/3d/icon_envelope.png" alt=""><span class="label">聯絡我.exe</span></button>
+    <button type="button" class="icon" data-act="cv"><span class="ic-cv">CV</span><span class="label">一般模式</span></button>
   </nav>
-</header>
 
-<main>
-  <!-- ================= HERO ================= -->
-  <section class="hero" id="hi">
-    <canvas class="matrix" id="matrix" aria-hidden="true"></canvas>
-    <div class="tape tape-a" aria-hidden="true"><div>資工 × 資管 ✶ 中原大學畢業 ✶ 葡萄王 ✶ 會導覽 ✶ 會做咖啡 ✶ 會寫 C++ ✶ 會跳很高 ✶ 資工 × 資管 ✶ 中原大學畢業 ✶ 葡萄王 ✶ 會導覽 ✶ 會做咖啡 ✶ 會寫 C++ ✶ 會跳很高 ✶</div></div>
+  <aside class="note" id="note">
+    <b>歡迎來到 MingAn OS</b>
+    <span class="note-desk">點兩下圖示打開視窗，視窗可以拖、疊、縮小。<br>按 <kbd>/</kbd> 可以打指令，例如 <code>/theme hacker</code>。</span>
+    <span class="note-mob">點圖示打開，點右下 <kbd>/</kbd> 打指令。</span>
+  </aside>
 
-    <div class="hero-in">
-      <div class="hero-copy">
-        <p class="hello-tag">嗨！我是</p>
-        <h1 class="big-name" aria-label="陳洺安"><span>陳</span><span>洺</span><span>安</span></h1>
-        <p class="hero-en">Ming-An Chen</p>
-        <p class="hero-lede">會寫程式、會導覽、會做咖啡，<br>還會<mark>跳很高</mark>。資工 × 資管雙主修，中原大學畢業，現在在葡萄王。</p>
-        <div class="hero-btns">
-          <a class="btn btn-grape" href="#toys">去玩具間玩</a>
-          <a class="btn btn-paper" href="#projects">看作品</a>
-        </div>
+  <div class="windows" id="windows"></div>
+
+  <button type="button" class="pet" id="pet" aria-label="點我跳一下"><img src="./image/web/new/jump_cut.png" alt="洺安" width="745" height="1000"></button>
+  <p class="bubble" id="bubble">點我！</p>
+
+  <footer class="taskbar">
+    <button type="button" class="start" data-act="start" aria-haspopup="true" aria-expanded="false">◉ 開始</button>
+    <div class="tasks" id="tasks"></div>
+    <button type="button" class="slash" data-act="palette" aria-label="打開指令列">/</button>
+    <div class="tray"><span class="tray-theme" id="trayTheme">XP</span><span class="clock"></span></div>
+  </footer>
+
+  <div class="startmenu" id="startMenu" hidden>
+    <div class="sm-head"><img src="./image/web/new/grad_head.jpg" alt=""><div><b>陳洺安</b><span>CSIE × IM · 葡萄王</span></div></div>
+    <div class="sm-body">
+      <div class="sm-apps">
+        <button type="button" data-app="about">關於我</button>
+        <button type="button" data-app="projects">作品</button>
+        <button type="button" data-app="album">相簿</button>
+        <button type="button" data-app="awards">獎狀</button>
+        <button type="button" data-app="journey">一路走來</button>
+        <button type="button" data-app="skills">技能</button>
+        <button type="button" data-app="toys">玩具間</button>
+        <button type="button" data-app="contact">聯絡我</button>
+        <button type="button" data-app="terminal">終端機</button>
       </div>
-
-      <div class="hero-stage" id="jumpStage">
-        <div class="blob" aria-hidden="true"></div>
-        <button type="button" class="jumper" id="jumper" aria-label="點我讓洺安跳起來">
-          <img src="./image/web/new/jump_cut.png" alt="洺安跳起來的照片" width="745" height="1000">
-        </button>
-        <p class="jump-hint" id="jumpHint">點我，我會跳！</p>
-        <p class="jump-count" aria-live="polite">已經跳了 <b id="jumpCount">0</b> 次</p>
-        <span class="sticker s1 drag" style="--r:-8deg">CYCU<br>GRAD '25</span>
-        <span class="sticker s2 drag" style="--r:6deg">資工 × 資管</span>
-        <span class="sticker s3 drag" style="--r:-4deg">GRAPE<br>KING</span>
-      </div>
-    </div>
-
-    <div class="tape tape-b" aria-hidden="true"><div>拖拖看貼紙 → 點點看洺安 → 往下捲有玩具 ✦ 拖拖看貼紙 → 點點看洺安 → 往下捲有玩具 ✦ 拖拖看貼紙 → 點點看洺安 → 往下捲有玩具 ✦</div></div>
-  </section>
-
-  <!-- ================= 終端機 ================= -->
-  <section class="sec" id="term">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">00 · 終端機</p>
-        <h2>來，打個指令</h2>
-        <p class="sec-sub">試試 <code>help</code>、<code>whoami</code>、<code>skin cyber</code>、<code>matrix</code>。按 Tab 自動補完，↑↓ 叫出歷史指令。</p>
-      </div>
-      <div class="term" id="term-box">
-        <p class="term-bar"><i></i><i></i><i></i><span>mingan@cycu: ~ — zsh</span></p>
-        <div class="term-out" id="termOut" aria-live="polite"></div>
-        <form class="term-form" id="termForm" autocomplete="off">
-          <label for="termIn">mingan@cycu:~$</label>
-          <input id="termIn" type="text" spellcheck="false" autocapitalize="off" aria-label="輸入指令">
-        </form>
-      </div>
-      <div class="term-chips" id="termChips">
-        <button type="button">help</button><button type="button">whoami</button><button type="button">skills</button>
-        <button type="button">projects</button><button type="button">skin cyber</button><button type="button">skin pop</button>
-        <button type="button">skin hacker</button><button type="button">matrix</button><button type="button">jump</button>
-        <button type="button">sudo hire mingan</button>
+      <div class="sm-side">
+        <p>桌面主題</p>
+        <button type="button" data-theme-set="xp">XP 綠色山丘</button>
+        <button type="button" data-theme-set="win98">Win98 經典</button>
+        <button type="button" data-theme-set="mac">Mac Aqua</button>
+        <button type="button" data-theme-set="hacker">Hacker</button>
+        <p>其他</p>
+        <button type="button" data-act="palette">指令列 /</button>
+        <button type="button" data-act="cv">一般履歷模式</button>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ================= 球員卡 ================= -->
-  <section class="sec" id="card">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">01 · 關於我</p>
-        <h2>我的球員卡</h2>
-        <p class="sec-sub">滑過去會閃，點一下翻到背面。</p>
-      </div>
+<!-- ================= / 指令列 ================= -->
+<div class="palette" id="palette" hidden role="dialog" aria-label="指令列">
+  <form class="pal-box" id="palForm" autocomplete="off">
+    <span class="pal-slash">/</span>
+    <input id="palIn" type="text" spellcheck="false" autocapitalize="off" placeholder="輸入指令，例如 theme hacker、open 相簿、jump" aria-label="輸入指令">
+    <kbd>Esc</kbd>
+  </form>
+  <ul class="pal-list" id="palList" role="listbox"></ul>
+</div>
 
-      <div class="card-zone">
-        <div class="pcard-wrap">
-          <button type="button" class="pcard" id="pcard" aria-label="翻轉球員卡">
-            <span class="pcard-face pcard-front">
-              <span class="pcard-top"><b>MING-AN</b><i>#1030</i></span>
-              <img src="./image/web/new/grad_head.jpg" alt="陳洺安的畢業照" width="900" height="1082">
-              <span class="pcard-name">陳洺安</span>
-              <span class="pcard-pos">資工 × 資管 · 全能型新人</span>
-              <span class="holo" aria-hidden="true"></span>
-            </span>
-            <span class="pcard-face pcard-back">
-              <span class="pcard-top"><b>PROFILE</b><i>翻回去 ↺</i></span>
-              <dl class="pback">
-                <div><dt>學校</dt><dd>中原大學 資訊工程（雙主修資訊管理）</dd></div>
-                <div><dt>生日</dt><dd>2001 / 10 / 30</dd></div>
-                <div><dt>現在</dt><dd>葡萄王</dd></div>
-                <div><dt>興趣</dt><dd>旅遊、看短影音、看夕陽</dd></div>
-                <div><dt>座右銘</dt><dd>心中的火焰比任何風暴都更持久。</dd></div>
-              </dl>
-            </span>
-          </button>
-        </div>
-
-        <div class="stats">
-          <h3>能力值</h3>
-          <ul class="bars">
-            <li style="--v:86;--c:var(--grape)"><span>寫程式</span><i></i><b>86</b></li>
-            <li style="--v:93;--c:var(--orange)"><span>導覽解說</span><i></i><b>93</b></li>
-            <li style="--v:88;--c:var(--mint)"><span>咖啡吧檯</span><i></i><b>88</b></li>
-            <li style="--v:84;--c:var(--pink)"><span>商業分析</span><i></i><b>84</b></li>
-            <li style="--v:99;--c:var(--ink)"><span>彈跳力</span><i></i><b>99</b></li>
-          </ul>
-          <h3>打工 &amp; 工作圖鑑</h3>
-          <ol class="jobs">
-            <li><span>Lv.1</span>運動精品店員</li>
-            <li><span>Lv.2</span>經濟學助教／課業守護</li>
-            <li><span>Lv.3</span>物流場</li>
-            <li><span>Lv.4</span>葡萄王 門市銷售 · 導覽 · 咖啡吧</li>
-          </ol>
-          <p class="quote">「工作不是生活的全部，但它是實現夢想的關鍵一環。」</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 玩具間（物理） ================= -->
-  <section class="sec sec-grape" id="toys">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">02 · 玩具間</p>
-        <h2>我的技能，隨便你丟</h2>
-        <p class="sec-sub">用滑鼠或手指抓起來丟。3D 物件都是用 Blender 做的。</p>
-      </div>
-      <div class="toybox" id="toybox">
-        <div class="toy-floor" aria-hidden="true"></div>
-        <noscript><p class="toy-empty">開啟 JavaScript 就能玩</p></noscript>
-      </div>
-      <div class="toy-btns">
-        <button type="button" class="btn btn-paper" id="toyGrapes">撒一把葡萄</button>
-        <button type="button" class="btn btn-paper" id="toyFlip">重力反轉</button>
-        <button type="button" class="btn btn-paper" id="toyShake">地震！</button>
-        <button type="button" class="btn btn-paper" id="toyReset">收好</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 一路走來（橫向捲動） ================= -->
-  <section class="road" id="road">
-    <div class="road-pin">
-      <div class="wrap road-head">
-        <p class="kicker">03 · 一路走來</p>
-        <h2>大一到社會人</h2>
-        <div class="road-progress" aria-hidden="true"><span id="roadBar"></span></div>
-      </div>
-      <div class="road-track" id="roadTrack">
-        <article class="stop" style="--tilt:-2deg;--bg:var(--grape-soft)">
-          <span class="stop-tag">大一</span>
-          <h3>PBL 商業分析</h3>
-          <p class="stop-course">經濟學</p>
-          <p>跟工業系跨系合作：我們負責分析，他們負責做竹槍。</p>
-          <img src="./image/web/award/pbl.jpg" alt="PBL 參加證明" loading="lazy">
-        </article>
-        <article class="stop" style="--tilt:2deg;--bg:#ffe7c7">
-          <span class="stop-tag">大二</span>
-          <h3>賣雪Q餅</h3>
-          <p class="stop-course">企業概論</p>
-          <p>創業實務：走訪友商、架網站，學會怎麼把東西賣出去。</p>
-          <a class="stop-link" href="https://www.instagram.com/qq_thankq/" target="_blank" rel="noopener">看 Instagram ↗</a>
-        </article>
-        <article class="stop" style="--tilt:-1.5deg;--bg:#d6f6ec">
-          <span class="stop-tag">大三</span>
-          <h3>台北大黑客松</h3>
-          <p class="stop-course">系統分析</p>
-          <p>城市儀表板大黑客松，做台北大數據中心的套件，整晚不睡打 code。</p>
-          <img src="./image/web/rest.jpg" alt="黑客松現場" loading="lazy">
-        </article>
-        <article class="stop" style="--tilt:1.5deg;--bg:#ffe0ea">
-          <span class="stop-tag">大四</span>
-          <h3>機器學習</h3>
-          <p class="stop-course">軟體專案管理、專題研究</p>
-          <p>桌球落點分析、虛擬數字人實現自我對話。</p>
-        </article>
-        <article class="stop stop-big" style="--tilt:-2deg;--bg:#fff">
-          <span class="stop-tag tag-orange">畢業！</span>
-          <h3>中原大學，畢業</h3>
-          <p>資工 × 資管雙主修，戴上方帽子的那天。</p>
-          <img src="./image/web/new/grad_cap.jpg" alt="畢業典禮戴方帽" loading="lazy">
-        </article>
-        <article class="stop stop-big" style="--tilt:2deg;--bg:var(--grape-soft)">
-          <span class="stop-tag tag-grape">現在</span>
-          <h3>葡萄王</h3>
-          <p>在觀光工廠跟大家介紹產品、在吧檯做咖啡。</p>
-          <img src="./image/web/new/tour.jpg" alt="在葡萄王觀光工廠導覽" loading="lazy">
-          <a class="stop-link" href="#now">看更多 ↓</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 現在 ================= -->
-  <section class="sec" id="now">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">04 · 現在在做什麼</p>
-        <h2>在葡萄王上班中</h2>
-      </div>
-      <div class="now-grid">
-        <figure class="snap" style="--r:-3deg"><img src="./image/web/new/tour.jpg" alt="在葡萄王觀光工廠導覽解說" loading="lazy"><figcaption>戴著麥克風導覽</figcaption></figure>
-        <figure class="snap snap-tall" style="--r:2deg"><img src="./image/web/new/coffee.jpg" alt="在吧檯做咖啡" loading="lazy"><figcaption>吧檯咖啡時間</figcaption></figure>
-        <figure class="snap snap-tall" style="--r:-1deg"><img src="./image/web/new/jump.jpg" alt="在葡萄王生技招牌前跳起來" loading="lazy"><figcaption>上班也要跳一下</figcaption></figure>
-        <div class="now-note">
-          <p class="now-big">把複雜的東西講得簡單、讓人聽得開心。</p>
-          <p>寫程式教我拆解問題，導覽和門市教我怎麼跟人溝通。兩邊我都喜歡。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 相簿（可滑走的照片堆） ================= -->
-  <section class="sec sec-orange" id="album">
-    <div class="wrap album">
-      <div class="sec-head">
-        <p class="kicker">05 · 相簿</p>
-        <h2>甩掉一張，<br>看下一張</h2>
-        <p class="sec-sub">把最上面那張往旁邊甩出去，或用按鈕翻。</p>
-        <div class="deck-btns">
-          <button type="button" class="round" id="deckPrev" aria-label="上一張"><svg><use href="#i-left"/></svg></button>
-          <span class="deck-count" id="deckCount">1 / 10</span>
-          <button type="button" class="round" id="deckNext" aria-label="下一張"><svg><use href="#i-right"/></svg></button>
-        </div>
-      </div>
-      <div class="deck" id="deck">
-        <figure class="polaroid"><img src="./image/web/new/street.jpg" alt="老街騎樓前" draggable="false"><figcaption>老街散步</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/new/sunset.jpg" alt="河邊夕陽" draggable="false"><figcaption>大溪的夕陽</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/new/temple.jpg" alt="大樹下的廟" draggable="false"><figcaption>老樹和廟</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/new/grad_full.jpg" alt="畢業袍正式照" draggable="false"><figcaption>畢業照</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/S__1851394.jpg" alt="海邊夕陽比耶" draggable="false"><figcaption>海邊比耶</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" alt="饒河街夜市" draggable="false"><figcaption>饒河街夜市</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/rest.jpg" alt="黑客松" draggable="false"><figcaption>黑客松</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/S__1851396.jpg" alt="佛學參訪" draggable="false"><figcaption>佛學參訪</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/work_1.jpg" alt="工作照" draggable="false"><figcaption>工作照</figcaption></figure>
-        <figure class="polaroid"><img src="./image/web/S__129581066.jpg" alt="跑 Uber" draggable="false"><figcaption>閒暇跑 Uber</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 獎狀（翻牌） ================= -->
-  <section class="sec" id="awards">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">06 · 獎狀與證照</p>
-        <h2>翻牌看故事</h2>
-        <p class="sec-sub">點一下翻面，背面有放大按鈕。</p>
-      </div>
-      <div class="filters" role="group" aria-label="篩選">
-        <button type="button" class="chip is-on" data-filter="all">全部 12</button>
-        <button type="button" class="chip" data-filter="school">校內 5</button>
-        <button type="button" class="chip" data-filter="exp">競賽與服務 3</button>
-        <button type="button" class="chip" data-filter="cert">證照 4</button>
-      </div>
-      <div class="flips" id="flips"></div>
-    </div>
-  </section>
-
-  <!-- ================= 作品 ================= -->
-  <section class="sec sec-mint" id="projects">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">07 · 程式作品</p>
-        <h2>寫過的東西</h2>
-        <p class="sec-sub">3D 模型可以拖曳旋轉，程式碼可以直接捲動看。</p>
-      </div>
-
-      <div class="ide">
-        <div class="ide-tabs" role="tablist" aria-label="作品">
-          <button type="button" role="tab" id="tab-tree" aria-controls="panel-tree" aria-selected="true">2-3 Tree</button>
-          <button type="button" role="tab" id="tab-heap" aria-controls="panel-heap" aria-selected="false" tabindex="-1">Heap</button>
-          <button type="button" role="tab" id="tab-codefest" aria-controls="panel-codefest" aria-selected="false" tabindex="-1">CodeFest 2023</button>
-          <button type="button" role="tab" id="tab-econ" aria-controls="panel-econ" aria-selected="false" tabindex="-1">經濟預測</button>
-        </div>
-
-        <div class="ide-panel" role="tabpanel" id="panel-tree" aria-labelledby="tab-tree">
-          <div class="panel-info">
-            <p class="kind">C++ · 資料結構</p>
-            <h3>2-3 Tree</h3>
-            <figure class="stage" data-model="./assets/3d/tree23.glb" data-kind="spin">
-              <img class="stage-fallback" src="./assets/3d/tree23.png" alt="2-3 tree 的 3D 模型" width="640" height="640" loading="lazy">
-            </figure>
-            <p>比起普通二元樹，<mark>樹高少很多</mark>，找資料更快。一開始用四個指標寫得又臭又長，改成 <code>vector&lt;nodetype*&gt;</code> 加遞迴之後就乾淨了。</p>
-            <p class="lesson">學到：先把問題最小化。</p>
-          </div>
-          <div class="code-viewer" data-src="./code/code1.cpp"><pre><code>載入程式碼中…</code></pre></div>
-        </div>
-
-        <div class="ide-panel" role="tabpanel" id="panel-heap" aria-labelledby="tab-heap" hidden>
-          <div class="panel-info">
-            <p class="kind">C++ · 資料結構</p>
-            <h3>Heap／Priority Queue</h3>
-            <figure class="stage" data-model="./assets/3d/heap.glb" data-kind="spin">
-              <img class="stage-fallback" src="./assets/3d/heap.png" alt="heap 的 3D 模型" width="640" height="640" loading="lazy">
-            </figure>
-            <p>用 heap 做 priority queue，<mark>完全不用指標</mark>，一個陣列搞定，也比較不會 memory leak。</p>
-            <p class="lesson">學到：選對資料結構，程式自然變簡單。</p>
-          </div>
-          <div class="code-viewer" data-src="./code/code2.cpp"><pre><code>載入程式碼中…</code></pre></div>
-        </div>
-
-        <div class="ide-panel" role="tabpanel" id="panel-codefest" aria-labelledby="tab-codefest" hidden>
-          <div class="panel-info">
-            <p class="kind">Hackathon · 前端 · 數據分析</p>
-            <h3>Taipei CodeFest 2023</h3>
-            <p>台北程式設計節「城市儀表板大黑客松」。主程式不是我們寫的，但我學到怎麼開發組件，也第一次感受到前端有多好玩。</p>
-            <a class="btn btn-grape" href="https://www.youtube.com/watch?v=Wr5Q8tB_W6k" target="_blank" rel="noopener">看成果影片 ↗</a>
-          </div>
-          <figure class="panel-media">
-            <video src="./video/web.mp4" poster="./image/web/video_poster.jpg" controls preload="none" playsinline></video>
-          </figure>
-        </div>
-
-        <div class="ide-panel" role="tabpanel" id="panel-econ" aria-labelledby="tab-econ" hidden>
-          <div class="panel-info">
-            <p class="kind">商業經濟及預測 · 期末報告</p>
-            <h3>經濟預測分析</h3>
-            <p>用時間序列預測<mark>外銷大陸及香港電子產品訂單金額</mark>和<mark>餐飲業營業額</mark>。後來在系統分析課用同樣的方法分析 YouBike 趨勢。</p>
-            <a class="btn btn-grape" href="./code/report.pdf" target="_blank" rel="noopener">打開報告 PDF ↗</a>
-          </div>
-          <figure class="panel-media panel-doc"><img src="./image/web/report_cover.jpg" alt="報告封面" loading="lazy"></figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 打招呼 ================= -->
-  <section class="sec hello" id="hello">
-    <div class="wrap hello-in">
-      <img class="hello-me" src="./image/web/new/grad_cut.png" alt="穿畢業袍的洺安" width="560" height="1126" loading="lazy">
+<!-- ================= 一般履歷模式 ================= -->
+<div class="cv" id="cv" hidden>
+  <div class="cv-in">
+    <button type="button" class="cv-back" data-act="desktop">← 回到桌面</button>
+    <header class="cv-head">
+      <img src="./image/web/new/grad_head.jpg" alt="陳洺安" width="900" height="1082">
       <div>
-        <p class="kicker">08 · 打招呼</p>
-        <h2>來聊聊吧！</h2>
-        <p class="sec-sub">工作機會、合作，或只是想說嗨，都歡迎。</p>
-        <button type="button" class="btn btn-huge" id="sayHi" data-copy="asd0389wsx0216@gmail.com">按我複製 Email</button>
-        <ul class="links">
-          <li><svg><use href="#i-mail"/></svg><span>asd0389wsx0216@gmail.com</span></li>
-          <li><svg><use href="#i-phone"/></svg><span>0978-581-189</span> <button type="button" class="mini-copy" data-copy="0978581189">複製</button></li>
-          <li><svg><use href="#i-github"/></svg><a href="https://github.com/minggg1030" target="_blank" rel="noopener">github.com/minggg1030</a></li>
-          <li><svg><use href="#i-ig"/></svg><a href="https://www.instagram.com/andy__901030/" target="_blank" rel="noopener">@andy__901030</a></li>
-          <li><svg><use href="#i-fb"/></svg><a href="https://www.facebook.com/profile.php?id=100027464161391" target="_blank" rel="noopener">Facebook</a></li>
-        </ul>
+        <h1>陳洺安 <span>Ming-An Chen</span></h1>
+        <p>中原大學 資訊工程學系（雙主修資訊管理）畢業 · 現任職葡萄王</p>
+        <p class="cv-contact">asd0389wsx0216@gmail.com · 0978-581-189 · <a href="https://github.com/minggg1030" target="_blank" rel="noopener">github.com/minggg1030</a></p>
       </div>
-    </div>
-    <footer class="foot">© 2024–2026 陳洺安 · 用葡萄、咖啡、Blender、three.js 和 matter.js 做的</footer>
-  </section>
-</main>
+    </header>
+    <section><h2>經歷</h2>
+      <ul class="cv-list">
+        <li><b>葡萄王</b><span>門市銷售、觀光工廠導覽、咖啡吧</span></li>
+        <li><b>物流場</b><span>打工</span></li>
+        <li><b>經濟學助教／課業守護</b><span>校內</span></li>
+        <li><b>運動精品店員</b><span>打工</span></li>
+      </ul>
+    </section>
+    <section><h2>技能</h2>
+      <p><b>程式：</b>C/C++、Java、Verilog、HTML、CSS</p>
+      <p><b>其他：</b>商業經濟預測分析、證券分析、系統分析、導覽解說</p>
+    </section>
+    <section><h2>專案</h2>
+      <ul class="cv-list">
+        <li><b>2-3 Tree / Heap（C++）</b><span>資料結構實作</span></li>
+        <li><b>Taipei CodeFest 2023</b><span>城市儀表板大黑客松，開發套件與系統分析</span></li>
+        <li><b>商業經濟預測期末報告</b><span>時間序列預測電子產品訂單與餐飲業營業額</span></li>
+        <li><b>機器學習專題</b><span>桌球落點分析、虛擬數字人自我對話</span></li>
+        <li><b>賣雪Q餅</b><span>企業概論創業實務</span></li>
+      </ul>
+    </section>
+    <section><h2>獎項與證照</h2>
+      <p>書卷獎、企業資料通訊／資料結構／貿易理論 專業學科優異獎、PBL 跨系合作、2023 城市儀表板大黑客松、臺南市市長獎、英檢、Oracle Java SE 7 Programming／Fundamentals、全民中文能力檢定</p>
+    </section>
+  </div>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="圖片檢視">
-  <button type="button" class="round lb-close" aria-label="關閉"><svg><use href="#i-close"/></svg></button>
-  <figure><img alt=""><figcaption></figcaption></figure>
-</div>
+<!-- ================= 視窗內容模板 ================= -->
+<template id="tpl-about">
+  <div class="about">
+    <img class="about-photo" src="./image/web/new/grad_head.jpg" alt="陳洺安的畢業照">
+    <div class="about-text">
+      <h2>陳洺安</h2>
+      <p class="en">Ming-An Chen</p>
+      <p>中原大學 資工 × 資管 雙主修畢業</p>
+      <p>現在在葡萄王：門市、導覽、咖啡吧</p>
+      <p>會寫程式、會導覽、會做咖啡，還會跳很高。</p>
+      <p class="motto">「心中的火焰比任何風暴都更持久。」</p>
+      <div class="chips"><span>C/C++</span><span>Java</span><span>Verilog</span><span>系統分析</span><span>經濟預測</span></div>
+    </div>
+  </div>
+  <dl class="kv">
+    <div><dt>生日</dt><dd>2001 / 10 / 30</dd></div>
+    <div><dt>興趣</dt><dd>旅遊、看短影音、看夕陽</dd></div>
+    <div><dt>工作經歷</dt><dd>運動精品店員 → 經濟學助教 → 物流場 → 葡萄王</dd></div>
+  </dl>
+  <div class="row-btns"><button type="button" class="btn" data-app="projects">看作品</button><button type="button" class="btn" data-app="contact">聯絡我</button></div>
+</template>
+
+<template id="tpl-terminal">
+  <div class="term">
+    <div class="term-out" aria-live="polite"></div>
+    <form class="term-form" autocomplete="off">
+      <label>mingan@cycu:~$</label>
+      <input type="text" spellcheck="false" autocapitalize="off" aria-label="終端機輸入">
+    </form>
+  </div>
+</template>
+
+<template id="tpl-projects">
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" data-tab="tree" aria-selected="true">2-3 Tree</button>
+    <button type="button" role="tab" data-tab="heap" aria-selected="false">Heap</button>
+    <button type="button" role="tab" data-tab="codefest" aria-selected="false">CodeFest 2023</button>
+    <button type="button" role="tab" data-tab="econ" aria-selected="false">經濟預測</button>
+  </div>
+  <div class="tab-panel" data-panel="tree">
+    <div class="proj">
+      <div class="proj-info">
+        <p class="kind">C++ · 資料結構</p>
+        <h3>2-3 Tree</h3>
+        <figure class="stage" data-model="./assets/3d/tree23.glb" data-kind="spin"><img class="stage-fallback" src="./assets/3d/tree23.png" alt="2-3 tree 3D 模型"></figure>
+        <p>比起普通二元樹樹高少很多，找資料更快。一開始用四個指標寫得又長又亂，改成 <code>vector&lt;nodetype*&gt;</code> 加遞迴就乾淨了。學到：先把問題最小化。</p>
+      </div>
+      <div class="code-viewer" data-src="./code/code1.cpp"><pre><code>載入中…</code></pre></div>
+    </div>
+  </div>
+  <div class="tab-panel" data-panel="heap" hidden>
+    <div class="proj">
+      <div class="proj-info">
+        <p class="kind">C++ · 資料結構</p>
+        <h3>Heap／Priority Queue</h3>
+        <figure class="stage" data-model="./assets/3d/heap.glb" data-kind="spin"><img class="stage-fallback" src="./assets/3d/heap.png" alt="heap 3D 模型"></figure>
+        <p>用 heap 做 priority queue，完全不用指標，一個陣列搞定，也比較不會 memory leak。</p>
+      </div>
+      <div class="code-viewer" data-src="./code/code2.cpp"><pre><code>載入中…</code></pre></div>
+    </div>
+  </div>
+  <div class="tab-panel" data-panel="codefest" hidden>
+    <div class="proj">
+      <div class="proj-info">
+        <p class="kind">Hackathon · 前端 · 數據分析</p>
+        <h3>Taipei CodeFest 2023</h3>
+        <p>台北程式設計節「城市儀表板大黑客松」。主程式不是我們寫的，但我學到怎麼開發組件，也第一次感受到前端有多好玩。</p>
+        <a class="btn" href="https://www.youtube.com/watch?v=Wr5Q8tB_W6k" target="_blank" rel="noopener">在 YouTube 看成果影片 ↗</a>
+      </div>
+      <video class="proj-video" src="./video/web.mp4" poster="./image/web/video_poster.jpg" controls preload="none" playsinline></video>
+    </div>
+  </div>
+  <div class="tab-panel" data-panel="econ" hidden>
+    <div class="proj">
+      <div class="proj-info">
+        <p class="kind">商業經濟及預測 · 期末報告</p>
+        <h3>經濟預測分析</h3>
+        <p>用時間序列預測「外銷大陸及香港電子產品訂單金額」和「餐飲業營業額」。後來在系統分析課用同樣的方法分析 YouBike 趨勢。</p>
+        <a class="btn" href="./code/report.pdf" target="_blank" rel="noopener">打開報告 PDF ↗</a>
+      </div>
+      <img class="proj-doc" src="./image/web/report_cover.jpg" alt="報告封面">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-album">
+  <div class="viewer">
+    <img class="viewer-img" alt="">
+    <div class="viewer-bar"><button type="button" class="btn" data-dir="-1">◀ 上一張</button><span class="viewer-cap"></span><button type="button" class="btn" data-dir="1">下一張 ▶</button></div>
+  </div>
+  <div class="thumbs"></div>
+</template>
+
+<template id="tpl-awards">
+  <div class="filters">
+    <button type="button" class="btn is-on" data-filter="all">全部</button>
+    <button type="button" class="btn" data-filter="school">校內</button>
+    <button type="button" class="btn" data-filter="exp">競賽與服務</button>
+    <button type="button" class="btn" data-filter="cert">證照</button>
+  </div>
+  <div class="files"></div>
+  <div class="award-detail" hidden>
+    <button type="button" class="btn award-back">← 回資料夾</button>
+    <div class="award-view"><img alt=""><div><h3></h3><p></p></div></div>
+  </div>
+</template>
+
+<template id="tpl-journey">
+  <ol class="log">
+    <li><span class="when">大一</span><div><b>PBL 商業分析</b><em>經濟學</em><p>跟工業系跨系合作：我們負責分析，他們負責做竹槍。</p></div></li>
+    <li><span class="when">大二</span><div><b>賣雪Q餅</b><em>企業概論</em><p>創業實務：走訪友商、架網站，學會怎麼把東西賣出去。<a href="https://www.instagram.com/qq_thankq/" target="_blank" rel="noopener">Instagram ↗</a></p></div></li>
+    <li><span class="when">大三</span><div><b>台北大黑客松、大數據競賽</b><em>系統分析</em><p>城市儀表板大黑客松，做台北大數據中心的套件。</p><img src="./image/web/rest.jpg" alt="黑客松現場" loading="lazy"></div></li>
+    <li><span class="when">大四</span><div><b>機器學習專題</b><em>軟體專案管理、專題研究</em><p>桌球落點分析、虛擬數字人實現自我對話。</p></div></li>
+    <li><span class="when">畢業</span><div><b>中原大學 畢業</b><em>資工 × 資管</em><img src="./image/web/new/grad_cap.jpg" alt="畢業典禮" loading="lazy"></div></li>
+    <li class="now"><span class="when">現在</span><div><b>葡萄王</b><em>門市 · 導覽 · 咖啡吧</em><p>把複雜的東西講得簡單，讓人聽得開心。</p><img src="./image/web/new/tour.jpg" alt="在葡萄王導覽" loading="lazy"></div></li>
+  </ol>
+</template>
+
+<template id="tpl-skills">
+  <ul class="bars">
+    <li style="--v:86"><span>C/C++</span><i></i><b>86</b></li>
+    <li style="--v:78"><span>Java</span><i></i><b>78</b></li>
+    <li style="--v:70"><span>Verilog</span><i></i><b>70</b></li>
+    <li style="--v:74"><span>HTML / CSS</span><i></i><b>74</b></li>
+    <li style="--v:84"><span>系統分析</span><i></i><b>84</b></li>
+    <li style="--v:82"><span>經濟預測</span><i></i><b>82</b></li>
+    <li style="--v:93"><span>導覽解說</span><i></i><b>93</b></li>
+    <li style="--v:99"><span>彈跳力</span><i></i><b>99</b></li>
+  </ul>
+  <p class="hint">數字是自己打的分數，彈跳力是真的。</p>
+</template>
+
+<template id="tpl-contact">
+  <p class="contact-lede">工作機會、合作，或只是想說嗨，都歡迎。</p>
+  <ul class="contact">
+    <li><span>Email</span><b>asd0389wsx0216@gmail.com</b><button type="button" class="btn" data-copy="asd0389wsx0216@gmail.com">複製</button></li>
+    <li><span>電話</span><b>0978-581-189</b><button type="button" class="btn" data-copy="0978581189">複製</button></li>
+    <li><span>GitHub</span><a href="https://github.com/minggg1030" target="_blank" rel="noopener">minggg1030 ↗</a></li>
+    <li><span>Instagram</span><a href="https://www.instagram.com/andy__901030/" target="_blank" rel="noopener">@andy__901030 ↗</a></li>
+    <li><span>Facebook</span><a href="https://www.facebook.com/profile.php?id=100027464161391" target="_blank" rel="noopener">陳洺安 ↗</a></li>
+  </ul>
+</template>
+
+<template id="tpl-toys">
+  <div class="toybox"></div>
+  <div class="row-btns"><button type="button" class="btn" data-toy="grapes">撒葡萄</button><button type="button" class="btn" data-toy="flip">重力反轉</button><button type="button" class="btn" data-toy="shake">地震</button><button type="button" class="btn" data-toy="reset">收好</button></div>
+</template>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="./script.js"></script>
-<script src="./skins.js"></script>
 <script src="./three-scenes.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>

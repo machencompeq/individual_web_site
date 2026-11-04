@@ -3,7 +3,7 @@
 set -euo pipefail
 OUT="${1:-_site}"
 mkdir -p "$OUT/image" "$OUT/video"
-cp index.html style.css skins.css script.js skins.js three-scenes.js "$OUT/"
+cp index.html style.css script.js three-scenes.js "$OUT/"
 cp image/favicon.png "$OUT/image/"
 cp -r image/web "$OUT/image/"
 cp -r assets code "$OUT/"

@@ -33,8 +33,10 @@ jobs:
         run: |
           FLAG="--fast"
           if [ "${{ inputs.quality }}" = "full" ]; then FLAG=""; fi
-          python 3d/build_assets.py $FLAG
+          python 3d/build_assets.py $FLAG && python 3d/build_wallpapers.py $FLAG
       - uses: actions/upload-artifact@v4
         with:
           name: 3d-assets
-          path: assets/3d/
+          path: |
+            assets/3d/
+            assets/wall/
