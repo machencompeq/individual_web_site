@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <!-- 網頁title icon (favicon) -->
+    <link rel="icon" href="./image/favicon.png" type="image/png">
+    <!-- google font 字體匯入 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <!-- 外接icon lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MY PROFILE</title>
+
+    <script>
+        function goTop() {
+            // 回到頂端，可接受{x,y,behavior  等參數}
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+    <header >
+        <h1 style="font-family: 'Dancing Script';" >WELCOME ! MY PROFILE</h1>
+    </header>
+
+    <nav>
+        <a href="#proff" class="profile"><b>基本資料</b></a>
+        <a href="#award" class="profile"><b>獎狀/經驗</b></a>
+        <a href="#life" class="profile"><b>我的生活</b></a>
+        <a href="#project" class="profile"><b>程式作品</b></a>
+        <a href="#connect" class="connect"><b>聯絡資訊</b></a>
+    </nav>
+    <main>
+        <section class="section1" id="proff">
+
+            <div class="container">
+                <img src="./image/myphoto01_removebg.png" alt="陳洺安" height="400px" class="me_ph" style="filter:saturate(1.3); ">
+                <div class="introduce">
+                    <article style="padding: 30px;">
+                        <h4>個人基本資料</h4>
+                        <hr>
+                        <p>姓名: 陳洺安</p>
+                        <p>就讀科系: 資訊工程學系四年級</p>
+                        <p>雙主修: 資訊管理學系</p>
+                        <p>座右銘: 心中的火焰比任何風暴都更持久。</p>
+                        <p>生日: 2001/10/30</p>
+                        <p>專長: 被各種程式折磨</p>
+                        <p>興趣: 旅遊、看短影音</p>
+                    </article>
+                </div>
+                <img src="./image/think.png" alt=""  class="think">
+
+ 
+            </div>
+            <aside class="card" style="padding-left: 50px; width: 450px; border-left: 2px dotted black; display: inline-block; position: relative; top: 0px; left: 400px; ">
+                <h2>工作經歷</h2>
+                <div>
+                    <p>第一份工作 :  運動精品店員</p>
+                    <p>第二份工作 :  經濟學助教/課業守護</p>
+                    <p>第三份工作 :  物流場</p>
+                    <p>第四份工作 :  葡萄王門市銷售</p>
+                </div>
+                <p style=" background-color: cadetblue; padding: 3px; border-radius: 20px; text-align: center;">工作不是生活的全部，但它是實現夢想的關鍵一環。</p>
+            </aside>
+
+            <div style="display: flex;">
+                <div class="pro" > 
+                    <h3 style="text-align: center; ">程式能力</h3>
+                    <hr>
+                    <ul class="ability" >
+                        <li class="c">C/C++</li>
+                        <li class="html">HTML</li>
+                        <li class="java">JAVA</li>
+                        <li class="css">CSS</li>
+                        <li class="verilog">VERILOG</li>
+                    </ul>
+                    <hr >
+                    <h3 style="text-align: center; ">其他專業</h3>
+                    <hr>
+                    <ul class="ability" >
+                        <li class="verilog">商業經濟預測分析</li>
+                        <li class="css">證卷分析</li>
+                        <li class="java">系統分析</li>
+                    </ul>
+                </div>
+                <div class="" style="margin-left: 350px; margin-top: 80px;"> 
+                    <h3 style="text-align: center; ">專案經歷</h3>
+                    <hr style="margin-bottom: 15px;">
+                    <div>
+                        <div style="display: flex;"   style=" margin-bottom: 3px;" >
+                            <div style="border-right: 1px solid black; padding: 20px; background-color: #657359; border-radius: 30px;">
+                                大一
+                            </div>
+                            <div style=" padding: 20px;" class="inl"> 
+                                <a href="#ppbbll" style="color: black;" class="inl">
+                                    PBL商業分析(經濟學) <br>
+                                    與工業系跨系合作，我們負責分析，他們負責製造竹槍
+                                </a>
+                                
+                            </div>
+                        </div>
+                        <div style="display: flex; "  >  
+                            <div style="border-right: 1px solid black; padding: 20px; background-color: #D7C9BE; border-radius: 30px;">
+                                大二
+                            </div>
+                            <div style=" padding: 20px; color: black;" class="inl"> 
+                                <a href="https://www.instagram.com/qq_thankq/" style="color: black; " target="_blank"  >
+                                    賣雪Q餅(企業概論) <br>
+                                    創業實務，實地走訪友商，架設線上網站，學會賣東西
+                                </a>
+                                
+                            </div>
+                        </div>
+                        <div style="display: flex; "  >
+                            <div style="border-right: 1px solid black; padding: 20px; background-color: #F1E4DB; border-radius: 30px;">
+                                大三
+                            </div>
+                            <div style=" padding: 20px;" class="inl"> 
+                                <a href="#bla" style="color: black;" >
+                                    台北大黑克松、大數據競賽(系統分析) <br>
+                                    台北程式設計節，專案主要製作台北大數據中心套件，並以系統分析
+                                </a>
+                                
+                            </div>
+                        </div>
+                        <div style="display: flex; "  >
+                            <div style="border-right: 1px solid black; padding: 20px;">
+                                大四
+                            </div>
+                            <div style=" padding: 20px;"> 
+                                機器學習(軟體專案管理、專題研究) <br>
+                                桌球落點分析、虛擬數字人實現自我對話
+                            </div>
+                        </div>
+
+                    </div>
+                        
+                
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section class="section2" id="award">
+            <hr style="margin-top: 100px;">
+            <!-- 設計邏輯  
+                先用大DIV包起來，背景為黑板
+                創建兩行可以放肆張獎狀的DIV
+            -->
+            <div class="label_award">
+                <h1 style="font-family: 'Caveat';">&nbsp AWARD & EXP</h1>
+            </div>
+            
+            <div class="blackboard" >
+
+                <div class="row1" >
+                    <img src="./image/award/good_grade.png" alt="書卷" height="400px" style="padding: 20px;">
+                    <img src="./image/award/enterprise.png" alt="" height="400px" style="padding: 20px;">
+                    <img src="./image/award/ds.png" alt="" height="400px" style="padding: 20px;" >
+                    <img src="./image/award/pbl.png" alt="" height="400px" style="padding: 20px;">
+                </div>
+                <div class="row1_set"  >
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; margin-left: 20px; display: inline-block;">
+                        <legend><b>書卷獎</b></legend>
+                        第一次拿到書卷獎，雖然只有2000元，但還是很快樂!!
+                    </fieldset>
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
+                        <legend><b>企資通</b></legend>
+                        超努力搞懂各種protocol，現在幾乎有關網路的課都會用到
+                    </fieldset>
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
+                        <legend><b>資料結構</b></legend>
+                        可以說是演算法最基礎的課程，也讓我在資工可以吃老本
+                    </fieldset>
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
+                        <legend><b>PBL</b></legend>
+                        與工業系跨系合作，我們負責分析，他們負責製造竹槍
+                    </fieldset>
+                </div>
+
+                <div class="row2" >
+                    <img src="./image/award/codefest.png" alt="書卷" height="400px" style="padding: 20px;">
+                    <img src="./image/award/jept.jpg" alt="" height="400px" style="padding: 20px;">
+                    <img src="./image/award/service.png" alt="" height="400px" style="padding: 20px;" >
+                    <img src="./image/award/tradetheory.png" alt="" height="400px" style="padding: 20px;">
+                </div>
+                <div class="row2_set" >
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; margin-left: 20px; display: inline-block;">
+                        <legend><b>黑克松競賽</b></legend>
+                        第一次碰到前端語言，向很多優秀的人學習，一起一整晚不睡覺打CODE
+                    </fieldset>
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
+                        <legend><b>英檢</b></legend>
+                        考過英文畢業門檻實在太快樂了!大一就可以不用一直做模擬測驗
+                    </fieldset>
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
+                        <legend><b>義工服務</b></legend>
+                        參加餐年團，夏令營帶營隊，認識很多比自己年紀大的朋友，漸漸有學校以外的朋友
+                    </fieldset>
+                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
+                        <legend><b>貿易理論</b></legend>
+                        這堂課要背超多東西的~但也學到很多貿易匯率與市場的理論，理論課程來說蠻有深度
+                    </fieldset>
+                </div>
+
+
+
+                <div class="row3">
+                    <img src="./image/award/java_1.png" alt="書卷" width="400px" style="padding: 20px;">
+                    <img src="./image/award/java_2.png" alt="" width="400px" style="padding: 20px;">
+                    <img src="./image/award/cwt.png" alt="" width="400px" style="padding: 20px;">
+                </div>
+            </div>
+
+
+
+
+
+        </section>
+
+
+
+
+
+        <section class="section3" id="life">
+            <hr style="margin-top: 100px; ">
+            <div class="active">
+                <h1 style="font-family: 'Caveat';">&nbsp LIFE</h1>
+            </div>
+
+            <div class="gallery" style="margin-top: 50px; margin-left: 100px;">
+                <div class="gallery-container" style="display: flex;">
+                    <div style="text-align: center;">
+                        <img src="./image/work_1.jpg" alt="Image 1" style="border-radius: 30px;">
+                        <div>工作照</div>
+                    </div>
+
+                    <div style="text-align: center; " id="bla">
+                        <img src="./image/rest.jpg" alt="Image 2" style="border-radius: 30px;">
+                        <div>黑克松競賽</div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <img src="./image/S__1851396.jpg" alt="" style="border-radius: 30px;">
+                        <div>佛學參訪</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./image/S__1851394.jpg" alt="" style="border-radius: 30px;">
+                        <div>旅行</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./image/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" alt="" style="border-radius: 30px;">
+                        <div>旅行(台北)</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./image/S__129581066.jpg" alt="" style="border-radius: 30px;">
+                        <div>閒暇跑uber</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./image/S__1851399.jpg" alt="" style="border-radius: 30px;">
+                        <div>閒暇跑uber</div>
+                    </div>
+                    <!-- <div style="text-align: center;">
+                        <img src="./image/think.png" alt="">
+                        <div></div>
+                    </div> -->
+                
+                    
+                  <!-- <img src="./image/S__1851394.jpg" alt="" height="150px"> -->
+                </div>
+              </div>
+
+                <video src="./video/735095692.558453.mp4" controls height="500px" style="border: 10px groove #D7C9BE; position: relative; left: 100px; top: 50px; border-radius: 50px;"></video>
+                
+              
+        
+            </section>
+
+
+
+        <section class="section4" id="project">
+            <hr  style="margin-top: 100px;">
+            <div class="code_express">
+                <h1 style="font-family: 'Caveat';">&nbsp SOFTWARE PROJECT</h1>
+            </div>
+            <!-- first code -->
+            <div class="code1">
+                <h1>1. 2-3 TREE</h1>
+                <iframe src="./code/code1.cpp" frameborder="0" width="600px" height="300px" ></iframe>
+                
+                
+                <article style=" border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
+        
+                    心得: <br><br>
+
+                    這是在寫一個2-3 tree 的 資料結構，從中可以深刻體會到這樣的資料結購相對於 <mark>普通的二元樹來說，樹高減少很多</mark>
+                    ，未來找尋資料也更有效率，當初剛開始沒想到用vector nodetype*
+                    的結構，定義了四個nodetype指標導致很多NULL樹狀結構在插入左中右子節點時有不一樣的狀況，並且程式碼攏長
+                    ，修改後完成問題最小化成功利用遞迴解決任務一，下次應該先將問題最小化！
+                </article>
+            </div>
+            
+            <!-- second code -->
+            <div class="code2">
+                <h1>2. HEAP</h1>
+                <iframe src="./code/code2.cpp" frameborder="0" width="600px" height="300px" ></iframe>
+                
+                <article style=" border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
+        
+                    心得: <br><br>
+
+
+                    這個是在用HEAP實做priority queue ，這個結構最特別的是<mark>不需要用到指標</mark>，
+                    只要利用陣列即可完成，大大省去了很多麻煩，也減少memeory leak 的機會，
+                    利用這個結構可以很好維護並找尋到優先值。
+                    
+                </article>
+            </div>
+            <!-- code fest -->
+            <div class="code3">
+                <h1>3. CODE FEST</h1>
+                <iframe  width="600px" height="300px" src="https://www.youtube.com/embed/Wr5Q8tB_W6k?si=C2hC3JsBr6IsjWbR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                
+                <article style="border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
+        
+                    心得: <br><br>
+
+                    這是參加台北城市節(黑克松)，我們的最終成果，雖然主程式不是我們寫的，但仍在過程中學習到如何開發組件，也在追code過程中，感嘆
+                    前端的有趣跟多樣，結合數據分析及系統分析，是一個很難得的體驗
+                    
+                </article>
+            </div>
+            <h1 id="ppbbll"></h1>
+                        <!-- code fest -->
+            <div class="code4" >
+                <h1>4. analysis & predict econmic</h1>
+                <iframe  width="600px" height="700px" src="./code/report.pdf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                
+                <article style="border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
+        
+                    心得: <br><br>
+                    
+                    在之後系統分析成功應用此專案獲得內容，分析ubike趨勢，更加實務應用
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style=" position: relative; background-color: #D7C9BE; margin-top: 500px; margin-bottom: 0px" id="connect">
+        <ul style="text-align: center; padding: 20px; list-style-type: none; ">
+            <a href="https://www.facebook.com/profile.php?id=100027464161391" style="text-decoration: none; color:black">
+                <li style="padding: 5px; list-style-type: none;">
+                    <i class="fab fa-facebook"></i>&nbsp;Facebook
+                </li>
+            </a>
+            <a href="https://www.instagram.com/andy__901030/" style="text-decoration: none; color:black">
+                <li style="padding: 5px; list-style-type: none;">
+                    <i class="fab fa-instagram"></i>&nbsp;Instagram
+                </li>
+            </a>              
+            <a href="https://github.com/minggg1030" style="text-decoration: none; color:black " >
+                <li style="padding: 5px; list-style-type: none;">
+                    <i class="fab fa-github"></i>&nbsp;GitHub
+                </li>
+            </a>
+            <a href="mailto:asd0389wsx0216@gmail.com" style="text-decoration: none; color:black " >
+                <li style="padding: 5px; list-style-type: none;">
+                    <i class="fa-solid fa-envelope"></i>&nbsp E-MAIL
+                </li>
+            </a>
+            <a href="mailto:asd0389wsx0216@gmail.com" style="text-decoration: none; color:black " >
+                <li style="padding: 5px; list-style-type: none;">
+                    <i class="fa-solid fa-phone"></i>&nbsp phone : 0978581189
+                </li>
+            </a>
+            
+        </ul>
+        
+            
+            
+        
+        <h5>Copyrgiht @ 2024 All rights reserved</h5>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    
+        
+    
+    
+    <button class="return_top" onclick="goTop()" >TOP</button>
+
+
+
+
+
+    
+</body>
+</html>
