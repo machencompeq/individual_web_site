@@ -40,6 +40,23 @@ for (const [name, viewport] of [['desktop', { width: 1366, height: 860 }], ['pho
   const sw = await page.evaluate(() => document.documentElement.scrollWidth);
   check(sw <= viewport.width, `[${name}] no horizontal scroll (${sw}px)`);
 
+  check(await page.getAttribute('html', 'data-skin') === 'hacker', `[${name}] default skin is hacker`);
+  await page.locator('#termIn').scrollIntoViewIfNeeded();
+  await page.fill('#termIn', 'whoami');
+  await page.press('#termIn', 'Enter');
+  await page.waitForTimeout(400);
+  check((await page.textContent('#termOut')).includes('Ming-An Chen'), `[${name}] terminal runs whoami`);
+  await page.fill('#termIn', 'skin cyber');
+  await page.press('#termIn', 'Enter');
+  await page.waitForTimeout(200);
+  check(await page.getAttribute('html', 'data-skin') === 'cyber', `[${name}] terminal switches skin`);
+  await page.click('#skinBtn');
+  check(await page.getAttribute('html', 'data-skin') === 'pop', `[${name}] skin button cycles`);
+  await page.click('#skinBtn');
+  const sw2 = await page.evaluate(() => document.documentElement.scrollWidth);
+  check(sw2 <= viewport.width, `[${name}] hacker skin: no horizontal scroll (${sw2}px)`);
+  await page.evaluate(() => scrollTo(0, 0));
+
   const before = Number(await page.textContent('#jumpCount'));
   await page.click('#jumper', { force: true });
   check(Number(await page.textContent('#jumpCount')) === before + 1, `[${name}] hero jump counter works`);

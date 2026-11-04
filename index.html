@@ -6,12 +6,17 @@
 <title>陳洺安 Ming-An Chen</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="陳洺安（Ming-An Chen）：中原大學資工 × 資管畢業，現在在葡萄王。會寫程式、會導覽、會做咖啡，還會跳很高。">
-<meta name="theme-color" content="#fff4e6">
+<meta name="theme-color" content="#050806">
 <link rel="icon" href="./image/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./skins.css">
+<script>
+  // 先套用風格，避免閃一下：預設 hacker
+  (function () { var s = 'hacker'; try { s = localStorage.getItem('skin') || s; } catch (e) {} if (!/^(hacker|cyber|pop)$/.test(s)) s = 'hacker'; document.documentElement.dataset.skin = s; })();
+</script>
 </head>
 <body>
 
@@ -32,6 +37,7 @@
   <nav class="nav" id="nav" aria-label="主選單">
     <a class="nav-logo" href="#hi">洺安<span>.</span></a>
     <div class="nav-links">
+      <a href="#term">終端機</a>
       <a href="#card">關於</a>
       <a href="#toys">玩具間</a>
       <a href="#road">一路走來</a>
@@ -41,12 +47,14 @@
       <a href="#projects">作品</a>
       <a href="#hello" class="nav-cta">打招呼</a>
     </div>
+    <button type="button" class="skin-btn" id="skinBtn" aria-label="切換網站風格"><i></i><span id="skinName">hacker</span></button>
   </nav>
 </header>
 
 <main>
   <!-- ================= HERO ================= -->
   <section class="hero" id="hi">
+    <canvas class="matrix" id="matrix" aria-hidden="true"></canvas>
     <div class="tape tape-a" aria-hidden="true"><div>資工 × 資管 ✶ 中原大學畢業 ✶ 葡萄王 ✶ 會導覽 ✶ 會做咖啡 ✶ 會寫 C++ ✶ 會跳很高 ✶ 資工 × 資管 ✶ 中原大學畢業 ✶ 葡萄王 ✶ 會導覽 ✶ 會做咖啡 ✶ 會寫 C++ ✶ 會跳很高 ✶</div></div>
 
     <div class="hero-in">
@@ -75,6 +83,31 @@
     </div>
 
     <div class="tape tape-b" aria-hidden="true"><div>拖拖看貼紙 → 點點看洺安 → 往下捲有玩具 ✦ 拖拖看貼紙 → 點點看洺安 → 往下捲有玩具 ✦ 拖拖看貼紙 → 點點看洺安 → 往下捲有玩具 ✦</div></div>
+  </section>
+
+  <!-- ================= 終端機 ================= -->
+  <section class="sec" id="term">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">00 · 終端機</p>
+        <h2>來，打個指令</h2>
+        <p class="sec-sub">試試 <code>help</code>、<code>whoami</code>、<code>skin cyber</code>、<code>matrix</code>。按 Tab 自動補完，↑↓ 叫出歷史指令。</p>
+      </div>
+      <div class="term" id="term-box">
+        <p class="term-bar"><i></i><i></i><i></i><span>mingan@cycu: ~ — zsh</span></p>
+        <div class="term-out" id="termOut" aria-live="polite"></div>
+        <form class="term-form" id="termForm" autocomplete="off">
+          <label for="termIn">mingan@cycu:~$</label>
+          <input id="termIn" type="text" spellcheck="false" autocapitalize="off" aria-label="輸入指令">
+        </form>
+      </div>
+      <div class="term-chips" id="termChips">
+        <button type="button">help</button><button type="button">whoami</button><button type="button">skills</button>
+        <button type="button">projects</button><button type="button">skin cyber</button><button type="button">skin pop</button>
+        <button type="button">skin hacker</button><button type="button">matrix</button><button type="button">jump</button>
+        <button type="button">sudo hire mingan</button>
+      </div>
+    </div>
   </section>
 
   <!-- ================= 球員卡 ================= -->
@@ -371,6 +404,7 @@
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="./script.js"></script>
+<script src="./skins.js"></script>
 <script src="./three-scenes.js"></script>
 </body>
 </html>

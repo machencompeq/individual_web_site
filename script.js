@@ -6,7 +6,15 @@
     get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
   };
-  const COLORS = ['#7b3fe4', '#ff8a00', '#16c59b', '#ff4f8b', '#ffd23f', '#1f1530'];
+  // 彩帶顏色跟著目前的風格走
+  const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let COLORS = [], GRAPE = '#7b3fe4', LINE = '#1f1530';
+  function readPalette() {
+    COLORS = ['--grape', '--orange', '--mint', '--pink', '--sun', '--ink'].map(cssv);
+    GRAPE = cssv('--grape') || GRAPE; LINE = cssv('--line') || LINE;
+  }
+  readPalette();
+  new MutationObserver(readPalette).observe(document.documentElement, { attributes: true, attributeFilter: ['data-skin'] });
 
   /* ================= Toast ================= */
   const toast = $('#toast');
@@ -46,7 +54,7 @@
     if (reduce) return;
     for (let i = 0; i < n; i++) {
       parts.push({ x: Math.random() * innerWidth, y: -20 - Math.random() * innerHeight * .6, vx: (Math.random() - .5) * 2, vy: 2 + Math.random() * 4,
-        r: 8 + Math.random() * 8, c: '#7b3fe4', rot: 0, vr: 0, life: 1.6, grape: true });
+        r: 8 + Math.random() * 8, c: GRAPE, rot: 0, vr: 0, life: 1.6, grape: true });
     }
     if (!fxRaf) fxRaf = requestAnimationFrame(tickFx);
   }
@@ -56,9 +64,9 @@
     for (const p of parts) {
       p.vy += 0.32; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life -= 0.007;
       g.save(); g.translate(p.x, p.y); g.rotate(p.rot); g.globalAlpha = Math.min(1, p.life * 1.5);
-      g.lineWidth = 2.5; g.strokeStyle = '#1f1530';
+      g.lineWidth = 2.5; g.strokeStyle = LINE;
       if (p.grape) {
-        g.fillStyle = '#7b3fe4'; g.beginPath(); g.arc(0, 0, p.r, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.fillStyle = GRAPE; g.beginPath(); g.arc(0, 0, p.r, 0, Math.PI * 2); g.fill(); g.stroke();
         g.fillStyle = 'rgba(255,255,255,.55)'; g.beginPath(); g.arc(-p.r * .35, -p.r * .35, p.r * .28, 0, Math.PI * 2); g.fill();
       } else {
         g.fillStyle = p.c; g.fillRect(-p.r, -p.r * .45, p.r * 2, p.r * .9); g.strokeRect(-p.r, -p.r * .45, p.r * 2, p.r * .9);
@@ -465,4 +473,5 @@
     typed = (typed + (e.key.length === 1 ? e.key.toLowerCase() : '')).slice(-4);
     if (typed === 'jump') { scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(jump, 400); }
   });
+  window.__site = { jump, rain, burst, say, copy };
 })();
