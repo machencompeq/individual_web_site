@@ -1,333 +1,401 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>陳洺安 Ming-An Chen｜個人網站</title>
-  <meta name="description" content="陳洺安（Ming-An Chen）的個人網站：資訊工程 × 資訊管理，經歷、獎項、生活與程式作品。">
-  <link rel="icon" href="./image/favicon.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="./style.css">
-  <script>
-    // 套用上次選擇的主題，避免閃爍
-    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>陳洺安 Ming-An Chen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="陳洺安（Ming-An Chen）的個人網站：資訊工程 × 資訊管理，經歷、獎項、生活與程式作品。">
+<link rel="icon" href="./image/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
 
-  <header class="site-header" id="top">
-    <div class="wrap nav-bar">
-      <a href="#top" class="brand">陳洺安<span>Ming-An Chen</span></a>
-      <nav class="nav" id="nav" aria-label="主選單">
-        <a href="#about">關於我</a>
-        <a href="#journey">經歷</a>
-        <a href="#awards">獎項</a>
-        <a href="#life">生活</a>
-        <a href="#projects">作品</a>
-        <a href="#contact" class="nav-cta">聯絡我</a>
-      </nav>
-      <div class="nav-tools">
-        <button class="icon-btn" id="themeToggle" aria-label="切換深色／淺色模式"><i class="fa-solid fa-circle-half-stroke"></i></button>
-        <button class="icon-btn menu-btn" id="menuToggle" aria-label="開啟選單" aria-expanded="false" aria-controls="nav"><i class="fa-solid fa-bars"></i></button>
-      </div>
-    </div>
-  </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2.5V7h4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.5 21.8c.6.1.8-.2.8-.5v-2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3.1 1.2a10.7 10.7 0 0 1 5.6 0c2.1-1.5 3.1-1.2 3.1-1.2.6 1.6.2 2.7.1 3 .7.8 1.2 1.8 1.2 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .3.2.6.8.5A11.2 11.2 0 0 0 12 .8z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3.5 6 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.5-2.3 1.5a11 11 0 0 0 6.5 6.5l1.5-2.3 4.5 1.8V19a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+</svg>
 
-  <main>
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-text reveal">
-          <p class="eyebrow">Hello, I'm</p>
-          <h1>陳洺安</h1>
-          <p class="hero-sub">資訊工程 <span>×</span> 資訊管理</p>
-          <blockquote class="motto">「心中的火焰比任何風暴都更持久。」</blockquote>
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">看我的作品 <i class="fa-solid fa-arrow-down"></i></a>
-            <a href="#contact" class="btn btn-ghost">聯絡我</a>
-          </div>
-        </div>
-        <div class="hero-photo reveal">
-          <div class="photo-blob"></div>
-          <img src="./image/web/me.png" alt="陳洺安的照片" width="433" height="577">
-          <span class="sticker">想深入了解我嗎？</span>
+<div class="shell">
+  <!-- 側邊欄：桌機為檔案總管，手機為頂部分頁列 -->
+  <aside class="explorer" aria-label="網站導覽">
+    <a class="brand" href="#hello">
+      <span class="brand-name">陳洺安</span>
+      <span class="brand-sub">ming-an.chen</span>
+    </a>
+    <p class="explorer-label">EXPLORER</p>
+    <nav class="files" id="files">
+      <a href="#hello"><svg><use href="#i-file"/></svg>hello.cpp</a>
+      <a href="#about"><svg><use href="#i-file"/></svg>about.md</a>
+      <a href="#journey"><svg><use href="#i-file"/></svg>journey.log</a>
+      <a href="#awards"><svg><use href="#i-file"/></svg>awards/</a>
+      <a href="#life"><svg><use href="#i-file"/></svg>life/</a>
+      <a href="#projects"><svg><use href="#i-file"/></svg>projects/</a>
+      <a href="#contact"><svg><use href="#i-file"/></svg>contact.txt</a>
+    </nav>
+    <div class="explorer-foot">
+      <button class="theme-btn" id="themeToggle" type="button" aria-label="切換深色／淺色模式">
+        <svg class="ico-sun"><use href="#i-sun"/></svg><svg class="ico-moon"><use href="#i-moon"/></svg>
+        <span>切換主題</span>
+      </button>
+      <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+    </div>
+  </aside>
+
+  <main class="page">
+
+    <!-- ===== HELLO ===== -->
+    <section class="sec hero" id="hello">
+      <div class="hero-copy">
+        <p class="hand-note">嗨，我是</p>
+        <h1>陳洺安</h1>
+        <p class="hero-role"><mark>資訊工程</mark> × <mark>資訊管理</mark> 雙主修</p>
+        <p class="hero-lede">喜歡把問題拆小、再一個一個解掉。從資料結構、黑客松到經濟預測，這裡記錄我一路上寫過的程式和走過的地方。</p>
+        <div class="hero-actions">
+          <a class="btn btn-ink" href="#projects">看程式作品</a>
+          <a class="btn btn-line" href="#contact">聯絡我</a>
         </div>
       </div>
+
+      <figure class="hero-card">
+        <div class="hero-photo">
+          <img src="./image/web/me.png" alt="陳洺安的照片" width="433" height="577">
+        </div>
+        <div class="code-card" aria-label="以 C++ 結構描述的個人資料">
+          <div class="code-tab"><span class="dot"></span>hello.cpp</div>
+<pre class="code-hero"><code><span class="k">struct</span> <span class="t">MingAn</span> {
+  <span class="t">string</span> major    = <span class="s">"資訊工程"</span>;
+  <span class="t">string</span> minor    = <span class="s">"資訊管理"</span>;
+  <span class="t">Date</span>   birthday = {<span class="n">2001</span>, <span class="n">10</span>, <span class="n">30</span>};
+  <span class="t">vector</span>&lt;<span class="t">string</span>&gt; hobbies =
+    {<span class="s">"旅遊"</span>, <span class="s">"看短影音"</span>};
+  <span class="t">string</span> motto =
+    <span class="s">"心中的火焰比任何風暴都更持久。"</span>;
+};<span class="caret"></span></code></pre>
+        </div>
+      </figure>
     </section>
 
     <!-- ===== ABOUT ===== -->
-    <section class="section" id="about">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="kicker">01 · About</span>
-          <h2>關於我</h2>
+    <section class="sec" id="about">
+      <header class="sec-head">
+        <p class="path">~/about.md</p>
+        <h2>關於我</h2>
+      </header>
+
+      <div class="about">
+        <div class="about-block">
+          <h3>基本資料</h3>
+          <dl class="facts">
+            <div><dt>姓名</dt><dd>陳洺安 Ming-An Chen</dd></div>
+            <div><dt>主修</dt><dd>資訊工程學系</dd></div>
+            <div><dt>雙主修</dt><dd>資訊管理學系</dd></div>
+            <div><dt>生日</dt><dd class="num">2001 / 10 / 30</dd></div>
+            <div><dt>專長</dt><dd>被各種程式折磨，然後把它修好</dd></div>
+            <div><dt>興趣</dt><dd>旅遊、看短影音</dd></div>
+          </dl>
         </div>
 
-        <div class="about-grid">
-          <article class="card reveal">
-            <h3><i class="fa-regular fa-id-card"></i> 基本資料</h3>
-            <dl class="facts">
-              <div><dt>姓名</dt><dd>陳洺安</dd></div>
-              <div><dt>主修</dt><dd>資訊工程學系</dd></div>
-              <div><dt>雙主修</dt><dd>資訊管理學系</dd></div>
-              <div><dt>生日</dt><dd>2001 / 10 / 30</dd></div>
-              <div><dt>專長</dt><dd>被各種程式折磨 😵‍💫</dd></div>
-              <div><dt>興趣</dt><dd>旅遊、看短影音</dd></div>
-            </dl>
-          </article>
+        <div class="about-block">
+          <h3>工作經歷</h3>
+          <ol class="jobs">
+            <li><span class="job-no">第 1 份</span>運動精品店員</li>
+            <li><span class="job-no">第 2 份</span>經濟學助教／課業守護</li>
+            <li><span class="job-no">第 3 份</span>物流場</li>
+            <li><span class="job-no">第 4 份</span>葡萄王門市銷售</li>
+          </ol>
+          <p class="margin-note">工作不是生活的全部，但它是實現夢想的關鍵一環。</p>
+        </div>
 
-          <article class="card reveal">
-            <h3><i class="fa-solid fa-briefcase"></i> 工作經歷</h3>
-            <ol class="jobs">
-              <li><span>01</span>運動精品店員</li>
-              <li><span>02</span>經濟學助教／課業守護</li>
-              <li><span>03</span>物流場</li>
-              <li><span>04</span>葡萄王門市銷售</li>
-            </ol>
-            <p class="note">工作不是生活的全部，但它是實現夢想的關鍵一環。</p>
-          </article>
-
-          <article class="card card-wide reveal">
-            <h3><i class="fa-solid fa-code"></i> 技能</h3>
-            <div class="skill-groups">
-              <div>
-                <h4>程式能力</h4>
-                <ul class="chips">
-                  <li>C / C++</li><li>Java</li><li>HTML</li><li>CSS</li><li>Verilog</li>
-                </ul>
-              </div>
-              <div>
-                <h4>其他專業</h4>
-                <ul class="chips chips-alt">
-                  <li>商業經濟預測分析</li><li>證券分析</li><li>系統分析</li>
-                </ul>
-              </div>
+        <div class="about-block about-wide">
+          <h3>技能</h3>
+          <div class="skills">
+            <div>
+              <p class="skill-label">程式語言</p>
+              <ul class="tags">
+                <li>C / C++</li><li>Java</li><li>HTML</li><li>CSS</li><li>Verilog</li>
+              </ul>
             </div>
-          </article>
+            <div>
+              <p class="skill-label">其他專業</p>
+              <ul class="tags tags-hl">
+                <li>商業經濟預測分析</li><li>證券分析</li><li>系統分析</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ===== JOURNEY ===== -->
-    <section class="section section-tint" id="journey">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="kicker">02 · Journey</span>
-          <h2>專案經歷</h2>
-          <p>大學四年，每一年都有一個讓我成長的專案。</p>
-        </div>
+    <section class="sec" id="journey">
+      <header class="sec-head">
+        <p class="path">~/journey.log</p>
+        <h2>四年，四個專案</h2>
+      </header>
 
-        <ol class="timeline">
-          <li class="reveal">
-            <span class="tl-year">大一</span>
-            <div class="tl-body">
-              <h3><a href="#p-econ">PBL 商業分析 <small>（經濟學）</small></a></h3>
-              <p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p>
-            </div>
-          </li>
-          <li class="reveal">
-            <span class="tl-year">大二</span>
-            <div class="tl-body">
-              <h3><a href="https://www.instagram.com/qq_thankq/" target="_blank" rel="noopener">賣雪Q餅 <small>（企業概論）</small> <i class="fa-solid fa-arrow-up-right-from-square"></i></a></h3>
-              <p>創業實務：實地走訪友商、架設線上網站，學會怎麼把東西賣出去。</p>
-            </div>
-          </li>
-          <li class="reveal">
-            <span class="tl-year">大三</span>
-            <div class="tl-body">
-              <h3><a href="#p-codefest">台北大黑客松、大數據競賽 <small>（系統分析）</small></a></h3>
-              <p>台北程式設計節，專案主要製作台北大數據中心套件，並進行系統分析。</p>
-            </div>
-          </li>
-          <li class="reveal">
-            <span class="tl-year">大四</span>
-            <div class="tl-body">
-              <h3>機器學習 <small>（軟體專案管理、專題研究）</small></h3>
-              <p>桌球落點分析、虛擬數字人實現自我對話。</p>
-            </div>
-          </li>
-        </ol>
-      </div>
+      <ol class="journey">
+        <li>
+          <span class="year">大一</span>
+          <h3>PBL 商業分析</h3>
+          <p class="course">經濟學</p>
+          <p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p>
+          <a class="more" href="#awards" data-filter="school">看獎狀</a>
+        </li>
+        <li>
+          <span class="year">大二</span>
+          <h3>賣雪Q餅</h3>
+          <p class="course">企業概論</p>
+          <p>創業實務：實地走訪友商、架設線上網站，學會怎麼把東西賣出去。</p>
+          <a class="more" href="https://www.instagram.com/qq_thankq/" target="_blank" rel="noopener">Instagram <svg><use href="#i-arrow"/></svg></a>
+        </li>
+        <li>
+          <span class="year">大三</span>
+          <h3>台北大黑客松、大數據競賽</h3>
+          <p class="course">系統分析</p>
+          <p>台北程式設計節，專案主要製作台北大數據中心套件，並進行系統分析。</p>
+          <a class="more" href="#projects" data-tab="codefest">看作品</a>
+        </li>
+        <li>
+          <span class="year">大四</span>
+          <h3>機器學習</h3>
+          <p class="course">軟體專案管理、專題研究</p>
+          <p>桌球落點分析、虛擬數字人實現自我對話。</p>
+        </li>
+      </ol>
     </section>
 
     <!-- ===== AWARDS ===== -->
-    <section class="section" id="awards">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="kicker">03 · Awards &amp; Experience</span>
-          <h2>獎狀與經驗</h2>
-          <p>點擊圖片可以放大檢視。</p>
-        </div>
+    <section class="sec" id="awards">
+      <header class="sec-head">
+        <p class="path">~/awards/</p>
+        <h2>獎狀與證照</h2>
+      </header>
 
-        <div class="award-grid">
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/good_grade.jpg" data-caption="書卷獎"><img src="./image/web/award/good_grade.jpg" alt="書卷獎獎狀" loading="lazy"></button>
-            <figcaption><h3>書卷獎</h3><p>第一次拿到書卷獎，雖然只有 2000 元，但還是很快樂！</p></figcaption>
-          </figure>
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/enterprise.jpg" data-caption="企資通"><img src="./image/web/award/enterprise.jpg" alt="企資通獎狀" loading="lazy"></button>
-            <figcaption><h3>企資通</h3><p>超努力搞懂各種 protocol，現在幾乎有關網路的課都會用到。</p></figcaption>
-          </figure>
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/ds.jpg" data-caption="資料結構"><img src="./image/web/award/ds.jpg" alt="資料結構獎狀" loading="lazy"></button>
-            <figcaption><h3>資料結構</h3><p>可以說是演算法最基礎的課程，也讓我在資工可以吃老本。</p></figcaption>
-          </figure>
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/pbl.jpg" data-caption="PBL"><img src="./image/web/award/pbl.jpg" alt="PBL 獎狀" loading="lazy"></button>
-            <figcaption><h3>PBL</h3><p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p></figcaption>
-          </figure>
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/codefest.jpg" data-caption="黑客松競賽"><img src="./image/web/award/codefest.jpg" alt="黑客松競賽證書" loading="lazy"></button>
-            <figcaption><h3>黑客松競賽</h3><p>第一次碰到前端語言，向很多優秀的人學習，一起整晚不睡覺打 code。</p></figcaption>
-          </figure>
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/jept.jpg" data-caption="英檢"><img src="./image/web/award/jept.jpg" alt="英檢證書" loading="lazy"></button>
-            <figcaption><h3>英檢</h3><p>考過英文畢業門檻實在太快樂了！大一就可以不用一直做模擬測驗。</p></figcaption>
-          </figure>
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/service.jpg" data-caption="義工服務"><img src="./image/web/award/service.jpg" alt="義工服務聘書" loading="lazy"></button>
-            <figcaption><h3>義工服務</h3><p>參加青年團、夏令營帶營隊，認識很多比自己年紀大的朋友，漸漸有了學校以外的朋友。</p></figcaption>
-          </figure>
-          <figure class="award reveal">
-            <button class="zoom" data-src="./image/web/award/tradetheory.jpg" data-caption="貿易理論"><img src="./image/web/award/tradetheory.jpg" alt="貿易理論獎狀" loading="lazy"></button>
-            <figcaption><h3>貿易理論</h3><p>這堂課要背超多東西～但也學到很多貿易、匯率與市場的理論，很有深度。</p></figcaption>
-          </figure>
-        </div>
+      <div class="filters" role="group" aria-label="篩選獎項">
+        <button type="button" class="chip is-on" data-filter="all">全部 <span class="count">12</span></button>
+        <button type="button" class="chip" data-filter="school">校內獎狀 <span class="count">5</span></button>
+        <button type="button" class="chip" data-filter="exp">競賽與服務 <span class="count">3</span></button>
+        <button type="button" class="chip" data-filter="cert">證照 <span class="count">4</span></button>
+      </div>
 
-        <h3 class="sub-title reveal">證照</h3>
-        <div class="cert-grid">
-          <button class="cert zoom reveal" data-src="./image/web/award/java_1.jpg" data-caption="Oracle · Java SE 7 Programming">
-            <img src="./image/web/award/java_1.jpg" alt="Oracle Java SE 7 Programming 證書" loading="lazy"><span>Oracle · Java SE 7 Programming</span>
-          </button>
-          <button class="cert zoom reveal" data-src="./image/web/award/java_2.jpg" data-caption="Oracle · Java SE 7 Fundamentals">
-            <img src="./image/web/award/java_2.jpg" alt="Oracle Java SE 7 Fundamentals 證書" loading="lazy"><span>Oracle · Java SE 7 Fundamentals</span>
-          </button>
-          <button class="cert zoom reveal" data-src="./image/web/award/cwt.jpg" data-caption="全民中文能力檢定（CWT）">
-            <img src="./image/web/award/cwt.jpg" alt="全民中文能力檢定合格證書" loading="lazy"><span>全民中文能力檢定（CWT）</span>
-          </button>
-        </div>
+      <div class="awards" id="awardGrid">
+        <figure class="award" data-cat="school">
+          <button type="button" class="thumb" data-full="./image/web/award/good_grade.jpg"><img src="./image/web/award/good_grade.jpg" alt="書卷獎獎狀" loading="lazy"></button>
+          <figcaption><h3>書卷獎</h3><p>第一次拿到書卷獎，雖然只有 2000 元，但還是很快樂！</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="school">
+          <button type="button" class="thumb" data-full="./image/web/award/enterprise.jpg"><img src="./image/web/award/enterprise.jpg" alt="企業資料通訊專業學科優異獎" loading="lazy"></button>
+          <figcaption><h3>企資通</h3><p>超努力搞懂各種 protocol，現在幾乎有關網路的課都會用到。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="school">
+          <button type="button" class="thumb" data-full="./image/web/award/ds.jpg"><img src="./image/web/award/ds.jpg" alt="資料結構專業學科優異獎" loading="lazy"></button>
+          <figcaption><h3>資料結構</h3><p>可以說是演算法最基礎的課程，也讓我在資工可以吃老本。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="school">
+          <button type="button" class="thumb" data-full="./image/web/award/pbl.jpg"><img src="./image/web/award/pbl.jpg" alt="PBL 課程參加證明" loading="lazy"></button>
+          <figcaption><h3>PBL</h3><p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="school">
+          <button type="button" class="thumb" data-full="./image/web/award/tradetheory.jpg"><img src="./image/web/award/tradetheory.jpg" alt="貿易理論專業學科優異獎" loading="lazy"></button>
+          <figcaption><h3>貿易理論</h3><p>要背超多東西，但也學到很多貿易、匯率與市場的理論，很有深度。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="exp">
+          <button type="button" class="thumb" data-full="./image/web/award/codefest.jpg"><img src="./image/web/award/codefest.jpg" alt="2023 城市儀表板大黑客松參賽證明" loading="lazy"></button>
+          <figcaption><h3>黑客松競賽</h3><p>第一次碰到前端語言，向很多優秀的人學習，一起整晚不睡覺打 code。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="exp">
+          <button type="button" class="thumb" data-full="./image/web/award/service.jpg"><img src="./image/web/award/service.jpg" alt="國際佛光會中華總會聘書" loading="lazy"></button>
+          <figcaption><h3>義工服務</h3><p>參加青年團、夏令營帶營隊，認識很多比自己年紀大的朋友，漸漸有了學校以外的朋友。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="exp">
+          <button type="button" class="thumb" data-full="./image/web/award/sunior.jpg"><img src="./image/web/award/sunior.jpg" alt="臺南市市長獎獎狀" loading="lazy"></button>
+          <figcaption><h3>市長獎</h3><p>高中畢業時獲頒臺南市市長獎（Mayor's Award for Academic Excellence）。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="cert">
+          <button type="button" class="thumb" data-full="./image/web/award/jept.jpg"><img src="./image/web/award/jept.jpg" alt="英檢合格證書" loading="lazy"></button>
+          <figcaption><h3>英檢</h3><p>考過英文畢業門檻實在太快樂了！大一就可以不用一直做模擬測驗。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="cert">
+          <button type="button" class="thumb" data-full="./image/web/award/java_1.jpg"><img src="./image/web/award/java_1.jpg" alt="Oracle Java SE 7 Programming 結業證書" loading="lazy"></button>
+          <figcaption><h3>Java SE 7 Programming</h3><p>Oracle Workforce Development Program 結業。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="cert">
+          <button type="button" class="thumb" data-full="./image/web/award/java_2.jpg"><img src="./image/web/award/java_2.jpg" alt="Oracle Java SE 7 Fundamentals 結業證書" loading="lazy"></button>
+          <figcaption><h3>Java SE 7 Fundamentals</h3><p>Oracle Workforce Development Program 結業。</p></figcaption>
+        </figure>
+        <figure class="award" data-cat="cert">
+          <button type="button" class="thumb" data-full="./image/web/award/cwt.jpg"><img src="./image/web/award/cwt.jpg" alt="全民中文能力檢定合格證書" loading="lazy"></button>
+          <figcaption><h3>全民中文能力檢定</h3><p>CWT 中高等合格。</p></figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- ===== LIFE ===== -->
-    <section class="section section-tint" id="life">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="kicker">04 · Life</span>
-          <h2>我的生活</h2>
-        </div>
+    <section class="sec" id="life">
+      <header class="sec-head">
+        <p class="path">~/life/</p>
+        <h2>課本以外</h2>
+      </header>
 
-        <div class="gallery">
-          <button class="shot zoom reveal" data-src="./image/web/work_1.jpg" data-caption="工作照"><img src="./image/web/work_1.jpg" alt="工作照" loading="lazy"><span>工作照</span></button>
-          <button class="shot zoom reveal" data-src="./image/web/rest.jpg" data-caption="黑客松競賽"><img src="./image/web/rest.jpg" alt="黑客松競賽" loading="lazy"><span>黑客松競賽</span></button>
-          <button class="shot zoom reveal" data-src="./image/web/S__1851396.jpg" data-caption="佛學參訪"><img src="./image/web/S__1851396.jpg" alt="佛學參訪" loading="lazy"><span>佛學參訪</span></button>
-          <button class="shot zoom reveal" data-src="./image/web/S__1851394.jpg" data-caption="旅行"><img src="./image/web/S__1851394.jpg" alt="旅行" loading="lazy"><span>旅行</span></button>
-          <button class="shot zoom reveal" data-src="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" data-caption="旅行（台北）"><img src="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" alt="旅行（台北）" loading="lazy"><span>旅行（台北）</span></button>
-          <button class="shot shot-wide zoom reveal" data-src="./image/web/S__129581066.jpg" data-caption="閒暇跑 Uber"><img src="./image/web/S__129581066.jpg" alt="閒暇跑 Uber" loading="lazy"><span>閒暇跑 Uber</span></button>
-          <button class="shot shot-wide zoom reveal" data-src="./image/web/S__1851399.jpg" data-caption="閒暇跑 Uber"><img src="./image/web/S__1851399.jpg" alt="閒暇跑 Uber" loading="lazy"><span>閒暇跑 Uber</span></button>
-        </div>
-
-        <div class="video-card reveal">
-          <video src="./video/735095692.558453.mp4" controls preload="metadata" playsinline></video>
+      <div class="life">
+        <figure class="video">
+          <video src="./video/web.mp4" poster="./image/web/video_poster.jpg" controls preload="none" playsinline></video>
+          <figcaption>2023 城市儀表板大黑客松，現場 debug 中</figcaption>
+        </figure>
+        <div class="photos" id="photoGrid">
+          <button type="button" class="photo thumb" data-full="./image/web/work_1.jpg"><img src="./image/web/work_1.jpg" alt="工作照" loading="lazy"><span>工作照</span></button>
+          <button type="button" class="photo thumb" data-full="./image/web/rest.jpg"><img src="./image/web/rest.jpg" alt="黑客松競賽" loading="lazy"><span>黑客松競賽</span></button>
+          <button type="button" class="photo thumb" data-full="./image/web/S__1851396.jpg"><img src="./image/web/S__1851396.jpg" alt="佛學參訪" loading="lazy"><span>佛學參訪</span></button>
+          <button type="button" class="photo thumb" data-full="./image/web/S__1851394.jpg"><img src="./image/web/S__1851394.jpg" alt="海邊旅行" loading="lazy"><span>旅行</span></button>
+          <button type="button" class="photo thumb" data-full="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg"><img src="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" alt="饒河街觀光夜市" loading="lazy"><span>旅行（台北）</span></button>
+          <button type="button" class="photo thumb" data-full="./image/web/S__129581066.jpg"><img src="./image/web/S__129581066.jpg" alt="跑 Uber 外送" loading="lazy"><span>閒暇跑 Uber</span></button>
         </div>
       </div>
     </section>
 
     <!-- ===== PROJECTS ===== -->
-    <section class="section" id="projects">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="kicker">05 · Software Projects</span>
-          <h2>程式作品</h2>
+    <section class="sec" id="projects">
+      <header class="sec-head">
+        <p class="path">~/projects/</p>
+        <h2>程式作品</h2>
+      </header>
+
+      <div class="ide">
+        <div class="ide-tabs" role="tablist" aria-label="作品">
+          <button type="button" role="tab" id="tab-tree" aria-controls="panel-tree" aria-selected="true">two_three_tree.cpp</button>
+          <button type="button" role="tab" id="tab-heap" aria-controls="panel-heap" aria-selected="false" tabindex="-1">heap.cpp</button>
+          <button type="button" role="tab" id="tab-codefest" aria-controls="panel-codefest" aria-selected="false" tabindex="-1">codefest_2023</button>
+          <button type="button" role="tab" id="tab-econ" aria-controls="panel-econ" aria-selected="false" tabindex="-1">econ_forecast.pdf</button>
         </div>
 
-        <div class="projects">
-          <article class="project reveal" id="p-tree">
-            <div class="project-meta">
-              <span class="tag">C++ · 資料結構</span>
-              <h3>2-3 Tree</h3>
-              <p>實作 2-3 tree 資料結構，深刻體會到它相對於普通二元樹 <mark>樹高減少很多</mark>，找資料也更有效率。一開始沒想到用 <code>vector&lt;nodetype*&gt;</code>，定義了四個 nodetype 指標，導致插入左中右子節點時狀況各不相同、程式碼冗長；修改後把問題最小化，成功利用遞迴解決。下次應該先將問題最小化！</p>
-            </div>
-            <details class="code-view" data-src="./code/code1.cpp">
-              <summary><i class="fa-solid fa-terminal"></i> 查看程式碼 <span>code1.cpp</span></summary>
-              <pre><code>載入中…</code></pre>
-            </details>
-          </article>
+        <div class="ide-panel" role="tabpanel" id="panel-tree" aria-labelledby="tab-tree">
+          <div class="panel-info">
+            <p class="kind">C++ · 資料結構</p>
+            <h3>2-3 Tree</h3>
+            <p>實作 2-3 tree。比起普通二元樹，<mark>樹高減少很多</mark>，找資料也更有效率。</p>
+            <p>一開始沒想到用 <code>vector&lt;nodetype*&gt;</code>，定義了四個 nodetype 指標，插入左中右子節點時狀況各不相同、程式碼冗長。修改後把問題最小化，用遞迴解決了任務一。</p>
+            <p class="lesson">學到的事：先把問題最小化。</p>
+          </div>
+          <div class="code-viewer" data-src="./code/code1.cpp"><pre><code>載入程式碼中…</code></pre></div>
+        </div>
 
-          <article class="project reveal" id="p-heap">
-            <div class="project-meta">
-              <span class="tag">C++ · 資料結構</span>
-              <h3>Heap／Priority Queue</h3>
-              <p>用 heap 實作 priority queue。這個結構最特別的是 <mark>不需要用到指標</mark>，只要陣列就能完成，省去很多麻煩，也減少 memory leak 的機會，能很好地維護並找到優先值。</p>
-            </div>
-            <details class="code-view" data-src="./code/code2.cpp">
-              <summary><i class="fa-solid fa-terminal"></i> 查看程式碼 <span>code2.cpp</span></summary>
-              <pre><code>載入中…</code></pre>
-            </details>
-          </article>
+        <div class="ide-panel" role="tabpanel" id="panel-heap" aria-labelledby="tab-heap" hidden>
+          <div class="panel-info">
+            <p class="kind">C++ · 資料結構</p>
+            <h3>Heap／Priority Queue</h3>
+            <p>用 heap 實作 priority queue。最特別的是<mark>不需要用到指標</mark>，只要陣列就能完成。</p>
+            <p>省去很多麻煩，也減少 memory leak 的機會，能很好地維護並找到優先值。</p>
+            <p class="lesson">學到的事：選對資料結構，程式自然變簡單。</p>
+          </div>
+          <div class="code-viewer" data-src="./code/code2.cpp"><pre><code>載入程式碼中…</code></pre></div>
+        </div>
 
-          <article class="project reveal" id="p-codefest">
-            <div class="project-meta">
-              <span class="tag">Hackathon · 前端 · 數據分析</span>
-              <h3>Taipei CodeFest 2023</h3>
-              <p>參加台北程式設計節（城市儀表板大黑客松）的最終成果。雖然主程式不是我們寫的，但在過程中學到如何開發組件，追 code 時也感嘆前端的有趣與多樣；結合數據分析與系統分析，是很難得的體驗。</p>
-            </div>
-            <div class="embed">
-              <iframe src="https://www.youtube-nocookie.com/embed/Wr5Q8tB_W6k" title="Taipei CodeFest 成果影片" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-          </article>
+        <div class="ide-panel" role="tabpanel" id="panel-codefest" aria-labelledby="tab-codefest" hidden>
+          <div class="panel-info">
+            <p class="kind">Hackathon · 前端 · 數據分析</p>
+            <h3>Taipei CodeFest 2023</h3>
+            <p>台北程式設計節「城市儀表板大黑客松」的成果。主程式不是我們寫的，但過程中學到怎麼開發組件，也在追 code 時感受到前端的有趣與多樣。</p>
+            <p>結合數據分析與系統分析，是很難得的體驗。</p>
+            <a class="btn btn-ink" href="https://www.youtube.com/watch?v=Wr5Q8tB_W6k" target="_blank" rel="noopener">在 YouTube 看成果影片 <svg><use href="#i-arrow"/></svg></a>
+          </div>
+          <figure class="panel-media">
+            <img src="./image/web/r2.jpg" alt="在 2023 臺北程式設計節舞台前拿著參賽證明" loading="lazy">
+          </figure>
+        </div>
 
-          <article class="project reveal" id="p-econ">
-            <div class="project-meta">
-              <span class="tag">經濟分析 · 預測</span>
-              <h3>Analysis &amp; Predict Economic</h3>
-              <p>經濟分析與預測報告。之後在系統分析課成功應用這份專案的方法，分析 YouBike 使用趨勢，更貼近實務。</p>
-              <a class="btn btn-ghost btn-sm" href="./code/report.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> 開啟完整報告（PDF）</a>
-            </div>
-            <div class="embed embed-pdf">
-              <iframe src="./code/report.pdf" title="經濟分析與預測報告" loading="lazy"></iframe>
-            </div>
-          </article>
+        <div class="ide-panel" role="tabpanel" id="panel-econ" aria-labelledby="tab-econ" hidden>
+          <div class="panel-info">
+            <p class="kind">商業經濟及預測 · 期末研究報告</p>
+            <h3>Analysis &amp; Predict Economic</h3>
+            <p>以時間序列預測兩組資料：<mark>外銷大陸及香港電子產品訂單金額</mark>與<mark>餐飲業營業額</mark>。</p>
+            <p>之後在系統分析課應用同樣的方法分析 YouBike 使用趨勢，更貼近實務。</p>
+            <dl class="mini-facts">
+              <div><dt>頁數</dt><dd class="num">14 頁</dd></div>
+              <div><dt>完成</dt><dd class="num">2022 / 06</dd></div>
+            </dl>
+            <a class="btn btn-ink" href="./code/report.pdf" target="_blank" rel="noopener">開啟完整報告 <svg><use href="#i-arrow"/></svg></a>
+          </div>
+          <figure class="panel-media panel-doc">
+            <img src="./image/web/report_cover.jpg" alt="商業經濟及預測期末研究報告封面" loading="lazy">
+          </figure>
         </div>
       </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section class="section contact" id="contact">
-      <div class="wrap">
-        <div class="contact-card reveal">
-          <span class="kicker">06 · Contact</span>
-          <h2>一起聊聊吧！</h2>
-          <p>不論是合作、工作機會，或只是想打聲招呼，都歡迎聯絡我。</p>
-          <ul class="socials">
-            <li><a href="mailto:asd0389wsx0216@gmail.com"><i class="fa-solid fa-envelope"></i>Email</a></li>
-            <li><a href="tel:0978581189"><i class="fa-solid fa-phone"></i>0978-581-189</a></li>
-            <li><a href="https://github.com/minggg1030" target="_blank" rel="noopener"><i class="fab fa-github"></i>GitHub</a></li>
-            <li><a href="https://www.instagram.com/andy__901030/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>Instagram</a></li>
-            <li><a href="https://www.facebook.com/profile.php?id=100027464161391" target="_blank" rel="noopener"><i class="fab fa-facebook"></i>Facebook</a></li>
-          </ul>
-        </div>
-      </div>
+    <section class="sec" id="contact">
+      <header class="sec-head">
+        <p class="path">~/contact.txt</p>
+        <h2>來聊聊吧</h2>
+      </header>
+      <p class="contact-lede">合作、工作機會，或只是想打聲招呼都歡迎。</p>
+
+      <ul class="contact">
+        <li>
+          <svg><use href="#i-mail"/></svg>
+          <span class="c-label">Email</span>
+          <a class="c-value" href="mailto:asd0389wsx0216@gmail.com">asd0389wsx0216@gmail.com</a>
+          <button type="button" class="copy" data-copy="asd0389wsx0216@gmail.com" aria-label="複製 Email"><svg><use href="#i-copy"/></svg><span>複製</span></button>
+        </li>
+        <li>
+          <svg><use href="#i-phone"/></svg>
+          <span class="c-label">電話</span>
+          <a class="c-value num" href="tel:0978581189">0978-581-189</a>
+          <button type="button" class="copy" data-copy="0978581189" aria-label="複製電話"><svg><use href="#i-copy"/></svg><span>複製</span></button>
+        </li>
+        <li>
+          <svg><use href="#i-github"/></svg>
+          <span class="c-label">GitHub</span>
+          <a class="c-value" href="https://github.com/minggg1030" target="_blank" rel="noopener">minggg1030</a>
+          <svg class="out"><use href="#i-arrow"/></svg>
+        </li>
+        <li>
+          <svg><use href="#i-ig"/></svg>
+          <span class="c-label">Instagram</span>
+          <a class="c-value" href="https://www.instagram.com/andy__901030/" target="_blank" rel="noopener">@andy__901030</a>
+          <svg class="out"><use href="#i-arrow"/></svg>
+        </li>
+        <li>
+          <svg><use href="#i-fb"/></svg>
+          <span class="c-label">Facebook</span>
+          <a class="c-value" href="https://www.facebook.com/profile.php?id=100027464161391" target="_blank" rel="noopener">陳洺安</a>
+          <svg class="out"><use href="#i-arrow"/></svg>
+        </li>
+      </ul>
+
+      <footer class="foot">© 2024–2026 陳洺安 Ming-An Chen</footer>
     </section>
   </main>
+</div>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>© 2024–<span id="year">2026</span> 陳洺安 Ming-An Chen. All rights reserved.</p>
-    </div>
-  </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <button class="to-top" id="toTop" aria-label="回到頂端"><i class="fa-solid fa-arrow-up"></i></button>
-
-  <dialog class="lightbox" id="lightbox">
-    <button class="lb-close" aria-label="關閉"><i class="fa-solid fa-xmark"></i></button>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="圖片檢視">
+  <button type="button" class="lb-btn lb-close" aria-label="關閉"><svg><use href="#i-close"/></svg></button>
+  <button type="button" class="lb-btn lb-prev" aria-label="上一張"><svg><use href="#i-left"/></svg></button>
+  <figure>
     <img alt="">
-    <p class="lb-caption"></p>
-  </dialog>
+    <figcaption><span class="lb-title"></span><span class="lb-count num"></span></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-next" aria-label="下一張"><svg><use href="#i-right"/></svg></button>
+</div>
 
-  <script src="./script.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>

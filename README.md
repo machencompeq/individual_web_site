@@ -5,5 +5,5 @@ Ming-An,Chen個人網站
 
 - `index.html`：頁面內容
 - `style.css`：樣式（含深色模式、手機版）
-- `script.js`：選單、深色模式切換、圖片放大、程式碼檢視
-- `image/web/`：網頁用的壓縮圖片（原始圖片保留在 `image/`）
+- `script.js`：導覽、深色模式、獎項篩選、作品分頁、圖片檢視、程式碼檢視
+- `image/web/`、`video/web.mp4`：網頁用的壓縮檔（原始檔保留）

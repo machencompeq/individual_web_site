@@ -1,7 +1,7 @@
 /*
-10942208 ³¯Ïy¦w 
+10942208 é™³æ´ºå®‰ 
 DS2ex1_10942208
-¤W¾÷µ{¦¡½X 
+ä¸Šæ©Ÿç¨‹å¼ç¢¼ 
 */
 
 #include<stdio.h>
@@ -16,17 +16,17 @@ DS2ex1_10942208
 using namespace std ;
 
 class Deap {
-	/* Âù¦V°ï¿n */
+	/* é›™å‘å †ç© */
 	private:
 		
 		struct heapItemType {
 			
-			int serial_num ; // §Ç¸¹ 
-			int numstu; //number of student ¾Ç¥Í¼Æ 
-			string sname; //school name ¾Ç®Õ¦WºÙ 
-			string dname; //department name  ¬ì¨t¦WºÙ 
-			string type; //day or night ¤é¶¡/¶i­×§O 
-			string level; //grad or ungrad µ¥¯Å§O 
+			int serial_num ; // åºè™Ÿ 
+			int numstu; //number of student å­¸ç”Ÿæ•¸ 
+			string sname; //school name å­¸æ ¡åç¨± 
+			string dname; //department name  ç§‘ç³»åç¨± 
+			string type; //day or night æ—¥é–“/é€²ä¿®åˆ¥ 
+			string level; //grad or ungrad ç­‰ç´šåˆ¥ 
 			
 			
 			
@@ -34,13 +34,13 @@ class Deap {
 		
 		
 		
-		int bottomIndex() { // ¨ú±obottomªºindex . index[0] no data
+		int bottomIndex() { // å–å¾—bottomçš„index . index[0] no data
 			if( DoubleEndHeap.size() > 1 ) return DoubleEndHeap.size() ;
 		} // bottomIndex()
 		
  
 		
-		int judge_exp( int index ) { // §PÂ_¦¸¤è 
+		int judge_exp( int index ) { // åˆ¤æ–·æ¬¡æ–¹ 
 			int level = 0;
     		while (index > 0) {
         		index = (index - 1) / 2; 
@@ -50,7 +50,7 @@ class Deap {
 		} // judge_exp()
 		 
 		char Judge_dir( int index ) {
-			/* §PÂ_INDEX¬O¥ª¤l¾ğ¡BÁÙ¬O¥k¤l¾ğ */ 
+			/* åˆ¤æ–·INDEXæ˜¯å·¦å­æ¨¹ã€é‚„æ˜¯å³å­æ¨¹ */ 
 			int last = 1 ;
 			for ( int n = 0 ; n < judge_exp( index ) ; n++ ) {
 				last *= 2 ;
@@ -61,13 +61,13 @@ class Deap {
 			else return 'R' ;
 		}
 
-		vector<heapItemType> DoubleEndHeap ; // Âù¦V°ï¿n¸ê®Æµ²ºc
+		vector<heapItemType> DoubleEndHeap ; // é›™å‘å †ç©è³‡æ–™çµæ§‹
 	public:
 		
 		void reset() {
-			DoubleEndHeap.clear(); // ²M°£Âù°ï¿n 
+			DoubleEndHeap.clear(); // æ¸…é™¤é›™å †ç© 
 			heapItemType dummy ;
-			DoubleEndHeap.push_back(dummy) ;  // ÀY¸`ÂI¬OªÅªº 
+			DoubleEndHeap.push_back(dummy) ;  // é ­ç¯€é»æ˜¯ç©ºçš„ 
 		} // reset()	
 		Deap() {
 //			reset();
@@ -77,12 +77,12 @@ class Deap {
 
 		
 		void prt_bottom_leftmost() {
-			/* ¦L¾ğ®Ú */
+			/* å°æ¨¹æ ¹ */
 			cout << "<DEAP>" << endl ;
 			//cout << "root: [" << maxHeap[0].serial_num << "] " << maxHeap[0].numstu  << endl ;
 			cout << "bottom:	[" << DoubleEndHeap[this->bottomIndex()-1].serial_num << "] " << DoubleEndHeap[this->bottomIndex()-1].numstu  << endl ;
 			
-			int level = judge_exp( this->bottomIndex()-1) ; // °ª
+			int level = judge_exp( this->bottomIndex()-1) ; // é«˜
 			int level_num = 1 ;
 			for( int i = 0 ; i < level ; i++ ) level_num *= 2 ;
 			
@@ -104,8 +104,8 @@ class Deap {
 			if( max_min == 'm' ) {
 				
 				while( DoubleEndHeap[father_pos].numstu < DoubleEndHeap[index].numstu && father_pos != 0 ) {
-					// ¥Î¦bmaxÃä¡A¦V¤W¾ã²z 
-					//cout << DoubleEndHeap[index].numstu << "¥æ´«" << DoubleEndHeap[father_pos].numstu << endl ; 
+					// ç”¨åœ¨maxé‚Šï¼Œå‘ä¸Šæ•´ç† 
+					//cout << DoubleEndHeap[index].numstu << "äº¤æ›" << DoubleEndHeap[father_pos].numstu << endl ; 
 					heapItemType tmp = DoubleEndHeap[father_pos] ;
 					DoubleEndHeap[father_pos] = DoubleEndHeap[index] ;
 					DoubleEndHeap[index] = tmp ;
@@ -115,8 +115,8 @@ class Deap {
 				
 			}else {
 				while( DoubleEndHeap[father_pos].numstu > DoubleEndHeap[index].numstu && father_pos != 0 ) {
-					// ¥Î¦bminÃä¡A¦V¤W¾ã²z 
-					//cout << DoubleEndHeap[index].numstu << "¥æ´«" << DoubleEndHeap[father_pos].numstu << endl ; 
+					// ç”¨åœ¨miné‚Šï¼Œå‘ä¸Šæ•´ç† 
+					//cout << DoubleEndHeap[index].numstu << "äº¤æ›" << DoubleEndHeap[father_pos].numstu << endl ; 
 					heapItemType tmp = DoubleEndHeap[father_pos] ;
 					DoubleEndHeap[father_pos] = DoubleEndHeap[index] ;
 					DoubleEndHeap[index] = tmp ;
@@ -127,18 +127,18 @@ class Deap {
 		} // reBuildup()
 		
 		void InsertItem( int serial_num , int numstu, string dname, string sname, string type, string level ) {
-			/* ´¡¦b¥ª¤l¾ğ®Ú¥k¤l¾ğªº±¡§Î */ 
+			/* æ’åœ¨å·¦å­æ¨¹æ ¹å³å­æ¨¹çš„æƒ…å½¢ */ 
 			/*
-			 * ´¡¦b¥ª¤l¾ğ¡A¥²µL¹ïÀ³ÂI¡A¥Ñ¤÷ÂI¥N´À
-			 * ¦pªG¥ª(·sªºÂI)¤j©ó¥k´Nswap¡A·sªºÂI¥i¯à«Ü¤j¡A¨Ã¥B¦V¤Wrebuildup¡A 
-			 * ´«¹L¥hmin¥k¤l¾ğªºitem¥»¨­´N¦bbuttom¥B¤ñ¨ä¤÷¸`ÂI¤j¤£»İ­n¦AÅÜ°Ê 
-			 * ¦pªG¨S¦³swap,´¡¶i¨Ó¥i¯à«Ü¤p©Ò¥H­n¦V¤Wrebuild 
+			 * æ’åœ¨å·¦å­æ¨¹ï¼Œå¿…ç„¡å°æ‡‰é»ï¼Œç”±çˆ¶é»ä»£æ›¿
+			 * å¦‚æœå·¦(æ–°çš„é»)å¤§æ–¼å³å°±swapï¼Œæ–°çš„é»å¯èƒ½å¾ˆå¤§ï¼Œä¸¦ä¸”å‘ä¸Šrebuildupï¼Œ 
+			 * æ›éå»minå³å­æ¨¹çš„itemæœ¬èº«å°±åœ¨buttomä¸”æ¯”å…¶çˆ¶ç¯€é»å¤§ä¸éœ€è¦å†è®Šå‹• 
+			 * å¦‚æœæ²’æœ‰swap,æ’é€²ä¾†å¯èƒ½å¾ˆå°æ‰€ä»¥è¦å‘ä¸Šrebuild 
 			 *
 			 *   
-			 * ´¡¦b¥k¤l¼Æ¡A¥²¦³¹ïÀ³ÂI
-			 * ¦pªG´¡¤Jitem¤p©ó¥ª´Nswap¡A¥k¤l¾ğ­n¦V¤Wrebuildup¡A·sªºÂI¥i¯à«Ü¤p 
-			 * ¥kÃä¹ïÀ³¸`ÂI¥»¨Ó´N¤ñ¸û¤p©Ò¥H¤£¥Î°Ê 
-			 * ¦pªG¨S¦³swap,´¡¶i¨Ó¥i¯à«Ü¤j©Ò¥H­n¦V¤Wrebuild 
+			 * æ’åœ¨å³å­æ•¸ï¼Œå¿…æœ‰å°æ‡‰é»
+			 * å¦‚æœæ’å…¥itemå°æ–¼å·¦å°±swapï¼Œå³å­æ¨¹è¦å‘ä¸Šrebuildupï¼Œæ–°çš„é»å¯èƒ½å¾ˆå° 
+			 * å³é‚Šå°æ‡‰ç¯€é»æœ¬ä¾†å°±æ¯”è¼ƒå°æ‰€ä»¥ä¸ç”¨å‹• 
+			 * å¦‚æœæ²’æœ‰swap,æ’é€²ä¾†å¯èƒ½å¾ˆå¤§æ‰€ä»¥è¦å‘ä¸Šrebuild 
 			 */
 			heapItemType add_item ;
 			add_item.serial_num = serial_num ;
@@ -149,57 +149,57 @@ class Deap {
 			add_item.level = level ;
 			
 			DoubleEndHeap.push_back(add_item) ;
-			if( this->Judge_dir(serial_num) == 'L' ) { // ´¡¤J¥ªÃämin 
+			if( this->Judge_dir(serial_num) == 'L' ) { // æ’å…¥å·¦é‚Šmin 
 				
-				//cout << "¥ª¤l¾ğ¦¬¨ì" <<  serial_num << "\t" <<  numstu  << endl ;
+				//cout << "å·¦å­æ¨¹æ”¶åˆ°" <<  serial_num << "\t" <<  numstu  << endl ;
 				
-				int map_pos = 1 ;// ¹ï¬M¸`ÂI¦ì¸m 
+				int map_pos = 1 ;// å°æ˜ ç¯€é»ä½ç½® 
 				
 				for( int i = 1 ; i < this->judge_exp(serial_num) ; i++ ) map_pos *= 2 ;
 				
 				map_pos += serial_num ;
-				//cout << serial_num << "¹ï¬M¸`ÂI" << map_pos << endl ; 
+				//cout << serial_num << "å°æ˜ ç¯€é»" << map_pos << endl ; 
 				
-				if( DoubleEndHeap.size() <= map_pos ) { // ¦pªG¨S¦³¹ï¬M¸`ÂI 
-					//cout << "¨S¦³¹ï¬M¸`ÂI" << endl ; 
-					int father_pos ; // ¹ï¬M¸`ÂIªº¤÷¿Ë
+				if( DoubleEndHeap.size() <= map_pos ) { // å¦‚æœæ²’æœ‰å°æ˜ ç¯€é» 
+					//cout << "æ²’æœ‰å°æ˜ ç¯€é»" << endl ; 
+					int father_pos ; // å°æ˜ ç¯€é»çš„çˆ¶è¦ª
 					father_pos = (map_pos-1)/2 ;
 					
 					if( father_pos != 0) {
-						//cout << "§Ú§ä¥Lª¨" << father_pos << "\t" << DoubleEndHeap[father_pos].numstu << endl ;
+						//cout << "æˆ‘æ‰¾ä»–çˆ¸" << father_pos << "\t" << DoubleEndHeap[father_pos].numstu << endl ;
 						
-						if( DoubleEndHeap[father_pos].numstu < DoubleEndHeap[serial_num].numstu ) { // swap && rebuild // ¹ï¬MÂI¤÷¿Ë¤p©ó²{¦b 
-							// cout << DoubleEndHeap[serial_num].numstu << "¥æ´«" << DoubleEndHeap[father_pos].numstu << endl ; 
+						if( DoubleEndHeap[father_pos].numstu < DoubleEndHeap[serial_num].numstu ) { // swap && rebuild // å°æ˜ é»çˆ¶è¦ªå°æ–¼ç¾åœ¨ 
+							// cout << DoubleEndHeap[serial_num].numstu << "äº¤æ›" << DoubleEndHeap[father_pos].numstu << endl ; 
 							heapItemType tmp = DoubleEndHeap[father_pos] ;
 							DoubleEndHeap[father_pos] = DoubleEndHeap[serial_num] ;
 							DoubleEndHeap[serial_num] = tmp ;
 							
-							this->reBuildup( 'm', father_pos ) ;//¦V¤Wrebuild 
+							this->reBuildup( 'm', father_pos ) ;//å‘ä¸Šrebuild 
 						} // if
 						else {
-							//cout << "¤ñ¥Lª¨¤p,­ì¦a¤£°Ê" << endl; 
+							//cout << "æ¯”ä»–çˆ¸å°,åŸåœ°ä¸å‹•" << endl; 
 							this->reBuildup( 'a', serial_num ) ;
 						}
 						
 					}
 					
 				}
-				else { // ¤£¥i¯à¦³¹ï¬MÂI 
+				else { // ä¸å¯èƒ½æœ‰å°æ˜ é» 
 				}
 				
 				
 				
-			}else{ // ´¡¦b¥k¤l¼Æ
-				//cout << "¥k¤l¾ğ¦¬¨ì" <<  serial_num << "\t" <<  numstu  << endl ;
-				// ´¡¤Jitem¤p©ó¥ª´Nswap¡A¥k¤l¾ğ­n¦V¤Wrebuildup
-				int map_pos = 1 ;// ¹ï¬M¸`ÂI¦ì¸m 
+			}else{ // æ’åœ¨å³å­æ•¸
+				//cout << "å³å­æ¨¹æ”¶åˆ°" <<  serial_num << "\t" <<  numstu  << endl ;
+				// æ’å…¥itemå°æ–¼å·¦å°±swapï¼Œå³å­æ¨¹è¦å‘ä¸Šrebuildup
+				int map_pos = 1 ;// å°æ˜ ç¯€é»ä½ç½® 
 				for( int i = 1 ; i < this->judge_exp(serial_num) ; i++ ) map_pos*= 2 ;
 				
 				map_pos = serial_num - map_pos;
-				//cout << serial_num << "¹ï¬M¸`ÂI" << map_pos << endl ; 
+				//cout << serial_num << "å°æ˜ ç¯€é»" << map_pos << endl ; 
 				
 				if( DoubleEndHeap[map_pos].numstu > DoubleEndHeap[serial_num].numstu ) {
-					//cout << DoubleEndHeap[serial_num].numstu << "¥æ´«" << DoubleEndHeap[map_pos].numstu << endl ; 
+					//cout << DoubleEndHeap[serial_num].numstu << "äº¤æ›" << DoubleEndHeap[map_pos].numstu << endl ; 
 					
 					heapItemType tmp = DoubleEndHeap[map_pos] ;
 					DoubleEndHeap[map_pos] = DoubleEndHeap[serial_num] ;
@@ -211,26 +211,26 @@ class Deap {
 			}
 
 			
-		} // InsertItem() ³v¤@´¡¤J 
+		} // InsertItem() é€ä¸€æ’å…¥ 
 		
 		
 		int reHeapDown( int index ) {
-			// ¤l¸`ÂI¬O index*2+1  index*2+2
-			// case1 ¨â­Ó¸`ÂI¦s¦b case2 ¥u¦³¥ª¸`ÂI¦s¦b 
-			// case1 ¤ñ¸û¥ª¥k¨âÂI¡A¦Aswap
-			// until ¤l¸`ÂI³£¤ñ¦Û¤v¤por°µ¨ì¸­¸`ÂI  
+			// å­ç¯€é»æ˜¯ index*2+1  index*2+2
+			// case1 å…©å€‹ç¯€é»å­˜åœ¨ case2 åªæœ‰å·¦ç¯€é»å­˜åœ¨ 
+			// case1 æ¯”è¼ƒå·¦å³å…©é»ï¼Œå†swap
+			// until å­ç¯€é»éƒ½æ¯”è‡ªå·±å°oråšåˆ°è‘‰ç¯€é»  
 			//int left_child = index*2+1 ;
 			//int right_child = index*2+2 ;
 			
 			//heapItemType pop_item ;
 			
-			if( index*2+2 <= DoubleEndHeap.size() ) { // ¨â­Ó¸`ÂI¦s¦b
+			if( index*2+2 <= DoubleEndHeap.size() ) { // å…©å€‹ç¯€é»å­˜åœ¨
 			
-				if( DoubleEndHeap[index*2+2].numstu <= DoubleEndHeap[index*2+1].numstu && DoubleEndHeap[index].numstu < DoubleEndHeap[index*2+1].numstu ) { // ¥ª¤j©ó¥k 
+				if( DoubleEndHeap[index*2+2].numstu <= DoubleEndHeap[index*2+1].numstu && DoubleEndHeap[index].numstu < DoubleEndHeap[index*2+1].numstu ) { // å·¦å¤§æ–¼å³ 
 					heapItemType tmp = DoubleEndHeap[index] ;
 					DoubleEndHeap[index] = DoubleEndHeap[index*2+1] ;
 					DoubleEndHeap[index*2+1] = tmp ;
-					//cout <<"¨«¥ªÃä" <<  index << "	swap	" << index*2+1 << endl ;
+					//cout <<"èµ°å·¦é‚Š" <<  index << "	swap	" << index*2+1 << endl ;
 					index = index*2+1 ;
 					
 					
@@ -239,7 +239,7 @@ class Deap {
 					heapItemType tmp = DoubleEndHeap[index] ;
 					DoubleEndHeap[index] = DoubleEndHeap[index*2+2] ;
 					DoubleEndHeap[index*2+2] = tmp ;
-					//cout <<"¨«¥kÃä" <<  index << "	swap	" << index*2+2 << endl ;
+					//cout <<"èµ°å³é‚Š" <<  index << "	swap	" << index*2+2 << endl ;
 					index = index*2+2 ;
 					
 					
@@ -247,7 +247,7 @@ class Deap {
 				else {
 					return index ;
 				}
-			}else if ( index*2+1 <= DoubleEndHeap.size() ) { // ¥u¦³¥ª¸`ÂI¦s¦b
+			}else if ( index*2+1 <= DoubleEndHeap.size() ) { // åªæœ‰å·¦ç¯€é»å­˜åœ¨
 				if( DoubleEndHeap.size() == 2 ) {
 					//pop_item = DoubleEndHeap[1] ; 
 					return index ;
@@ -256,7 +256,7 @@ class Deap {
 						heapItemType tmp = DoubleEndHeap[index] ;
 						DoubleEndHeap[index] = DoubleEndHeap[index*2+1] ;
 						DoubleEndHeap[index*2+1] = tmp ;
-						//cout <<"¨«¥ªÃä" <<  index << "	swap	" << index*2+1 << endl ;
+						//cout <<"èµ°å·¦é‚Š" <<  index << "	swap	" << index*2+1 << endl ;
 						index = index*2+1 ;
 					}
 					else {
@@ -265,41 +265,41 @@ class Deap {
 				}
 			}
 			else {
-				//cout << "¨S¦³¤lÂI¤F" << endl ; 
+				//cout << "æ²’æœ‰å­é»äº†" << endl ; 
 				return index ;
 			}
-			//cout << "¥Ø«e¬OÂI:		" << index << endl; 
+			//cout << "ç›®å‰æ˜¯é»:		" << index << endl; 
 			return reHeapDown( index ) ;
 			
 			
-		} //  ©¹¤Ureheap 
+		} //  å¾€ä¸‹reheap 
 
 		heapItemType delete_max() {
-			// case 1 ³Ñ°ß¤@¥ª¸`ÂI
-			// case 2 ²Ä¤@¥k¸`ÂIÁÙ¦s¦b
+			// case 1 å‰©å”¯ä¸€å·¦ç¯€é»
+			// case 2 ç¬¬ä¸€å³ç¯€é»é‚„å­˜åœ¨
 			heapItemType pop_item ;
 			int map_pot = 1 ; 
 			
-			if( DoubleEndHeap.size() == 2 ) { // °£¤F³Ì«á¤@ÂI 
+			if( DoubleEndHeap.size() == 2 ) { // é™¤äº†æœ€å¾Œä¸€é» 
 				pop_item = DoubleEndHeap[1];
-			} else { // ¨ä¥L±¡ªp³£¬O DoubleEndHeap[2] ¬°³Ì¤j­È 
+			} else { // å…¶ä»–æƒ…æ³éƒ½æ˜¯ DoubleEndHeap[2] ç‚ºæœ€å¤§å€¼ 
 				//	cout<< DoubleEndHeap[2].numstu  << endl ; 
 				pop_item = DoubleEndHeap[2] ; 
 				//cout << DoubleEndHeap[2].numstu <<	"swap	"  << DoubleEndHeap[DoubleEndHeap.size()-1].numstu << endl ;
 				
 				DoubleEndHeap[2] = DoubleEndHeap[DoubleEndHeap.size()-1] ;
 				DoubleEndHeap.pop_back(); 
-				//cout << "¥i¯à¬O¥d¦b³o01" << endl ;
+				//cout << "å¯èƒ½æ˜¯å¡åœ¨é€™01" << endl ;
 				//cout<< DoubleEndHeap[2].numstu  << endl ; 
-				int index = this->reHeapDown(2) ; // ¥Ø«eªºindex 
-				//cout << "¥i¯à¬O¥d¦b³o02" << endl ;
+				int index = this->reHeapDown(2) ; // ç›®å‰çš„index 
+				//cout << "å¯èƒ½æ˜¯å¡åœ¨é€™02" << endl ;
 				int level = this->judge_exp( index ) ;
 				for( int i = 1 ; i < level ; i++ ) map_pot *= 2;
 				map_pot = index - (map_pot) ;
-				//cout<< "³Ì«á§Ú¯¸¦b" << index << endl ; 
-				//cout<< "¹ïÀ³¸`ÂI" <<  map_pot << endl ; 
+				//cout<< "æœ€å¾Œæˆ‘ç«™åœ¨" << index << endl ; 
+				//cout<< "å°æ‡‰ç¯€é»" <<  map_pot << endl ; 
 				
-				if( DoubleEndHeap[map_pot].numstu > DoubleEndHeap[index].numstu ) { // ¹ï¤è¤ñ§Ú¤j 
+				if( DoubleEndHeap[map_pot].numstu > DoubleEndHeap[index].numstu ) { // å°æ–¹æ¯”æˆ‘å¤§ 
 					heapItemType tmp = DoubleEndHeap[index] ;
 					DoubleEndHeap[index] = DoubleEndHeap[map_pot] ;
 					DoubleEndHeap[map_pot] = tmp ;
@@ -308,7 +308,7 @@ class Deap {
 					int map_pot_leftch = map_pot*2+1 ;
 					int map_pot_rightch = map_pot*2+2 ;
 					if( map_pot_rightch <= DoubleEndHeap.size()) {
-						if( DoubleEndHeap[map_pot_rightch].numstu > DoubleEndHeap[map_pot_leftch].numstu && DoubleEndHeap[index].numstu < DoubleEndHeap[map_pot_rightch].numstu) { // ¹ï¤è¤l¸`ÂI¤ñ§Ú¤j 
+						if( DoubleEndHeap[map_pot_rightch].numstu > DoubleEndHeap[map_pot_leftch].numstu && DoubleEndHeap[index].numstu < DoubleEndHeap[map_pot_rightch].numstu) { // å°æ–¹å­ç¯€é»æ¯”æˆ‘å¤§ 
 							heapItemType tmp = DoubleEndHeap[index] ;
 							DoubleEndHeap[index] = DoubleEndHeap[map_pot_rightch] ;
 							DoubleEndHeap[map_pot_rightch] = tmp ;
@@ -321,7 +321,7 @@ class Deap {
 							
 						}
 					}else if( map_pot_leftch <= DoubleEndHeap.size() ) {
-						if( DoubleEndHeap[index].numstu < DoubleEndHeap[map_pot_leftch].numstu) { // ¹ï¤è¤l¸`ÂI¤ñ§Ú¤j 
+						if( DoubleEndHeap[index].numstu < DoubleEndHeap[map_pot_leftch].numstu) { // å°æ–¹å­ç¯€é»æ¯”æˆ‘å¤§ 
 							heapItemType tmp = DoubleEndHeap[index] ;
 							DoubleEndHeap[index] = DoubleEndHeap[map_pot_leftch] ;
 							DoubleEndHeap[map_pot_leftch] = tmp ;
@@ -337,14 +337,14 @@ class Deap {
 			
 			//cout << "fin " << endl ;
 			return pop_item ;
-		} // §R°£³Ì¤j­È 
+		} // åˆªé™¤æœ€å¤§å€¼ 
 		
 //		int index = 2 ;
 		
-		void topK( int k ) { // §R°£«ek­Ó³Ì¤j­È 
+		void topK( int k ) { // åˆªé™¤å‰kå€‹æœ€å¤§å€¼ 
 			
 			
-			//cout << "©I¥s§R°£¨ç¼Æ" << endl ; 
+			//cout << "å‘¼å«åˆªé™¤å‡½æ•¸" << endl ; 
 			for( int index = 1 ; index <= k ; index++ ) {
 				heapItemType pop_item = delete_max() ;
 				cout << "Top" << setw(4) << index <<  ": " << "[" << pop_item.serial_num << "] " << pop_item.sname << pop_item.dname << "," << pop_item.type << "," << pop_item.level << "," << pop_item.numstu << endl ;
@@ -363,14 +363,14 @@ class MaxHeap {
 		
 		struct heapItemType {
 			
-			int serial_num ; // §Ç¸¹ 
-			int numstu; //number of student ¾Ç¥Í¼Æ 
+			int serial_num ; // åºè™Ÿ 
+			int numstu; //number of student å­¸ç”Ÿæ•¸ 
 			
 		}; // heapItemType
 		
-		vector<heapItemType> maxHeap ; // ³Ì¤j°ï¿n¸ê®Æµ²ºc
+		vector<heapItemType> maxHeap ; // æœ€å¤§å †ç©è³‡æ–™çµæ§‹
 		
-		int getbottomPos() { // ¨ú±obottomªºindex 
+		int getbottomPos() { // å–å¾—bottomçš„index 
 			if( maxHeap.size() > 0 ) return maxHeap.size()-1 ;
 		} // getbottomPos()
 		
@@ -378,7 +378,7 @@ class MaxHeap {
 			maxHeap.clear();
 		} // reset()
 		
-		int judge_exp( int index ) { // §PÂ_¦¸¤è 
+		int judge_exp( int index ) { // åˆ¤æ–·æ¬¡æ–¹ 
 			int level = 0;
     		while (index > 0) {
         		index = (index - 1) / 2; 
@@ -394,12 +394,12 @@ class MaxHeap {
 		} // Heap()
 		
 		void prt_root_bottom_leftmost() {
-			/* ¦L¾ğ®Ú */
+			/* å°æ¨¹æ ¹ */
 			cout << "<max heap>" << endl ;
 			cout << "root: [" << maxHeap[0].serial_num << "] " << maxHeap[0].numstu  << endl ;
 			cout << "bottom:	[" << maxHeap[this->getbottomPos()].serial_num << "] " << maxHeap[this->getbottomPos()].numstu  << endl ;
 			
-			/* ¨ún-1¡A¦©±¼°¾²¾1 §Y¬O¤¸¯À¦ì¸m */ 
+			/* å–n-1ï¼Œæ‰£æ‰åç§»1 å³æ˜¯å…ƒç´ ä½ç½® */ 
 			int level = judge_exp( this->getbottomPos() ) ;
 			int level_num = 1 ;
 			for( int i = 0 ; i < level ; i++ ) level_num *= 2 ;
@@ -414,14 +414,14 @@ class MaxHeap {
 		
 		void heapInsert( int serial_num , int numstu ) {
 			/* 
-			 * ±N·s¤¸¯À©ñ¸mbottom 
-			 * ¦V¤÷¸`ÂI¤ñ¸û 
-			 * ª½¨ì¤£¤j©ó¤÷¸`ÂI 
+			 * å°‡æ–°å…ƒç´ æ”¾ç½®bottom 
+			 * å‘çˆ¶ç¯€é»æ¯”è¼ƒ 
+			 * ç›´åˆ°ä¸å¤§æ–¼çˆ¶ç¯€é» 
 			*/
 			heapItemType newItem ;
 			newItem.serial_num = serial_num ;
 			newItem.numstu = numstu ;
-			maxHeap.push_back(newItem) ; // ²K¥[¦bbottom
+			maxHeap.push_back(newItem) ; // æ·»åŠ åœ¨bottom
 			
 			int bottom_pos = this->getbottomPos() ;
 			int grand_pos = (bottom_pos-1)/2 ;
@@ -436,10 +436,10 @@ class MaxHeap {
 				grand_pos = (bottom_pos-1)/2 ;
 			}
 			
-		} // heapInsert() ³v¤@´¡¤J 
+		} // heapInsert() é€ä¸€æ’å…¥ 
 		
 		void heapDelete() {
-			/* ²¾°£root,¨Ã§âbottom´À¤W¥h(semi-heap),±Nroot°t¸m¨ì¥¿½T¦ì¸m*/
+			/* ç§»é™¤root,ä¸¦æŠŠbottomæ›¿ä¸Šå»(semi-heap),å°‡rooté…ç½®åˆ°æ­£ç¢ºä½ç½®*/
 			/* unfinished */ 
 			maxHeap[0] = maxHeap[this->getbottomPos()] ;
 			maxHeap.pop_back() ;
@@ -447,17 +447,17 @@ class MaxHeap {
 		} // heapDelete();
 		
 		void heapRebuild() {
-			/* ±q©³¤U¦V¤W³v¨B­«¾ã¦¨³Ì¤j°ï¿n */
-			int cur = this->getbottomPos(); // ²{¦b¦ì¸m 
-			int cur_grand ; // ¤÷¸`ÂI¦ì¸m 
+			/* å¾åº•ä¸‹å‘ä¸Šé€æ­¥é‡æ•´æˆæœ€å¤§å †ç© */
+			int cur = this->getbottomPos(); // ç¾åœ¨ä½ç½® 
+			int cur_grand ; // çˆ¶ç¯€é»ä½ç½® 
 	
-			while( cur > 0 ) { // °µ¨ìroot°±¤î 
+			while( cur > 0 ) { // åšåˆ°rootåœæ­¢ 
 				
 				cur_grand = (cur-1)/2;
 				
 				if( maxHeap[cur].numstu > maxHeap[cur_grand].numstu ) { 
 				// swap
-					//cout << "¥æ´«" <<  maxHeap[cur].numstu <<  "&&" << maxHeap[cur_grand].numstu << endl ; 
+					//cout << "äº¤æ›" <<  maxHeap[cur].numstu <<  "&&" << maxHeap[cur_grand].numstu << endl ; 
 					heapItemType tmp ;
 					tmp = maxHeap[cur] ;
 					maxHeap[cur] = maxHeap[cur_grand] ;
@@ -478,26 +478,26 @@ class SchoolList {
 	
 	private:
 		
-		struct schoolType { // ¸ê®Æ«¬§O 
+		struct schoolType { // è³‡æ–™å‹åˆ¥ 
 			
-			string cityname ; // «°¥«¦WºÙ 
-			string system; // Åé¨t§O 
-			string sname; //school name ¾Ç®Õ¦WºÙ 
-			string dname; //department name  ¬ì¨t¦WºÙ 
-			string type; //day or night ¤é¶¡/¶i­×§O 
-			string level; //grad or ungrad µ¥¯Å§O 
-			int schnum ; // school num ¾Ç®Õ¥N½X 
-			int depnum ; // department num ¨t©Ò½s¸¹ 
-			int numstu; //number of student ¾Ç¥Í¼Æ 
-			int numprof; //number of professor ±Ğ®v¼Æ 
-			int numgrad; //number of graduates ¤W¾Ç¦~«×²¦·~¥Í¼Æ
+			string cityname ; // åŸå¸‚åç¨± 
+			string system; // é«”ç³»åˆ¥ 
+			string sname; //school name å­¸æ ¡åç¨± 
+			string dname; //department name  ç§‘ç³»åç¨± 
+			string type; //day or night æ—¥é–“/é€²ä¿®åˆ¥ 
+			string level; //grad or ungrad ç­‰ç´šåˆ¥ 
+			int schnum ; // school num å­¸æ ¡ä»£ç¢¼ 
+			int depnum ; // department num ç³»æ‰€ç·¨è™Ÿ 
+			int numstu; //number of student å­¸ç”Ÿæ•¸ 
+			int numprof; //number of professor æ•™å¸«æ•¸ 
+			int numgrad; //number of graduates ä¸Šå­¸å¹´åº¦ç•¢æ¥­ç”Ÿæ•¸
 			int serial_num ;
 			 
 		}; 
 		
 		int row = 0 ;
-		string title = ""; // ¼ĞÃD 
-		string fileID; // ÀÉ®×½s¸¹ 
+		string title = ""; // æ¨™é¡Œ 
+		string fileID; // æª”æ¡ˆç·¨è™Ÿ 
 		
 		vector<schoolType> allinfo; //dynamic allocation that save school information
 		
@@ -538,26 +538,26 @@ class SchoolList {
 				int fNo, pre, pos;
 				title = "" ;
 				row = 0 ;
-				inFile.getline(cstr,255,'\n'); // ¤j±M®Õ°|¦U®Õ¬ì¨t§O·§ªp	
-				inFile.getline(cstr,255,'\n'); // 105 ¾Ç¦~«× SY2016-2017	
+				inFile.getline(cstr,255,'\n'); // å¤§å°ˆæ ¡é™¢å„æ ¡ç§‘ç³»åˆ¥æ¦‚æ³	
+				inFile.getline(cstr,255,'\n'); // 105 å­¸å¹´åº¦ SY2016-2017	
 				inFile.getline(cstr,255,'\n'); 
 				
 				title.assign(cstr);
 				
-				while(inFile.getline(cstr,255,'\n')) {  // ²Ä¤T¦C
+				while(inFile.getline(cstr,255,'\n')) {  // ç¬¬ä¸‰åˆ—
 					row++ ;
-					schoolType oneR; // one data records ¤@µ§¾Ç®Õ¸ê®Æ 
+					schoolType oneR; // one data records ä¸€ç­†å­¸æ ¡è³‡æ–™ 
 					string buf,cut;
 					
-					fNo=0; // ¤@¦æªº²Ä´Xµ§¸ê®Æ 
-					pre=0; // «e­±²¤¹L¦h¤Ö¦r¤¸ , ¤U¤@­Ó°_©l¦ì¸m 
+					fNo=0; // ä¸€è¡Œçš„ç¬¬å¹¾ç­†è³‡æ–™ 
+					pre=0; // å‰é¢ç•¥éå¤šå°‘å­—å…ƒ , ä¸‹ä¸€å€‹èµ·å§‹ä½ç½® 
 					
 					
 					buf.assign(cstr);
 					
 					do {
-						pos = buf.find_first_of('\t' , pre); // ¹J¨ì '\t' ªº¦r¤¸¦ì¸m 
-						cut = buf.substr(pre, pos-pre);  // ²{¦b¦ì¸m - °_©l¦ì¸m 
+						pos = buf.find_first_of('\t' , pre); // é‡åˆ° '\t' çš„å­—å…ƒä½ç½® 
+						cut = buf.substr(pre, pos-pre);  // ç¾åœ¨ä½ç½® - èµ·å§‹ä½ç½® 
 						
 						switch(++fNo) {
 							case 1 :
@@ -635,9 +635,9 @@ class SchoolList {
 				max_heap.heapInsert( allinfo[i].serial_num, allinfo[i].numstu );
 			} // for
 			//max_heap.heapRebuild();
-			//max_heap.prt(); // ¦C¦L°ï¿n 
+			//max_heap.prt(); // åˆ—å°å †ç© 
 			max_heap.prt_root_bottom_leftmost();
-		} // «Ø¥ß°ï¿n 
+		} // å»ºç«‹å †ç© 
 		
 		void buildEAHeap() {
 			deap_heap.reset();
@@ -647,14 +647,14 @@ class SchoolList {
 				//int serial_num , int numstu, string dname, string sname, string type, string level
 			} // for
 			//deap_heap.heapRebuild();
-			//max_heap.prt(); // ¦C¦L°ï¿n 
+			//max_heap.prt(); // åˆ—å°å †ç© 
 			deap_heap.prt_bottom_leftmost();
 			
-		} // «Ø¥ß°ï¿n
+		} // å»ºç«‹å †ç©
 		
 		
 		void topK() {
-			//cout << "Á`¦@	" <<  this->allinfo.size();  
+			//cout << "ç¸½å…±	" <<  this->allinfo.size();  
 			int k = 0 ;
 			//deap_heap.prt();
 			
@@ -662,17 +662,17 @@ class SchoolList {
 				
 				cout << endl << "Enter the value of K in" << "[1," << re << "]:" ;
 				cin >> k ;
-				if( k > re ) cout << "over boundary situation 1 : ¤@¦¸§R°£¤ñ³Ñ¾l¸ê®Æµ§¼ÆÁÙ¦h " << endl ; // ¤@¦¸§R°£¤ñ¸ê®Æµ§¼ÆÁÙ¦h 
+				if( k > re ) cout << "over boundary situation 1 : ä¸€æ¬¡åˆªé™¤æ¯”å‰©é¤˜è³‡æ–™ç­†æ•¸é‚„å¤š " << endl ; // ä¸€æ¬¡åˆªé™¤æ¯”è³‡æ–™ç­†æ•¸é‚„å¤š 
 				else {
-					// ©I¥stopK¨ç¼Æ
+					// å‘¼å«topKå‡½æ•¸
 					deap_heap.topK( k ) ;
 					re -= k ;
 				}
 			}
 			else{
-				cout << "over boundary situation 2 : ¨S¸ê®Æµ¹§A§R¤F" << endl ; // µLªk¦A§R°£ 
+				cout << "over boundary situation 2 : æ²’è³‡æ–™çµ¦ä½ åˆªäº†" << endl ; // ç„¡æ³•å†åˆªé™¤ 
 			}
-			//cout << "³Ñ¾l¸ê®Æ	" <<  re ; 
+			//cout << "å‰©é¤˜è³‡æ–™	" <<  re ; 
 		} // TopK
 		
 }; //end SchoolList
