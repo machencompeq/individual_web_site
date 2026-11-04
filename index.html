@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="xp">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MingAn OS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="陳洺安（Ming-An Chen）的個人網站：做成一台電腦。打開視窗看作品、相簿、獎狀，按 / 輸入指令。">
+<meta name="theme-color" content="#245edb">
+<link rel="icon" href="./image/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script>
+  (function () {
+    var t = 'xp';
+    try { t = localStorage.getItem('os-theme') || t; } catch (e) {}
+    if (!/^(xp|win98|mac|hacker)$/.test(t)) t = 'xp';
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+</head>
+<body>
+
+<!-- ================= 開機畫面 ================= -->
+<div class="boot" id="boot" hidden>
+  <div class="boot-in">
+    <p class="boot-logo">◉ MingAn OS</p>
+    <pre class="boot-log" id="bootLog"></pre>
+    <div class="boot-bar"><span id="bootBar"></span></div>
+    <p class="boot-skip">按任意鍵或點一下跳過</p>
+  </div>
+</div>
+
+<!-- ================= 桌面 ================= -->
+<div class="os" id="os">
+  <canvas class="matrix" id="matrix" aria-hidden="true"></canvas>
+  <canvas class="wall-gl" id="wallGL" aria-hidden="true"></canvas>
+
+  <header class="menubar">
+    <button type="button" class="mb-logo" data-act="start">◉ MingAn OS</button>
+    <div class="mb-menu">
+      <button type="button" class="mb-item" data-menu="theme">主題</button>
+      <button type="button" class="mb-item" data-act="palette">指令 /</button>
+      <button type="button" class="mb-item" data-act="cv">一般模式</button>
+    </div>
+    <div class="mb-right"><span class="mb-status" id="mbStatus"></span><span class="clock"></span></div>
+    <div class="dropdown" id="themeMenu" hidden>
+      <button type="button" data-theme-set="xp">XP 綠色山丘</button>
+      <button type="button" data-theme-set="win98">Win98 經典</button>
+      <button type="button" data-theme-set="mac">Mac Aqua</button>
+      <button type="button" data-theme-set="hacker">Hacker</button>
+    </div>
+  </header>
+
+  <div class="wallname" aria-hidden="true"><b>陳洺安</b><span>ming-an.chen // CSIE × IM</span></div>
+
+  <nav class="desktop" id="desktop" aria-label="桌面圖示">
+    <button type="button" class="icon" data-app="about"><span class="ic-file">TXT</span><span class="label">關於我.txt</span></button>
+    <button type="button" class="icon" data-app="terminal"><span class="ic-term">&gt;_</span><span class="label">終端機</span></button>
+    <button type="button" class="icon" data-app="projects"><img src="./assets/3d/tree23.png" alt=""><span class="label">作品/</span></button>
+    <button type="button" class="icon" data-app="album"><img src="./assets/3d/icon_camera.png" alt=""><span class="label">相簿.app</span></button>
+    <button type="button" class="icon" data-app="ads"><span class="ic-film">▶</span><span class="label">廣告作品/</span></button>
+    <button type="button" class="icon" data-app="awards"><img src="./assets/3d/icon_trophy.png" alt=""><span class="label">獎狀/</span></button>
+    <button type="button" class="icon" data-app="journey"><img src="./assets/3d/icon_stairs.png" alt=""><span class="label">一路走來.log</span></button>
+    <button type="button" class="icon" data-app="skills"><img src="./assets/3d/icon_keycaps.png" alt=""><span class="label">技能.sh</span></button>
+    <button type="button" class="icon" data-app="showcase"><img src="./assets/3d/desk.png" alt=""><span class="label">3D展示.app</span></button>
+    <button type="button" class="icon" data-app="toys"><img src="./assets/3d/heap.png" alt=""><span class="label">玩具間.app</span></button>
+    <button type="button" class="icon" data-app="contact"><img src="./assets/3d/icon_envelope.png" alt=""><span class="label">聯絡我.exe</span></button>
+    <button type="button" class="icon" data-act="cv"><span class="ic-cv">CV</span><span class="label">一般模式</span></button>
+  </nav>
+
+  <aside class="note" id="note">
+    <b>歡迎來到 MingAn OS</b>
+    <span class="note-desk">點兩下圖示打開視窗，視窗可以拖、疊、縮小。<br>按 <kbd>/</kbd> 可以打指令，例如 <code>/theme hacker</code>。</span>
+    <span class="note-mob">點圖示打開，點右下 <kbd>/</kbd> 打指令。</span>
+  </aside>
+
+  <div class="windows" id="windows"></div>
+
+  <button type="button" class="pet" id="pet" aria-label="點我跳一下"><img src="./image/web/new/jump_cut.png" alt="洺安" width="745" height="1000"></button>
+  <p class="bubble" id="bubble">點我！</p>
+
+  <footer class="taskbar">
+    <button type="button" class="start" data-act="start" aria-haspopup="true" aria-expanded="false">◉ 開始</button>
+    <div class="tasks" id="tasks"></div>
+    <button type="button" class="slash" data-act="palette" aria-label="打開指令列">/</button>
+    <div class="tray"><span class="tray-theme" id="trayTheme">XP</span><span class="clock"></span></div>
+  </footer>
+
+  <div class="startmenu" id="startMenu" hidden>
+    <div class="sm-head"><img src="./image/web/new/portrait.jpg" alt=""><div><b>陳洺安</b><span>CSIE × IM · 葡萄王</span></div></div>
+    <div class="sm-body">
+      <div class="sm-apps">
+        <button type="button" data-app="about">關於我</button>
+        <button type="button" data-app="projects">作品</button>
+        <button type="button" data-app="album">相簿</button>
+        <button type="button" data-app="ads">廣告作品</button>
+        <button type="button" data-app="awards">獎狀</button>
+        <button type="button" data-app="journey">一路走來</button>
+        <button type="button" data-app="skills">技能</button>
+        <button type="button" data-app="showcase">3D 展示</button>
+        <button type="button" data-app="toys">玩具間</button>
+        <button type="button" data-app="contact">聯絡我</button>
+        <button type="button" data-app="terminal">終端機</button>
+      </div>
+      <div class="sm-side">
+        <p>桌面主題</p>
+        <button type="button" data-theme-set="xp">XP 綠色山丘</button>
+        <button type="button" data-theme-set="win98">Win98 經典</button>
+        <button type="button" data-theme-set="mac">Mac Aqua</button>
+        <button type="button" data-theme-set="hacker">Hacker</button>
+        <p>其他</p>
+        <button type="button" data-act="palette">指令列 /</button>
+        <button type="button" data-act="cv">一般履歷模式</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= / 指令列 ================= -->
+<div class="palette" id="palette" hidden role="dialog" aria-label="指令列">
+  <form class="pal-box" id="palForm" autocomplete="off">
+    <span class="pal-slash">/</span>
+    <input id="palIn" type="text" spellcheck="false" autocapitalize="off" placeholder="輸入指令，例如 theme hacker、open 相簿、jump" aria-label="輸入指令">
+    <kbd>Esc</kbd>
+  </form>
+  <ul class="pal-list" id="palList" role="listbox"></ul>
+</div>
+
+<!-- ================= 一般履歷模式 ================= -->
+<div class="cv" id="cv" hidden>
+  <div class="cv-in" id="cvIn"></div>
+</div>
+
+<div class="saver" id="saver" hidden aria-hidden="true"><p class="saver-hint">動一下滑鼠或按任意鍵回到桌面</p></div>
+<div class="boot3d" id="boot3d" hidden aria-hidden="true"></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ================= 視窗內容模板（內容由 content.js 填入） ================= -->
+<template id="tpl-about"><div class="about-root"></div></template>
+
+<template id="tpl-terminal">
+  <div class="term">
+    <div class="term-out" aria-live="polite"></div>
+    <form class="term-form" autocomplete="off">
+      <label>mingan@cycu:~$</label>
+      <input type="text" spellcheck="false" autocapitalize="off" aria-label="終端機輸入">
+    </form>
+  </div>
+</template>
+
+<template id="tpl-projects"><div class="tabs" role="tablist"></div><div class="tab-panels"></div></template>
+
+<template id="tpl-album">
+  <div class="modes"><button type="button" class="btn is-on" data-mode="ring">3D 旋轉</button><button type="button" class="btn" data-mode="grid">格狀</button><span class="mode-hint">拖曳旋轉，點正面那張放大</span></div>
+  <div class="carousel" data-view="ring"><div class="ring"></div></div>
+  <div class="grid-view" data-view="grid" hidden>
+    <div class="viewer">
+      <img class="viewer-img" alt="">
+      <div class="viewer-bar"><button type="button" class="btn" data-dir="-1">◀ 上一張</button><span class="viewer-cap"></span><button type="button" class="btn" data-dir="1">下一張 ▶</button></div>
+    </div>
+    <div class="thumbs"></div>
+  </div>
+</template>
+
+<template id="tpl-awards">
+  <div class="modes"><button type="button" class="btn is-on" data-mode="wall">3D 展示牆</button><button type="button" class="btn" data-mode="folder">資料夾</button><span class="mode-hint">拖曳左右看，點一張飛過去</span></div>
+  <div class="wall3d" data-view="wall"><p class="wall-cap"></p></div>
+  <div data-view="folder" hidden>
+    <div class="filters"></div>
+    <div class="files"></div>
+    <div class="award-detail" hidden>
+      <button type="button" class="btn award-back">← 回資料夾</button>
+      <div class="award-view"><img alt=""><div><h3></h3><p></p></div></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ads"><p class="ads-lede">我拍過的廣告，可以直接在這裡播放。</p><div class="ads"></div></template>
+
+<template id="tpl-journey"><ol class="log"></ol></template>
+<template id="tpl-skills"><ul class="bars"></ul><p class="hint"></p></template>
+<template id="tpl-contact"><div class="contact-root"></div></template>
+
+<template id="tpl-toys">
+  <div class="toybox"></div>
+  <div class="row-btns"><button type="button" class="btn" data-toy="grapes">撒葡萄</button><button type="button" class="btn" data-toy="flip">重力反轉</button><button type="button" class="btn" data-toy="shake">地震</button><button type="button" class="btn" data-toy="reset">收好</button></div>
+</template>
+
+<template id="tpl-showcase">
+  <div class="show">
+    <div class="show-stage"><p class="show-tip">拖曳旋轉 · 滾輪／雙指縮放 · 點零件看說明</p><p class="show-label" hidden></p></div>
+    <div class="show-list"></div>
+  </div>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="./content.js"></script>
+<script src="./three-scenes.js"></script>
+<script src="./three-fx.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+name: Render 3D (Blender)
+
+# 修改 3d/ 底下的 Blender 腳本時，自動在 CI 裡用 Blender 重新建模、渲染，
+# 產出的 .glb / .png 放在 Artifacts 下載檢查。
+on:
+  push:
+    paths: ["3d/**"]
+  workflow_dispatch:
+    inputs:
+      quality:
+        description: "fast = 低取樣快速預覽, full = 正式品質"
+        default: fast
+        type: choice
+        options: [fast, full]
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install Blender (bpy), Pillow and a CJK font
+        run: |
+          sudo apt-get update && sudo apt-get install -y fonts-wqy-zenhei
+          pip install bpy==5.1.2 pillow
+      - name: Build screen texture
+        run: python 3d/make_screen.py
+      - name: Model, export and render
+        run: |
+          FLAG="--fast"
+          if [ "${{ inputs.quality }}" = "full" ]; then FLAG=""; fi
+          python 3d/build_assets.py $FLAG && python 3d/build_wallpapers.py $FLAG
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 3d-assets
+          path: |
+            assets/3d/
+            assets/wall/

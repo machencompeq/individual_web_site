@@ -1,0 +1,7 @@
+node_modules/
+_site/
+screenshots/
+__pycache__/
+
+# 私人資料：不要放進 repo（repo 是公開的）
+docs/
