@@ -1,423 +1,333 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <!-- 網頁title icon (favicon) -->
-    <link rel="icon" href="./image/favicon.png" type="image/png">
-    <!-- google font 字體匯入 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <!-- 外接icon lib -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>MY PROFILE</title>
-
-    <script>
-        function goTop() {
-            // 回到頂端，可接受{x,y,behavior  等參數}
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>陳洺安 Ming-An Chen｜個人網站</title>
+  <meta name="description" content="陳洺安（Ming-An Chen）的個人網站：資訊工程 × 資訊管理，經歷、獎項、生活與程式作品。">
+  <link rel="icon" href="./image/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="./style.css">
+  <script>
+    // 套用上次選擇的主題，避免閃爍
+    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
 <body>
-    <header >
-        <h1 style="font-family: 'Dancing Script';" >WELCOME ! MY PROFILE</h1>
-    </header>
 
-    <nav>
-        <a href="#proff" class="profile"><b>基本資料</b></a>
-        <a href="#award" class="profile"><b>獎狀/經驗</b></a>
-        <a href="#life" class="profile"><b>我的生活</b></a>
-        <a href="#project" class="profile"><b>程式作品</b></a>
-        <a href="#connect" class="connect"><b>聯絡資訊</b></a>
-    </nav>
-    <main>
-        <section class="section1" id="proff">
+  <header class="site-header" id="top">
+    <div class="wrap nav-bar">
+      <a href="#top" class="brand">陳洺安<span>Ming-An Chen</span></a>
+      <nav class="nav" id="nav" aria-label="主選單">
+        <a href="#about">關於我</a>
+        <a href="#journey">經歷</a>
+        <a href="#awards">獎項</a>
+        <a href="#life">生活</a>
+        <a href="#projects">作品</a>
+        <a href="#contact" class="nav-cta">聯絡我</a>
+      </nav>
+      <div class="nav-tools">
+        <button class="icon-btn" id="themeToggle" aria-label="切換深色／淺色模式"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        <button class="icon-btn menu-btn" id="menuToggle" aria-label="開啟選單" aria-expanded="false" aria-controls="nav"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
 
-            <div class="container">
-                <img src="./image/myphoto01_removebg.png" alt="陳洺安" height="400px" class="me_ph" style="filter:saturate(1.3); ">
-                <div class="introduce">
-                    <article style="padding: 30px;">
-                        <h4>個人基本資料</h4>
-                        <hr>
-                        <p>姓名: 陳洺安</p>
-                        <p>就讀科系: 資訊工程學系四年級</p>
-                        <p>雙主修: 資訊管理學系</p>
-                        <p>座右銘: 心中的火焰比任何風暴都更持久。</p>
-                        <p>生日: 2001/10/30</p>
-                        <p>專長: 被各種程式折磨</p>
-                        <p>興趣: 旅遊、看短影音</p>
-                    </article>
-                </div>
-                <img src="./image/think.png" alt=""  class="think">
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-text reveal">
+          <p class="eyebrow">Hello, I'm</p>
+          <h1>陳洺安</h1>
+          <p class="hero-sub">資訊工程 <span>×</span> 資訊管理</p>
+          <blockquote class="motto">「心中的火焰比任何風暴都更持久。」</blockquote>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">看我的作品 <i class="fa-solid fa-arrow-down"></i></a>
+            <a href="#contact" class="btn btn-ghost">聯絡我</a>
+          </div>
+        </div>
+        <div class="hero-photo reveal">
+          <div class="photo-blob"></div>
+          <img src="./image/web/me.png" alt="陳洺安的照片" width="433" height="577">
+          <span class="sticker">想深入了解我嗎？</span>
+        </div>
+      </div>
+    </section>
 
- 
-            </div>
-            <aside class="card" style="padding-left: 50px; width: 450px; border-left: 2px dotted black; display: inline-block; position: relative; top: 0px; left: 400px; ">
-                <h2>工作經歷</h2>
-                <div>
-                    <p>第一份工作 :  運動精品店員</p>
-                    <p>第二份工作 :  經濟學助教/課業守護</p>
-                    <p>第三份工作 :  物流場</p>
-                    <p>第四份工作 :  葡萄王門市銷售</p>
-                </div>
-                <p style=" background-color: cadetblue; padding: 3px; border-radius: 20px; text-align: center;">工作不是生活的全部，但它是實現夢想的關鍵一環。</p>
-            </aside>
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">01 · About</span>
+          <h2>關於我</h2>
+        </div>
 
-            <div style="display: flex;">
-                <div class="pro" > 
-                    <h3 style="text-align: center; ">程式能力</h3>
-                    <hr>
-                    <ul class="ability" >
-                        <li class="c">C/C++</li>
-                        <li class="html">HTML</li>
-                        <li class="java">JAVA</li>
-                        <li class="css">CSS</li>
-                        <li class="verilog">VERILOG</li>
-                    </ul>
-                    <hr >
-                    <h3 style="text-align: center; ">其他專業</h3>
-                    <hr>
-                    <ul class="ability" >
-                        <li class="verilog">商業經濟預測分析</li>
-                        <li class="css">證卷分析</li>
-                        <li class="java">系統分析</li>
-                    </ul>
-                </div>
-                <div class="" style="margin-left: 350px; margin-top: 80px;"> 
-                    <h3 style="text-align: center; ">專案經歷</h3>
-                    <hr style="margin-bottom: 15px;">
-                    <div>
-                        <div style="display: flex;"   style=" margin-bottom: 3px;" >
-                            <div style="border-right: 1px solid black; padding: 20px; background-color: #657359; border-radius: 30px;">
-                                大一
-                            </div>
-                            <div style=" padding: 20px;" class="inl"> 
-                                <a href="#ppbbll" style="color: black;" class="inl">
-                                    PBL商業分析(經濟學) <br>
-                                    與工業系跨系合作，我們負責分析，他們負責製造竹槍
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div style="display: flex; "  >  
-                            <div style="border-right: 1px solid black; padding: 20px; background-color: #D7C9BE; border-radius: 30px;">
-                                大二
-                            </div>
-                            <div style=" padding: 20px; color: black;" class="inl"> 
-                                <a href="https://www.instagram.com/qq_thankq/" style="color: black; " target="_blank"  >
-                                    賣雪Q餅(企業概論) <br>
-                                    創業實務，實地走訪友商，架設線上網站，學會賣東西
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div style="display: flex; "  >
-                            <div style="border-right: 1px solid black; padding: 20px; background-color: #F1E4DB; border-radius: 30px;">
-                                大三
-                            </div>
-                            <div style=" padding: 20px;" class="inl"> 
-                                <a href="#bla" style="color: black;" >
-                                    台北大黑克松、大數據競賽(系統分析) <br>
-                                    台北程式設計節，專案主要製作台北大數據中心套件，並以系統分析
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div style="display: flex; "  >
-                            <div style="border-right: 1px solid black; padding: 20px;">
-                                大四
-                            </div>
-                            <div style=" padding: 20px;"> 
-                                機器學習(軟體專案管理、專題研究) <br>
-                                桌球落點分析、虛擬數字人實現自我對話
-                            </div>
-                        </div>
+        <div class="about-grid">
+          <article class="card reveal">
+            <h3><i class="fa-regular fa-id-card"></i> 基本資料</h3>
+            <dl class="facts">
+              <div><dt>姓名</dt><dd>陳洺安</dd></div>
+              <div><dt>主修</dt><dd>資訊工程學系</dd></div>
+              <div><dt>雙主修</dt><dd>資訊管理學系</dd></div>
+              <div><dt>生日</dt><dd>2001 / 10 / 30</dd></div>
+              <div><dt>專長</dt><dd>被各種程式折磨 😵‍💫</dd></div>
+              <div><dt>興趣</dt><dd>旅遊、看短影音</dd></div>
+            </dl>
+          </article>
 
-                    </div>
-                        
-                
-                </div>
+          <article class="card reveal">
+            <h3><i class="fa-solid fa-briefcase"></i> 工作經歷</h3>
+            <ol class="jobs">
+              <li><span>01</span>運動精品店員</li>
+              <li><span>02</span>經濟學助教／課業守護</li>
+              <li><span>03</span>物流場</li>
+              <li><span>04</span>葡萄王門市銷售</li>
+            </ol>
+            <p class="note">工作不是生活的全部，但它是實現夢想的關鍵一環。</p>
+          </article>
 
-            </div>
-
-
-        </section>
-
-
-
-
-
-
-
-
-
-        <section class="section2" id="award">
-            <hr style="margin-top: 100px;">
-            <!-- 設計邏輯  
-                先用大DIV包起來，背景為黑板
-                創建兩行可以放肆張獎狀的DIV
-            -->
-            <div class="label_award">
-                <h1 style="font-family: 'Caveat';">&nbsp AWARD & EXP</h1>
-            </div>
-            
-            <div class="blackboard" >
-
-                <div class="row1" >
-                    <img src="./image/award/good_grade.png" alt="書卷" height="400px" style="padding: 20px;">
-                    <img src="./image/award/enterprise.png" alt="" height="400px" style="padding: 20px;">
-                    <img src="./image/award/ds.png" alt="" height="400px" style="padding: 20px;" >
-                    <img src="./image/award/pbl.png" alt="" height="400px" style="padding: 20px;">
-                </div>
-                <div class="row1_set"  >
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; margin-left: 20px; display: inline-block;">
-                        <legend><b>書卷獎</b></legend>
-                        第一次拿到書卷獎，雖然只有2000元，但還是很快樂!!
-                    </fieldset>
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
-                        <legend><b>企資通</b></legend>
-                        超努力搞懂各種protocol，現在幾乎有關網路的課都會用到
-                    </fieldset>
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
-                        <legend><b>資料結構</b></legend>
-                        可以說是演算法最基礎的課程，也讓我在資工可以吃老本
-                    </fieldset>
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
-                        <legend><b>PBL</b></legend>
-                        與工業系跨系合作，我們負責分析，他們負責製造竹槍
-                    </fieldset>
-                </div>
-
-                <div class="row2" >
-                    <img src="./image/award/codefest.png" alt="書卷" height="400px" style="padding: 20px;">
-                    <img src="./image/award/jept.jpg" alt="" height="400px" style="padding: 20px;">
-                    <img src="./image/award/service.png" alt="" height="400px" style="padding: 20px;" >
-                    <img src="./image/award/tradetheory.png" alt="" height="400px" style="padding: 20px;">
-                </div>
-                <div class="row2_set" >
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; margin-left: 20px; display: inline-block;">
-                        <legend><b>黑克松競賽</b></legend>
-                        第一次碰到前端語言，向很多優秀的人學習，一起一整晚不睡覺打CODE
-                    </fieldset>
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
-                        <legend><b>英檢</b></legend>
-                        考過英文畢業門檻實在太快樂了!大一就可以不用一直做模擬測驗
-                    </fieldset>
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
-                        <legend><b>義工服務</b></legend>
-                        參加餐年團，夏令營帶營隊，認識很多比自己年紀大的朋友，漸漸有學校以外的朋友
-                    </fieldset>
-                    <fieldset style="background-color: #F1E4DB; width: 260px; padding: 20px; display: inline-block; margin-left: 36px;">
-                        <legend><b>貿易理論</b></legend>
-                        這堂課要背超多東西的~但也學到很多貿易匯率與市場的理論，理論課程來說蠻有深度
-                    </fieldset>
-                </div>
-
-
-
-                <div class="row3">
-                    <img src="./image/award/java_1.png" alt="書卷" width="400px" style="padding: 20px;">
-                    <img src="./image/award/java_2.png" alt="" width="400px" style="padding: 20px;">
-                    <img src="./image/award/cwt.png" alt="" width="400px" style="padding: 20px;">
-                </div>
-            </div>
-
-
-
-
-
-        </section>
-
-
-
-
-
-        <section class="section3" id="life">
-            <hr style="margin-top: 100px; ">
-            <div class="active">
-                <h1 style="font-family: 'Caveat';">&nbsp LIFE</h1>
-            </div>
-
-            <div class="gallery" style="margin-top: 50px; margin-left: 100px;">
-                <div class="gallery-container" style="display: flex;">
-                    <div style="text-align: center;">
-                        <img src="./image/work_1.jpg" alt="Image 1" style="border-radius: 30px;">
-                        <div>工作照</div>
-                    </div>
-
-                    <div style="text-align: center; " id="bla">
-                        <img src="./image/rest.jpg" alt="Image 2" style="border-radius: 30px;">
-                        <div>黑克松競賽</div>
-                    </div>
-
-                    <div style="text-align: center;">
-                        <img src="./image/S__1851396.jpg" alt="" style="border-radius: 30px;">
-                        <div>佛學參訪</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="./image/S__1851394.jpg" alt="" style="border-radius: 30px;">
-                        <div>旅行</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="./image/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" alt="" style="border-radius: 30px;">
-                        <div>旅行(台北)</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="./image/S__129581066.jpg" alt="" style="border-radius: 30px;">
-                        <div>閒暇跑uber</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="./image/S__1851399.jpg" alt="" style="border-radius: 30px;">
-                        <div>閒暇跑uber</div>
-                    </div>
-                    <!-- <div style="text-align: center;">
-                        <img src="./image/think.png" alt="">
-                        <div></div>
-                    </div> -->
-                
-                    
-                  <!-- <img src="./image/S__1851394.jpg" alt="" height="150px"> -->
-                </div>
+          <article class="card card-wide reveal">
+            <h3><i class="fa-solid fa-code"></i> 技能</h3>
+            <div class="skill-groups">
+              <div>
+                <h4>程式能力</h4>
+                <ul class="chips">
+                  <li>C / C++</li><li>Java</li><li>HTML</li><li>CSS</li><li>Verilog</li>
+                </ul>
               </div>
-
-                <video src="./video/735095692.558453.mp4" controls height="500px" style="border: 10px groove #D7C9BE; position: relative; left: 100px; top: 50px; border-radius: 50px;"></video>
-                
-              
-        
-            </section>
-
-
-
-        <section class="section4" id="project">
-            <hr  style="margin-top: 100px;">
-            <div class="code_express">
-                <h1 style="font-family: 'Caveat';">&nbsp SOFTWARE PROJECT</h1>
+              <div>
+                <h4>其他專業</h4>
+                <ul class="chips chips-alt">
+                  <li>商業經濟預測分析</li><li>證券分析</li><li>系統分析</li>
+                </ul>
+              </div>
             </div>
-            <!-- first code -->
-            <div class="code1">
-                <h1>1. 2-3 TREE</h1>
-                <iframe src="./code/code1.cpp" frameborder="0" width="600px" height="300px" ></iframe>
-                
-                
-                <article style=" border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
-        
-                    心得: <br><br>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                    這是在寫一個2-3 tree 的 資料結構，從中可以深刻體會到這樣的資料結購相對於 <mark>普通的二元樹來說，樹高減少很多</mark>
-                    ，未來找尋資料也更有效率，當初剛開始沒想到用vector nodetype*
-                    的結構，定義了四個nodetype指標導致很多NULL樹狀結構在插入左中右子節點時有不一樣的狀況，並且程式碼攏長
-                    ，修改後完成問題最小化成功利用遞迴解決任務一，下次應該先將問題最小化！
-                </article>
+    <!-- ===== JOURNEY ===== -->
+    <section class="section section-tint" id="journey">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">02 · Journey</span>
+          <h2>專案經歷</h2>
+          <p>大學四年，每一年都有一個讓我成長的專案。</p>
+        </div>
+
+        <ol class="timeline">
+          <li class="reveal">
+            <span class="tl-year">大一</span>
+            <div class="tl-body">
+              <h3><a href="#p-econ">PBL 商業分析 <small>（經濟學）</small></a></h3>
+              <p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p>
             </div>
-            
-            <!-- second code -->
-            <div class="code2">
-                <h1>2. HEAP</h1>
-                <iframe src="./code/code2.cpp" frameborder="0" width="600px" height="300px" ></iframe>
-                
-                <article style=" border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
-        
-                    心得: <br><br>
-
-
-                    這個是在用HEAP實做priority queue ，這個結構最特別的是<mark>不需要用到指標</mark>，
-                    只要利用陣列即可完成，大大省去了很多麻煩，也減少memeory leak 的機會，
-                    利用這個結構可以很好維護並找尋到優先值。
-                    
-                </article>
+          </li>
+          <li class="reveal">
+            <span class="tl-year">大二</span>
+            <div class="tl-body">
+              <h3><a href="https://www.instagram.com/qq_thankq/" target="_blank" rel="noopener">賣雪Q餅 <small>（企業概論）</small> <i class="fa-solid fa-arrow-up-right-from-square"></i></a></h3>
+              <p>創業實務：實地走訪友商、架設線上網站，學會怎麼把東西賣出去。</p>
             </div>
-            <!-- code fest -->
-            <div class="code3">
-                <h1>3. CODE FEST</h1>
-                <iframe  width="600px" height="300px" src="https://www.youtube.com/embed/Wr5Q8tB_W6k?si=C2hC3JsBr6IsjWbR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                
-                <article style="border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
-        
-                    心得: <br><br>
-
-                    這是參加台北城市節(黑克松)，我們的最終成果，雖然主程式不是我們寫的，但仍在過程中學習到如何開發組件，也在追code過程中，感嘆
-                    前端的有趣跟多樣，結合數據分析及系統分析，是一個很難得的體驗
-                    
-                </article>
+          </li>
+          <li class="reveal">
+            <span class="tl-year">大三</span>
+            <div class="tl-body">
+              <h3><a href="#p-codefest">台北大黑客松、大數據競賽 <small>（系統分析）</small></a></h3>
+              <p>台北程式設計節，專案主要製作台北大數據中心套件，並進行系統分析。</p>
             </div>
-            <h1 id="ppbbll"></h1>
-                        <!-- code fest -->
-            <div class="code4" >
-                <h1>4. analysis & predict econmic</h1>
-                <iframe  width="600px" height="700px" src="./code/report.pdf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                
-                <article style="border: 10px groove burlywood; width: 600px; margin-left: 50px; padding: 10px; display: inline-block;"  >
-        
-                    心得: <br><br>
-                    
-                    在之後系統分析成功應用此專案獲得內容，分析ubike趨勢，更加實務應用
-                </article>
+          </li>
+          <li class="reveal">
+            <span class="tl-year">大四</span>
+            <div class="tl-body">
+              <h3>機器學習 <small>（軟體專案管理、專題研究）</small></h3>
+              <p>桌球落點分析、虛擬數字人實現自我對話。</p>
             </div>
-        </section>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-    </main>
+    <!-- ===== AWARDS ===== -->
+    <section class="section" id="awards">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">03 · Awards &amp; Experience</span>
+          <h2>獎狀與經驗</h2>
+          <p>點擊圖片可以放大檢視。</p>
+        </div>
 
-    <footer style=" position: relative; background-color: #D7C9BE; margin-top: 500px; margin-bottom: 0px" id="connect">
-        <ul style="text-align: center; padding: 20px; list-style-type: none; ">
-            <a href="https://www.facebook.com/profile.php?id=100027464161391" style="text-decoration: none; color:black">
-                <li style="padding: 5px; list-style-type: none;">
-                    <i class="fab fa-facebook"></i>&nbsp;Facebook
-                </li>
-            </a>
-            <a href="https://www.instagram.com/andy__901030/" style="text-decoration: none; color:black">
-                <li style="padding: 5px; list-style-type: none;">
-                    <i class="fab fa-instagram"></i>&nbsp;Instagram
-                </li>
-            </a>              
-            <a href="https://github.com/minggg1030" style="text-decoration: none; color:black " >
-                <li style="padding: 5px; list-style-type: none;">
-                    <i class="fab fa-github"></i>&nbsp;GitHub
-                </li>
-            </a>
-            <a href="mailto:asd0389wsx0216@gmail.com" style="text-decoration: none; color:black " >
-                <li style="padding: 5px; list-style-type: none;">
-                    <i class="fa-solid fa-envelope"></i>&nbsp E-MAIL
-                </li>
-            </a>
-            <a href="mailto:asd0389wsx0216@gmail.com" style="text-decoration: none; color:black " >
-                <li style="padding: 5px; list-style-type: none;">
-                    <i class="fa-solid fa-phone"></i>&nbsp phone : 0978581189
-                </li>
-            </a>
-            
-        </ul>
-        
-            
-            
-        
-        <h5>Copyrgiht @ 2024 All rights reserved</h5>
-    </footer>
+        <div class="award-grid">
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/good_grade.jpg" data-caption="書卷獎"><img src="./image/web/award/good_grade.jpg" alt="書卷獎獎狀" loading="lazy"></button>
+            <figcaption><h3>書卷獎</h3><p>第一次拿到書卷獎，雖然只有 2000 元，但還是很快樂！</p></figcaption>
+          </figure>
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/enterprise.jpg" data-caption="企資通"><img src="./image/web/award/enterprise.jpg" alt="企資通獎狀" loading="lazy"></button>
+            <figcaption><h3>企資通</h3><p>超努力搞懂各種 protocol，現在幾乎有關網路的課都會用到。</p></figcaption>
+          </figure>
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/ds.jpg" data-caption="資料結構"><img src="./image/web/award/ds.jpg" alt="資料結構獎狀" loading="lazy"></button>
+            <figcaption><h3>資料結構</h3><p>可以說是演算法最基礎的課程，也讓我在資工可以吃老本。</p></figcaption>
+          </figure>
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/pbl.jpg" data-caption="PBL"><img src="./image/web/award/pbl.jpg" alt="PBL 獎狀" loading="lazy"></button>
+            <figcaption><h3>PBL</h3><p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p></figcaption>
+          </figure>
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/codefest.jpg" data-caption="黑客松競賽"><img src="./image/web/award/codefest.jpg" alt="黑客松競賽證書" loading="lazy"></button>
+            <figcaption><h3>黑客松競賽</h3><p>第一次碰到前端語言，向很多優秀的人學習，一起整晚不睡覺打 code。</p></figcaption>
+          </figure>
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/jept.jpg" data-caption="英檢"><img src="./image/web/award/jept.jpg" alt="英檢證書" loading="lazy"></button>
+            <figcaption><h3>英檢</h3><p>考過英文畢業門檻實在太快樂了！大一就可以不用一直做模擬測驗。</p></figcaption>
+          </figure>
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/service.jpg" data-caption="義工服務"><img src="./image/web/award/service.jpg" alt="義工服務聘書" loading="lazy"></button>
+            <figcaption><h3>義工服務</h3><p>參加青年團、夏令營帶營隊，認識很多比自己年紀大的朋友，漸漸有了學校以外的朋友。</p></figcaption>
+          </figure>
+          <figure class="award reveal">
+            <button class="zoom" data-src="./image/web/award/tradetheory.jpg" data-caption="貿易理論"><img src="./image/web/award/tradetheory.jpg" alt="貿易理論獎狀" loading="lazy"></button>
+            <figcaption><h3>貿易理論</h3><p>這堂課要背超多東西～但也學到很多貿易、匯率與市場的理論，很有深度。</p></figcaption>
+          </figure>
+        </div>
 
+        <h3 class="sub-title reveal">證照</h3>
+        <div class="cert-grid">
+          <button class="cert zoom reveal" data-src="./image/web/award/java_1.jpg" data-caption="Oracle · Java SE 7 Programming">
+            <img src="./image/web/award/java_1.jpg" alt="Oracle Java SE 7 Programming 證書" loading="lazy"><span>Oracle · Java SE 7 Programming</span>
+          </button>
+          <button class="cert zoom reveal" data-src="./image/web/award/java_2.jpg" data-caption="Oracle · Java SE 7 Fundamentals">
+            <img src="./image/web/award/java_2.jpg" alt="Oracle Java SE 7 Fundamentals 證書" loading="lazy"><span>Oracle · Java SE 7 Fundamentals</span>
+          </button>
+          <button class="cert zoom reveal" data-src="./image/web/award/cwt.jpg" data-caption="全民中文能力檢定（CWT）">
+            <img src="./image/web/award/cwt.jpg" alt="全民中文能力檢定合格證書" loading="lazy"><span>全民中文能力檢定（CWT）</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
+    <!-- ===== LIFE ===== -->
+    <section class="section section-tint" id="life">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">04 · Life</span>
+          <h2>我的生活</h2>
+        </div>
 
+        <div class="gallery">
+          <button class="shot zoom reveal" data-src="./image/web/work_1.jpg" data-caption="工作照"><img src="./image/web/work_1.jpg" alt="工作照" loading="lazy"><span>工作照</span></button>
+          <button class="shot zoom reveal" data-src="./image/web/rest.jpg" data-caption="黑客松競賽"><img src="./image/web/rest.jpg" alt="黑客松競賽" loading="lazy"><span>黑客松競賽</span></button>
+          <button class="shot zoom reveal" data-src="./image/web/S__1851396.jpg" data-caption="佛學參訪"><img src="./image/web/S__1851396.jpg" alt="佛學參訪" loading="lazy"><span>佛學參訪</span></button>
+          <button class="shot zoom reveal" data-src="./image/web/S__1851394.jpg" data-caption="旅行"><img src="./image/web/S__1851394.jpg" alt="旅行" loading="lazy"><span>旅行</span></button>
+          <button class="shot zoom reveal" data-src="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" data-caption="旅行（台北）"><img src="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" alt="旅行（台北）" loading="lazy"><span>旅行（台北）</span></button>
+          <button class="shot shot-wide zoom reveal" data-src="./image/web/S__129581066.jpg" data-caption="閒暇跑 Uber"><img src="./image/web/S__129581066.jpg" alt="閒暇跑 Uber" loading="lazy"><span>閒暇跑 Uber</span></button>
+          <button class="shot shot-wide zoom reveal" data-src="./image/web/S__1851399.jpg" data-caption="閒暇跑 Uber"><img src="./image/web/S__1851399.jpg" alt="閒暇跑 Uber" loading="lazy"><span>閒暇跑 Uber</span></button>
+        </div>
 
+        <div class="video-card reveal">
+          <video src="./video/735095692.558453.mp4" controls preload="metadata" playsinline></video>
+        </div>
+      </div>
+    </section>
 
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">05 · Software Projects</span>
+          <h2>程式作品</h2>
+        </div>
 
+        <div class="projects">
+          <article class="project reveal" id="p-tree">
+            <div class="project-meta">
+              <span class="tag">C++ · 資料結構</span>
+              <h3>2-3 Tree</h3>
+              <p>實作 2-3 tree 資料結構，深刻體會到它相對於普通二元樹 <mark>樹高減少很多</mark>，找資料也更有效率。一開始沒想到用 <code>vector&lt;nodetype*&gt;</code>，定義了四個 nodetype 指標，導致插入左中右子節點時狀況各不相同、程式碼冗長；修改後把問題最小化，成功利用遞迴解決。下次應該先將問題最小化！</p>
+            </div>
+            <details class="code-view" data-src="./code/code1.cpp">
+              <summary><i class="fa-solid fa-terminal"></i> 查看程式碼 <span>code1.cpp</span></summary>
+              <pre><code>載入中…</code></pre>
+            </details>
+          </article>
 
+          <article class="project reveal" id="p-heap">
+            <div class="project-meta">
+              <span class="tag">C++ · 資料結構</span>
+              <h3>Heap／Priority Queue</h3>
+              <p>用 heap 實作 priority queue。這個結構最特別的是 <mark>不需要用到指標</mark>，只要陣列就能完成，省去很多麻煩，也減少 memory leak 的機會，能很好地維護並找到優先值。</p>
+            </div>
+            <details class="code-view" data-src="./code/code2.cpp">
+              <summary><i class="fa-solid fa-terminal"></i> 查看程式碼 <span>code2.cpp</span></summary>
+              <pre><code>載入中…</code></pre>
+            </details>
+          </article>
 
+          <article class="project reveal" id="p-codefest">
+            <div class="project-meta">
+              <span class="tag">Hackathon · 前端 · 數據分析</span>
+              <h3>Taipei CodeFest 2023</h3>
+              <p>參加台北程式設計節（城市儀表板大黑客松）的最終成果。雖然主程式不是我們寫的，但在過程中學到如何開發組件，追 code 時也感嘆前端的有趣與多樣；結合數據分析與系統分析，是很難得的體驗。</p>
+            </div>
+            <div class="embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/Wr5Q8tB_W6k" title="Taipei CodeFest 成果影片" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </article>
 
+          <article class="project reveal" id="p-econ">
+            <div class="project-meta">
+              <span class="tag">經濟分析 · 預測</span>
+              <h3>Analysis &amp; Predict Economic</h3>
+              <p>經濟分析與預測報告。之後在系統分析課成功應用這份專案的方法，分析 YouBike 使用趨勢，更貼近實務。</p>
+              <a class="btn btn-ghost btn-sm" href="./code/report.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> 開啟完整報告（PDF）</a>
+            </div>
+            <div class="embed embed-pdf">
+              <iframe src="./code/report.pdf" title="經濟分析與預測報告" loading="lazy"></iframe>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    
-        
-    
-    
-    <button class="return_top" onclick="goTop()" >TOP</button>
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="contact-card reveal">
+          <span class="kicker">06 · Contact</span>
+          <h2>一起聊聊吧！</h2>
+          <p>不論是合作、工作機會，或只是想打聲招呼，都歡迎聯絡我。</p>
+          <ul class="socials">
+            <li><a href="mailto:asd0389wsx0216@gmail.com"><i class="fa-solid fa-envelope"></i>Email</a></li>
+            <li><a href="tel:0978581189"><i class="fa-solid fa-phone"></i>0978-581-189</a></li>
+            <li><a href="https://github.com/minggg1030" target="_blank" rel="noopener"><i class="fab fa-github"></i>GitHub</a></li>
+            <li><a href="https://www.instagram.com/andy__901030/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>Instagram</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100027464161391" target="_blank" rel="noopener"><i class="fab fa-facebook"></i>Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2024–<span id="year">2026</span> 陳洺安 Ming-An Chen. All rights reserved.</p>
+    </div>
+  </footer>
 
+  <button class="to-top" id="toTop" aria-label="回到頂端"><i class="fa-solid fa-arrow-up"></i></button>
 
+  <dialog class="lightbox" id="lightbox">
+    <button class="lb-close" aria-label="關閉"><i class="fa-solid fa-xmark"></i></button>
+    <img alt="">
+    <p class="lb-caption"></p>
+  </dialog>
 
-
-    
+  <script src="./script.js"></script>
 </body>
 </html>
