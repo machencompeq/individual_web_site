@@ -121,7 +121,7 @@
     let rotY = kind === 'desk' ? -0.35 : 0, velY = 0, dragging = false, px = 0;
     let tiltX = 0, tiltY = 0, mx = 0, my = 0;
 
-    loader.load(el.dataset.model, gltf => {
+    const onLoad = gltf => {
       const root = gltf.scene;
       root.traverse(o => {
         if (!o.isMesh) return;
@@ -153,7 +153,17 @@
       renderOnce();
       el.classList.add('is-3d');
       if (visible) start();
-    }, undefined, () => { /* 載入失敗就保留渲染圖 */ });
+    };
+    const onError = () => { /* 載入失敗就保留渲染圖 */ };
+    const embedded = window.GLB_DATA && window.GLB_DATA[el.dataset.model];
+    if (embedded) {
+      // 內嵌的模型（base64），給不能放 .glb 的環境用
+      const bin = atob(embedded), buf = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+      loader.parse(buf.buffer, '', onLoad, onError);
+    } else {
+      loader.load(el.dataset.model, onLoad, undefined, onError);
+    }
 
     function resize() {
       const w = el.clientWidth, h = el.clientHeight;
