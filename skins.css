@@ -74,10 +74,7 @@
 [data-skin="hacker"] .blob::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
   background: conic-gradient(from 0deg, rgba(57, 255, 136, .45), transparent 22%); animation: sweep 3.5s linear infinite; }
 @keyframes sweep { to { transform: rotate(360deg); } }
-[data-skin="hacker"] .jumper img, [data-skin="hacker"] .hello-me { filter: grayscale(1) sepia(1) hue-rotate(75deg) saturate(3.2) brightness(1.05) drop-shadow(0 0 16px rgba(57, 255, 136, .5)); }
-[data-skin="hacker"] .jumper::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: repeating-linear-gradient(0deg, rgba(57, 255, 136, .12) 0 2px, transparent 2px 5px); mix-blend-mode: screen;
-  -webkit-mask: url("./image/web/new/jump_cut.png") center / contain no-repeat; mask: url("./image/web/new/jump_cut.png") center / contain no-repeat; }
+[data-skin="hacker"] .jumper img, [data-skin="hacker"] .hello-me { filter: drop-shadow(0 0 22px rgba(57, 255, 136, .35)); }
 [data-skin="hacker"] .jump-hint { background: var(--paper); color: var(--grape); }
 [data-skin="hacker"] .jump-hint::before { content: "$ "; color: var(--muted); }
 [data-skin="hacker"] .jump-count { background: transparent; border: 1px solid var(--line); color: var(--muted); }
@@ -87,9 +84,7 @@
 [data-skin="hacker"] .tape-b { background: #020403; color: var(--grape); border-color: var(--line); }
 
 /* 球員卡 */
-[data-skin="hacker"] .pcard-front { background: linear-gradient(160deg, #0f2a1b, #050806); color: var(--ink); }
-[data-skin="hacker"] .pcard-front img { filter: grayscale(.85) sepia(.4) hue-rotate(70deg) saturate(1.6) contrast(1.05); transition: filter .4s; }
-[data-skin="hacker"] .pcard:hover .pcard-front img { filter: none; }
+[data-skin="hacker"] .pcard-front { background: linear-gradient(160deg, #39ff88, #00e5ff); color: #021108; }
 [data-skin="hacker"] .pcard-back { background: #07100b; color: var(--ink); }
 [data-skin="hacker"] .pback dt { color: var(--orange); }
 [data-skin="hacker"] .pback div { border-bottom-color: var(--line); }
@@ -111,12 +106,9 @@
 [data-skin="hacker"] .stop { background: var(--paper) !important; }
 [data-skin="hacker"] .stop-tag { background: transparent; color: var(--orange); border: 1px solid var(--orange); transform: none; }
 [data-skin="hacker"] .stop-course, [data-skin="hacker"] .stop-link, [data-skin="hacker"] .kind { color: var(--orange); }
-[data-skin="hacker"] :is(.stop, .snap, .polaroid) img { filter: grayscale(.7) sepia(.35) hue-rotate(70deg) saturate(1.5) contrast(1.05); transition: filter .4s; }
-[data-skin="hacker"] :is(.stop, .snap, .polaroid):hover img { filter: none; }
 [data-skin="hacker"] .snap, [data-skin="hacker"] .polaroid { background: var(--paper); }
 [data-skin="hacker"] .polaroid figcaption::before, [data-skin="hacker"] .snap figcaption::before { content: "./"; color: var(--muted); }
 [data-skin="hacker"] .flip-front { background: var(--paper); }
-[data-skin="hacker"] .flip-front img { filter: grayscale(.5) brightness(.85); }
 [data-skin="hacker"] .flip-back { background: #07100b !important; color: var(--ink); }
 [data-skin="hacker"] .flip-zoom { background: transparent; color: var(--grape); }
 [data-skin="hacker"] .chip.is-on { background: var(--grape); color: var(--on-accent); }
