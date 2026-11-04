@@ -1,12 +1,12 @@
 # individual_web_site
 Ming-An,Chen個人網站
 
-暖色駭客終端機風格的個人網站，3D 物件用 **Blender** 以程式建模，網頁上用 **three.js** 即時顯示。
+好玩、會動的個人網站：可以點的跳躍照、可以丟的物理玩具間（matter.js）、可以甩的相簿、可以翻的獎狀牌。3D 物件用 **Blender** 以程式建模，用 **three.js** 即時顯示。
 
 ## 結構
 | 路徑 | 說明 |
 | --- | --- |
-| `index.html` / `style.css` / `script.js` | 頁面、樣式、互動（導覽、篩選、作品分頁、圖片檢視） |
+| `index.html` / `style.css` / `script.js` | 頁面、樣式、所有互動（跳躍、玩具間物理、相簿、翻牌、作品分頁、彩蛋） |
 | `three-scenes.js` | 載入 `.glb`，CRT 螢幕上的終端機動畫、拖曳旋轉 |
 | `3d/build_assets.py` | Blender 建模腳本：輸出 `assets/3d/*.glb` 與渲染圖 `*.png` |
 | `3d/make_screen.py` | CRT 螢幕貼圖 |

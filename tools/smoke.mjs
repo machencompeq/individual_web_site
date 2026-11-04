@@ -37,23 +37,39 @@ for (const [name, viewport] of [['desktop', { width: 1366, height: 860 }], ['pho
   page.on('requestfailed', r => { if (r.url().startsWith(base)) errors.push('request failed: ' + r.url()); });
   await page.goto(base, { waitUntil: 'networkidle' });
 
-  const has3d = await page.waitForSelector('#heroStage.is-3d', { timeout: 20000 }).then(() => true, () => false);
-  check(has3d, `[${name}] hero 3D model loaded`);
   const sw = await page.evaluate(() => document.documentElement.scrollWidth);
   check(sw <= viewport.width, `[${name}] no horizontal scroll (${sw}px)`);
 
+  const before = Number(await page.textContent('#jumpCount'));
+  await page.click('#jumper', { force: true });
+  check(Number(await page.textContent('#jumpCount')) === before + 1, `[${name}] hero jump counter works`);
+
+  await page.locator('#toybox').scrollIntoViewIfNeeded();
+  const toys = await page.waitForFunction(() => window.__toys && window.__toys() > 10, null, { timeout: 10000 }).then(() => true, () => false);
+  check(toys, `[${name}] physics toy box spawned toys`);
+
+  await page.locator('#deckNext').scrollIntoViewIfNeeded();
+  await page.click('#deckNext');
+  await page.waitForTimeout(400);
+  check((await page.textContent('#deckCount')).trim() === '2 / 10', `[${name}] photo deck advances`);
+
+  await page.locator('#flips').scrollIntoViewIfNeeded();
+  await page.click('[data-filter="cert"]');
+  const visible = await page.$$eval('#flips .flip:not([hidden])', els => els.length);
+  check(visible === 4, `[${name}] award filter shows 4 certificates`);
+  await page.click('#flips .flip:not([hidden]) .flip-in');
+  await page.waitForTimeout(700);
+  await page.click('#flips .flip.on .flip-zoom');
+  check(await page.isVisible('#lightbox'), `[${name}] flip card + lightbox work`);
+  await page.keyboard.press('Escape');
+
+  await page.locator('#projects').scrollIntoViewIfNeeded();
+  const has3d = await page.waitForSelector('#panel-tree .stage.is-3d', { timeout: 20000 }).then(() => true, () => false);
+  check(has3d, `[${name}] 3D model (Blender .glb) loaded`);
   await page.click('#tab-heap');
   const lines = await page.waitForFunction(() => document.querySelectorAll('#panel-heap .ln').length, null, { timeout: 10000 })
     .then(h => h.jsonValue(), () => 0);
   check(lines > 100, `[${name}] code viewer loaded heap.cpp (${lines} lines)`);
-
-  await page.click('[data-filter="cert"]');
-  const visible = await page.$$eval('#awardGrid .award:not([hidden])', els => els.length);
-  check(visible === 4, `[${name}] award filter shows 4 certificates`);
-
-  await page.click('#awardGrid .award:not([hidden]) .thumb');
-  check(await page.isVisible('#lightbox'), `[${name}] lightbox opens`);
-  await page.keyboard.press('Escape');
 
   check(errors.length === 0, `[${name}] no console errors${errors.length ? ': ' + errors.join(' | ') : ''}`);
   await page.evaluate(() => scrollTo(0, 0));
