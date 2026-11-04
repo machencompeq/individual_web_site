@@ -3,17 +3,9 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const root = document.documentElement;
 
-  /* ---------- 主題切換 ---------- */
-  $('#themeToggle').addEventListener('click', () => {
-    const cur = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  });
-
   /* ---------- 導覽：目前區塊 + 閱讀進度 ---------- */
-  const links = $$('#files a');
-  const sections = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+  const links = $$('#tabs a');
+  const sections = [$('#hello'), ...links.map(a => $(a.getAttribute('href')))].filter(Boolean);
   const bar = $('#progressBar');
   function onScroll() {
     const y = scrollY + innerHeight * 0.35;
@@ -24,9 +16,11 @@
       const on = a.getAttribute('href') === '#' + current.id;
       if (on && !a.classList.contains('is-active')) {
         a.classList.add('is-active');
-        a.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        const nav = a.parentElement;
+        nav.scrollTo({ left: a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
       } else if (!on) a.classList.remove('is-active');
     });
+    if (current.id === 'hello' && links[0]) links[0].parentElement.scrollLeft = 0;
     const max = document.documentElement.scrollHeight - innerHeight;
     if (bar) bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
   }
@@ -54,7 +48,9 @@
       $('#' + t.getAttribute('aria-controls')).hidden = !on;
     });
     if (focus) tab.focus();
-    tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    const strip = tab.parentElement;
+    strip.scrollTo({ left: tab.offsetLeft - 16, behavior: 'smooth' });
+    window.dispatchEvent(new Event('panelchange'));
     const viewer = $('#' + tab.getAttribute('aria-controls') + ' .code-viewer');
     if (viewer) loadCode(viewer);
   }
@@ -82,7 +78,8 @@
       const frag = document.createDocumentFragment();
       text.replace(/\r\n?/g, '\n').split('\n').forEach((line, i) => {
         const s = document.createElement('span');
-        s.className = 'ln'; s.dataset.n = i + 1; s.textContent = line || ' ';
+        s.className = /^\s*(\/\/|\/\*|\*)/.test(line) ? 'ln c' : 'ln';
+        s.dataset.n = i + 1; s.textContent = line || ' ';
         frag.appendChild(s);
       });
       code.textContent = '';
@@ -177,4 +174,56 @@
       navigator.clipboard.writeText(v).then(() => say('已複製：' + v), fallback);
     } catch (e) { fallback(); }
   }));
+  /* ---------- 鍵盤快捷鍵 1–6 ---------- */
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey || !lb.hidden) return;
+    if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+    const n = parseInt(e.key, 10);
+    if (n >= 1 && n <= links.length) { e.preventDefault(); links[n - 1].click(); }
+  });
+
+  /* ---------- 打字效果 ---------- */
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const typed = $('#typed');
+  const cmds = ['whoami', 'cat motto.txt', 'sudo make coffee', './hello --warm'];
+  if (typed && !reduce) {
+    let ci = 0, pos = cmds[0].length, del = true;
+    setTimeout(function tick() {
+      const word = cmds[ci];
+      pos += del ? -1 : 1;
+      typed.textContent = word.slice(0, pos);
+      let wait = del ? 40 : 90;
+      if (!del && pos >= word.length) { del = true; wait = 2200; }
+      else if (del && pos <= 0) { del = false; ci = (ci + 1) % cmds.length; wait = 300; }
+      setTimeout(tick, wait);
+    }, 3200);
+  }
+
+  /* ---------- 名字偶爾 glitch ---------- */
+  const nameEl = $('.name');
+  if (nameEl && !reduce) setInterval(() => {
+    nameEl.classList.add('glitch');
+    setTimeout(() => nameEl.classList.remove('glitch'), 700);
+  }, 6000);
+
+  /* ---------- 卡片 3D 傾斜 ---------- */
+  if (!reduce && matchMedia('(hover: hover)').matches) {
+    $$('.tilt').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    });
+  }
+
+  /* ---------- 狀態列時鐘 ---------- */
+  const clock = $('#clock');
+  const tickClock = () => {
+    const d = new Date();
+    clock.textContent = String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  };
+  if (clock) { tickClock(); setInterval(tickClock, 15000); }
 })();

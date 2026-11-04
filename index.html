@@ -5,20 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>陳洺安 Ming-An Chen</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="陳洺安（Ming-An Chen）的個人網站：資訊工程 × 資訊管理，經歷、獎項、生活與程式作品。">
+<meta name="description" content="陳洺安（Ming-An Chen）的個人網站：資訊工程 × 資訊管理。3D 終端機、程式作品、獎項與生活。">
+<meta name="theme-color" content="#110e0c">
 <link rel="icon" href="./image/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-  <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2.5V7h4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
@@ -31,256 +28,265 @@
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.5-2.3 1.5a11 11 0 0 0 6.5 6.5l1.5-2.3 4.5 1.8V19a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
 </svg>
 
-<div class="shell">
-  <!-- 側邊欄：桌機為檔案總管，手機為頂部分頁列 -->
-  <aside class="explorer" aria-label="網站導覽">
-    <a class="brand" href="#hello">
-      <span class="brand-name">陳洺安</span>
-      <span class="brand-sub">ming-an.chen</span>
-    </a>
-    <p class="explorer-label">EXPLORER</p>
-    <nav class="files" id="files">
-      <a href="#hello"><svg><use href="#i-file"/></svg>hello.cpp</a>
-      <a href="#about"><svg><use href="#i-file"/></svg>about.md</a>
-      <a href="#journey"><svg><use href="#i-file"/></svg>journey.log</a>
-      <a href="#awards"><svg><use href="#i-file"/></svg>awards/</a>
-      <a href="#life"><svg><use href="#i-file"/></svg>life/</a>
-      <a href="#projects"><svg><use href="#i-file"/></svg>projects/</a>
-      <a href="#contact"><svg><use href="#i-file"/></svg>contact.txt</a>
+<div class="crt" aria-hidden="true"></div>
+
+<!-- ===== 頂部：像 tmux 的狀態列 ===== -->
+<header class="bar">
+  <div class="bar-in">
+    <a class="host" href="#hello"><span class="led"></span>mingan<span class="at">@</span>cycu<span class="dim">:~</span></a>
+    <nav class="tabs" id="tabs" aria-label="主選單">
+      <a href="#about"><kbd>1</kbd>about</a>
+      <a href="#journey"><kbd>2</kbd>journey</a>
+      <a href="#awards"><kbd>3</kbd>awards</a>
+      <a href="#life"><kbd>4</kbd>life</a>
+      <a href="#projects"><kbd>5</kbd>projects</a>
+      <a href="#contact"><kbd>6</kbd>contact</a>
     </nav>
-    <div class="explorer-foot">
-      <button class="theme-btn" id="themeToggle" type="button" aria-label="切換深色／淺色模式">
-        <svg class="ico-sun"><use href="#i-sun"/></svg><svg class="ico-moon"><use href="#i-moon"/></svg>
-        <span>切換主題</span>
-      </button>
-      <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-    </div>
-  </aside>
+  </div>
+</header>
 
-  <main class="page">
-
-    <!-- ===== HELLO ===== -->
-    <section class="sec hero" id="hello">
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hello">
+    <div class="floor" aria-hidden="true"></div>
+    <div class="wrap hero-in">
       <div class="hero-copy">
-        <p class="hand-note">嗨，我是</p>
-        <h1>陳洺安</h1>
-        <p class="hero-role"><mark>資訊工程</mark> × <mark>資訊管理</mark> 雙主修</p>
-        <p class="hero-lede">喜歡把問題拆小、再一個一個解掉。從資料結構、黑客松到經濟預測，這裡記錄我一路上寫過的程式和走過的地方。</p>
-        <div class="hero-actions">
-          <a class="btn btn-ink" href="#projects">看程式作品</a>
-          <a class="btn btn-line" href="#contact">聯絡我</a>
+        <p class="prompt"><span class="ps1">mingan@cycu:~$</span> <span id="typed">whoami</span><span class="cursor"></span></p>
+        <h1 class="name" data-text="陳洺安">陳洺安</h1>
+        <p class="role"><span>資訊工程</span><b>×</b><span>資訊管理</span></p>
+        <p class="lede">白天寫 C++、追 bug，晚上可能在跑 Uber 或是在海邊看夕陽。喜歡把大問題拆小，再一個一個解掉。歡迎來我的終端機坐坐，咖啡在桌上。</p>
+        <div class="cta">
+          <a class="btn btn-amber" href="#projects">./看作品.sh</a>
+          <a class="btn btn-ghost" href="#contact">ping 我</a>
         </div>
+        <dl class="stat">
+          <div><dt>uptime</dt><dd>since 2001-10-30</dd></div>
+          <div><dt>stack</dt><dd>C++ · Java · Verilog</dd></div>
+          <div><dt>coffee</dt><dd>∞</dd></div>
+        </dl>
       </div>
 
-      <figure class="hero-card">
-        <div class="hero-photo">
-          <img src="./image/web/me.png" alt="陳洺安的照片" width="433" height="577">
-        </div>
-        <div class="code-card" aria-label="以 C++ 結構描述的個人資料">
-          <div class="code-tab"><span class="dot"></span>hello.cpp</div>
-<pre class="code-hero"><code><span class="k">struct</span> <span class="t">MingAn</span> {
-  <span class="t">string</span> major    = <span class="s">"資訊工程"</span>;
-  <span class="t">string</span> minor    = <span class="s">"資訊管理"</span>;
-  <span class="t">Date</span>   birthday = {<span class="n">2001</span>, <span class="n">10</span>, <span class="n">30</span>};
-  <span class="t">vector</span>&lt;<span class="t">string</span>&gt; hobbies =
-    {<span class="s">"旅遊"</span>, <span class="s">"看短影音"</span>};
-  <span class="t">string</span> motto =
-    <span class="s">"心中的火焰比任何風暴都更持久。"</span>;
-};<span class="caret"></span></code></pre>
-        </div>
+      <figure class="stage" id="heroStage" data-model="./assets/3d/desk.glb" data-kind="desk">
+        <img class="stage-fallback" src="./assets/3d/desk.png" alt="3D 書桌：CRT 終端機、鍵盤、咖啡杯與盆栽" width="900" height="900">
+        <figcaption class="stage-hint">拖曳可以旋轉 · Blender + three.js</figcaption>
       </figure>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== ABOUT ===== -->
-    <section class="sec" id="about">
-      <header class="sec-head">
-        <p class="path">~/about.md</p>
-        <h2>關於我</h2>
+  <!-- ===== ABOUT ===== -->
+  <section class="sec" id="about">
+    <div class="wrap">
+      <header class="head">
+        <div>
+          <p class="cmd"><span class="ps1">~$</span> cat about.md</p>
+          <h2>關於我</h2>
+        </div>
+        <img class="head-3d" src="./assets/3d/icon_keycaps.png" alt="" width="640" height="640" loading="lazy">
       </header>
 
       <div class="about">
-        <div class="about-block">
-          <h3>基本資料</h3>
-          <dl class="facts">
-            <div><dt>姓名</dt><dd>陳洺安 Ming-An Chen</dd></div>
-            <div><dt>主修</dt><dd>資訊工程學系</dd></div>
-            <div><dt>雙主修</dt><dd>資訊管理學系</dd></div>
-            <div><dt>生日</dt><dd class="num">2001 / 10 / 30</dd></div>
-            <div><dt>專長</dt><dd>被各種程式折磨，然後把它修好</dd></div>
-            <div><dt>興趣</dt><dd>旅遊、看短影音</dd></div>
+        <article class="win">
+          <p class="win-bar"><i></i><i></i><i></i><span>profile.json</span></p>
+          <dl class="kv">
+            <div><dt>"name"</dt><dd>"陳洺安 Ming-An Chen"</dd></div>
+            <div><dt>"major"</dt><dd>"資訊工程學系"</dd></div>
+            <div><dt>"double_major"</dt><dd>"資訊管理學系"</dd></div>
+            <div><dt>"birthday"</dt><dd>"2001-10-30"</dd></div>
+            <div><dt>"superpower"</dt><dd>"被各種程式折磨，然後把它修好"</dd></div>
+            <div><dt>"hobbies"</dt><dd>["旅遊", "看短影音"]</dd></div>
           </dl>
-        </div>
+        </article>
 
-        <div class="about-block">
-          <h3>工作經歷</h3>
+        <article class="win">
+          <p class="win-bar"><i></i><i></i><i></i><span>jobs.log</span></p>
           <ol class="jobs">
-            <li><span class="job-no">第 1 份</span>運動精品店員</li>
-            <li><span class="job-no">第 2 份</span>經濟學助教／課業守護</li>
-            <li><span class="job-no">第 3 份</span>物流場</li>
-            <li><span class="job-no">第 4 份</span>葡萄王門市銷售</li>
+            <li><span class="pid">[1]</span>運動精品店員</li>
+            <li><span class="pid">[2]</span>經濟學助教／課業守護</li>
+            <li><span class="pid">[3]</span>物流場</li>
+            <li><span class="pid">[4]</span>葡萄王門市銷售</li>
           </ol>
-          <p class="margin-note">工作不是生活的全部，但它是實現夢想的關鍵一環。</p>
-        </div>
+          <p class="comment">// 工作不是生活的全部，但它是實現夢想的關鍵一環。</p>
+        </article>
 
-        <div class="about-block about-wide">
-          <h3>技能</h3>
+        <article class="win win-wide">
+          <p class="win-bar"><i></i><i></i><i></i><span>skills.sh</span></p>
           <div class="skills">
             <div>
-              <p class="skill-label">程式語言</p>
-              <ul class="tags">
-                <li>C / C++</li><li>Java</li><li>HTML</li><li>CSS</li><li>Verilog</li>
+              <p class="label">程式語言</p>
+              <ul class="keys">
+                <li>C/C++</li><li>Java</li><li>HTML</li><li>CSS</li><li>Verilog</li>
               </ul>
             </div>
             <div>
-              <p class="skill-label">其他專業</p>
-              <ul class="tags tags-hl">
+              <p class="label">其他專業</p>
+              <ul class="keys keys-amber">
                 <li>商業經濟預測分析</li><li>證券分析</li><li>系統分析</li>
               </ul>
             </div>
           </div>
-        </div>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== JOURNEY ===== -->
-    <section class="sec" id="journey">
-      <header class="sec-head">
-        <p class="path">~/journey.log</p>
-        <h2>四年，四個專案</h2>
+  <!-- ===== JOURNEY ===== -->
+  <section class="sec" id="journey">
+    <div class="wrap">
+      <header class="head">
+        <div>
+          <p class="cmd"><span class="ps1">~$</span> git log --reverse --oneline</p>
+          <h2>四年，四個專案</h2>
+        </div>
+        <img class="head-3d" src="./assets/3d/icon_stairs.png" alt="" width="640" height="640" loading="lazy">
       </header>
 
-      <ol class="journey">
+      <ol class="log">
         <li>
-          <span class="year">大一</span>
+          <span class="tag-year">大一</span>
           <h3>PBL 商業分析</h3>
           <p class="course">經濟學</p>
           <p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p>
-          <a class="more" href="#awards" data-filter="school">看獎狀</a>
+          <a class="more" href="#awards" data-filter="school">查看獎狀 →</a>
         </li>
         <li>
-          <span class="year">大二</span>
+          <span class="tag-year">大二</span>
           <h3>賣雪Q餅</h3>
           <p class="course">企業概論</p>
           <p>創業實務：實地走訪友商、架設線上網站，學會怎麼把東西賣出去。</p>
-          <a class="more" href="https://www.instagram.com/qq_thankq/" target="_blank" rel="noopener">Instagram <svg><use href="#i-arrow"/></svg></a>
+          <a class="more" href="https://www.instagram.com/qq_thankq/" target="_blank" rel="noopener">Instagram ↗</a>
         </li>
         <li>
-          <span class="year">大三</span>
+          <span class="tag-year">大三</span>
           <h3>台北大黑客松、大數據競賽</h3>
           <p class="course">系統分析</p>
           <p>台北程式設計節，專案主要製作台北大數據中心套件，並進行系統分析。</p>
-          <a class="more" href="#projects" data-tab="codefest">看作品</a>
+          <a class="more" href="#projects" data-tab="codefest">查看作品 →</a>
         </li>
-        <li>
-          <span class="year">大四</span>
+        <li class="head-commit">
+          <span class="tag-year">大四</span>
           <h3>機器學習</h3>
           <p class="course">軟體專案管理、專題研究</p>
           <p>桌球落點分析、虛擬數字人實現自我對話。</p>
+          <span class="more">HEAD → 進行中</span>
         </li>
       </ol>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== AWARDS ===== -->
-    <section class="sec" id="awards">
-      <header class="sec-head">
-        <p class="path">~/awards/</p>
-        <h2>獎狀與證照</h2>
+  <!-- ===== AWARDS ===== -->
+  <section class="sec" id="awards">
+    <div class="wrap">
+      <header class="head">
+        <div>
+          <p class="cmd"><span class="ps1">~$</span> ls ./awards --sort=time</p>
+          <h2>獎狀與證照</h2>
+        </div>
+        <img class="head-3d" src="./assets/3d/icon_trophy.png" alt="" width="640" height="640" loading="lazy">
       </header>
 
       <div class="filters" role="group" aria-label="篩選獎項">
-        <button type="button" class="chip is-on" data-filter="all">全部 <span class="count">12</span></button>
-        <button type="button" class="chip" data-filter="school">校內獎狀 <span class="count">5</span></button>
-        <button type="button" class="chip" data-filter="exp">競賽與服務 <span class="count">3</span></button>
-        <button type="button" class="chip" data-filter="cert">證照 <span class="count">4</span></button>
+        <button type="button" class="chip is-on" data-filter="all">--all <span>12</span></button>
+        <button type="button" class="chip" data-filter="school">--校內獎狀 <span>5</span></button>
+        <button type="button" class="chip" data-filter="exp">--競賽與服務 <span>3</span></button>
+        <button type="button" class="chip" data-filter="cert">--證照 <span>4</span></button>
       </div>
 
       <div class="awards" id="awardGrid">
-        <figure class="award" data-cat="school">
+        <figure class="award tilt" data-cat="school">
           <button type="button" class="thumb" data-full="./image/web/award/good_grade.jpg"><img src="./image/web/award/good_grade.jpg" alt="書卷獎獎狀" loading="lazy"></button>
           <figcaption><h3>書卷獎</h3><p>第一次拿到書卷獎，雖然只有 2000 元，但還是很快樂！</p></figcaption>
         </figure>
-        <figure class="award" data-cat="school">
+        <figure class="award tilt" data-cat="school">
           <button type="button" class="thumb" data-full="./image/web/award/enterprise.jpg"><img src="./image/web/award/enterprise.jpg" alt="企業資料通訊專業學科優異獎" loading="lazy"></button>
           <figcaption><h3>企資通</h3><p>超努力搞懂各種 protocol，現在幾乎有關網路的課都會用到。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="school">
+        <figure class="award tilt" data-cat="school">
           <button type="button" class="thumb" data-full="./image/web/award/ds.jpg"><img src="./image/web/award/ds.jpg" alt="資料結構專業學科優異獎" loading="lazy"></button>
           <figcaption><h3>資料結構</h3><p>可以說是演算法最基礎的課程，也讓我在資工可以吃老本。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="school">
+        <figure class="award tilt" data-cat="school">
           <button type="button" class="thumb" data-full="./image/web/award/pbl.jpg"><img src="./image/web/award/pbl.jpg" alt="PBL 課程參加證明" loading="lazy"></button>
           <figcaption><h3>PBL</h3><p>與工業系跨系合作，我們負責分析，他們負責製造竹槍。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="school">
+        <figure class="award tilt" data-cat="school">
           <button type="button" class="thumb" data-full="./image/web/award/tradetheory.jpg"><img src="./image/web/award/tradetheory.jpg" alt="貿易理論專業學科優異獎" loading="lazy"></button>
           <figcaption><h3>貿易理論</h3><p>要背超多東西，但也學到很多貿易、匯率與市場的理論，很有深度。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="exp">
+        <figure class="award tilt" data-cat="exp">
           <button type="button" class="thumb" data-full="./image/web/award/codefest.jpg"><img src="./image/web/award/codefest.jpg" alt="2023 城市儀表板大黑客松參賽證明" loading="lazy"></button>
           <figcaption><h3>黑客松競賽</h3><p>第一次碰到前端語言，向很多優秀的人學習，一起整晚不睡覺打 code。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="exp">
+        <figure class="award tilt" data-cat="exp">
           <button type="button" class="thumb" data-full="./image/web/award/service.jpg"><img src="./image/web/award/service.jpg" alt="國際佛光會中華總會聘書" loading="lazy"></button>
           <figcaption><h3>義工服務</h3><p>參加青年團、夏令營帶營隊，認識很多比自己年紀大的朋友，漸漸有了學校以外的朋友。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="exp">
+        <figure class="award tilt" data-cat="exp">
           <button type="button" class="thumb" data-full="./image/web/award/sunior.jpg"><img src="./image/web/award/sunior.jpg" alt="臺南市市長獎獎狀" loading="lazy"></button>
           <figcaption><h3>市長獎</h3><p>高中畢業時獲頒臺南市市長獎（Mayor's Award for Academic Excellence）。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="cert">
+        <figure class="award tilt" data-cat="cert">
           <button type="button" class="thumb" data-full="./image/web/award/jept.jpg"><img src="./image/web/award/jept.jpg" alt="英檢合格證書" loading="lazy"></button>
           <figcaption><h3>英檢</h3><p>考過英文畢業門檻實在太快樂了！大一就可以不用一直做模擬測驗。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="cert">
+        <figure class="award tilt" data-cat="cert">
           <button type="button" class="thumb" data-full="./image/web/award/java_1.jpg"><img src="./image/web/award/java_1.jpg" alt="Oracle Java SE 7 Programming 結業證書" loading="lazy"></button>
           <figcaption><h3>Java SE 7 Programming</h3><p>Oracle Workforce Development Program 結業。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="cert">
+        <figure class="award tilt" data-cat="cert">
           <button type="button" class="thumb" data-full="./image/web/award/java_2.jpg"><img src="./image/web/award/java_2.jpg" alt="Oracle Java SE 7 Fundamentals 結業證書" loading="lazy"></button>
           <figcaption><h3>Java SE 7 Fundamentals</h3><p>Oracle Workforce Development Program 結業。</p></figcaption>
         </figure>
-        <figure class="award" data-cat="cert">
+        <figure class="award tilt" data-cat="cert">
           <button type="button" class="thumb" data-full="./image/web/award/cwt.jpg"><img src="./image/web/award/cwt.jpg" alt="全民中文能力檢定合格證書" loading="lazy"></button>
           <figcaption><h3>全民中文能力檢定</h3><p>CWT 中高等合格。</p></figcaption>
         </figure>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== LIFE ===== -->
-    <section class="sec" id="life">
-      <header class="sec-head">
-        <p class="path">~/life/</p>
-        <h2>課本以外</h2>
+  <!-- ===== LIFE ===== -->
+  <section class="sec" id="life">
+    <div class="wrap">
+      <header class="head">
+        <div>
+          <p class="cmd"><span class="ps1">~$</span> open ./life --warm</p>
+          <h2>螢幕以外的我</h2>
+        </div>
+        <img class="head-3d" src="./assets/3d/icon_camera.png" alt="" width="640" height="640" loading="lazy">
       </header>
 
       <div class="life">
         <figure class="video">
           <video src="./video/web.mp4" poster="./image/web/video_poster.jpg" controls preload="none" playsinline></video>
-          <figcaption>2023 城市儀表板大黑客松，現場 debug 中</figcaption>
+          <figcaption><span class="rec"></span>2023 城市儀表板大黑客松 · 現場 debug</figcaption>
         </figure>
         <div class="photos" id="photoGrid">
           <button type="button" class="photo thumb" data-full="./image/web/work_1.jpg"><img src="./image/web/work_1.jpg" alt="工作照" loading="lazy"><span>工作照</span></button>
           <button type="button" class="photo thumb" data-full="./image/web/rest.jpg"><img src="./image/web/rest.jpg" alt="黑客松競賽" loading="lazy"><span>黑客松競賽</span></button>
           <button type="button" class="photo thumb" data-full="./image/web/S__1851396.jpg"><img src="./image/web/S__1851396.jpg" alt="佛學參訪" loading="lazy"><span>佛學參訪</span></button>
-          <button type="button" class="photo thumb" data-full="./image/web/S__1851394.jpg"><img src="./image/web/S__1851394.jpg" alt="海邊旅行" loading="lazy"><span>旅行</span></button>
+          <button type="button" class="photo thumb" data-full="./image/web/S__1851394.jpg"><img src="./image/web/S__1851394.jpg" alt="海邊夕陽" loading="lazy"><span>旅行</span></button>
           <button type="button" class="photo thumb" data-full="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg"><img src="./image/web/8A756D7C-FD46-40F7-BE1F-1C669E6CB23B.jpg" alt="饒河街觀光夜市" loading="lazy"><span>旅行（台北）</span></button>
           <button type="button" class="photo thumb" data-full="./image/web/S__129581066.jpg"><img src="./image/web/S__129581066.jpg" alt="跑 Uber 外送" loading="lazy"><span>閒暇跑 Uber</span></button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== PROJECTS ===== -->
-    <section class="sec" id="projects">
-      <header class="sec-head">
-        <p class="path">~/projects/</p>
-        <h2>程式作品</h2>
+  <!-- ===== PROJECTS ===== -->
+  <section class="sec" id="projects">
+    <div class="wrap">
+      <header class="head">
+        <div>
+          <p class="cmd"><span class="ps1">~$</span> vim projects/</p>
+          <h2>程式作品</h2>
+        </div>
       </header>
 
       <div class="ide">
         <div class="ide-tabs" role="tablist" aria-label="作品">
           <button type="button" role="tab" id="tab-tree" aria-controls="panel-tree" aria-selected="true">two_three_tree.cpp</button>
           <button type="button" role="tab" id="tab-heap" aria-controls="panel-heap" aria-selected="false" tabindex="-1">heap.cpp</button>
-          <button type="button" role="tab" id="tab-codefest" aria-controls="panel-codefest" aria-selected="false" tabindex="-1">codefest_2023</button>
+          <button type="button" role="tab" id="tab-codefest" aria-controls="panel-codefest" aria-selected="false" tabindex="-1">codefest_2023/</button>
           <button type="button" role="tab" id="tab-econ" aria-controls="panel-econ" aria-selected="false" tabindex="-1">econ_forecast.pdf</button>
         </div>
 
@@ -288,9 +294,12 @@
           <div class="panel-info">
             <p class="kind">C++ · 資料結構</p>
             <h3>2-3 Tree</h3>
-            <p>實作 2-3 tree。比起普通二元樹，<mark>樹高減少很多</mark>，找資料也更有效率。</p>
+            <figure class="stage stage-sm" data-model="./assets/3d/tree23.glb" data-kind="spin">
+              <img class="stage-fallback" src="./assets/3d/tree23.png" alt="2-3 tree 的 3D 模型" width="640" height="640" loading="lazy">
+            </figure>
+            <p>實作 2-3 tree。比起普通二元樹，<em>樹高減少很多</em>，找資料也更有效率。</p>
             <p>一開始沒想到用 <code>vector&lt;nodetype*&gt;</code>，定義了四個 nodetype 指標，插入左中右子節點時狀況各不相同、程式碼冗長。修改後把問題最小化，用遞迴解決了任務一。</p>
-            <p class="lesson">學到的事：先把問題最小化。</p>
+            <p class="lesson">&gt; 學到的事：先把問題最小化。</p>
           </div>
           <div class="code-viewer" data-src="./code/code1.cpp"><pre><code>載入程式碼中…</code></pre></div>
         </div>
@@ -299,9 +308,12 @@
           <div class="panel-info">
             <p class="kind">C++ · 資料結構</p>
             <h3>Heap／Priority Queue</h3>
-            <p>用 heap 實作 priority queue。最特別的是<mark>不需要用到指標</mark>，只要陣列就能完成。</p>
+            <figure class="stage stage-sm" data-model="./assets/3d/heap.glb" data-kind="spin">
+              <img class="stage-fallback" src="./assets/3d/heap.png" alt="heap 的 3D 模型" width="640" height="640" loading="lazy">
+            </figure>
+            <p>用 heap 實作 priority queue。最特別的是<em>不需要用到指標</em>，只要陣列就能完成。</p>
             <p>省去很多麻煩，也減少 memory leak 的機會，能很好地維護並找到優先值。</p>
-            <p class="lesson">學到的事：選對資料結構，程式自然變簡單。</p>
+            <p class="lesson">&gt; 學到的事：選對資料結構，程式自然變簡單。</p>
           </div>
           <div class="code-viewer" data-src="./code/code2.cpp"><pre><code>載入程式碼中…</code></pre></div>
         </div>
@@ -312,77 +324,80 @@
             <h3>Taipei CodeFest 2023</h3>
             <p>台北程式設計節「城市儀表板大黑客松」的成果。主程式不是我們寫的，但過程中學到怎麼開發組件，也在追 code 時感受到前端的有趣與多樣。</p>
             <p>結合數據分析與系統分析，是很難得的體驗。</p>
-            <a class="btn btn-ink" href="https://www.youtube.com/watch?v=Wr5Q8tB_W6k" target="_blank" rel="noopener">在 YouTube 看成果影片 <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-amber" href="https://www.youtube.com/watch?v=Wr5Q8tB_W6k" target="_blank" rel="noopener">在 YouTube 看成果影片 ↗</a>
           </div>
-          <figure class="panel-media">
-            <img src="./image/web/r2.jpg" alt="在 2023 臺北程式設計節舞台前拿著參賽證明" loading="lazy">
-          </figure>
+          <figure class="panel-media"><img src="./image/web/r2.jpg" alt="在 2023 臺北程式設計節舞台前拿著參賽證明" loading="lazy"></figure>
         </div>
 
         <div class="ide-panel" role="tabpanel" id="panel-econ" aria-labelledby="tab-econ" hidden>
           <div class="panel-info">
             <p class="kind">商業經濟及預測 · 期末研究報告</p>
             <h3>Analysis &amp; Predict Economic</h3>
-            <p>以時間序列預測兩組資料：<mark>外銷大陸及香港電子產品訂單金額</mark>與<mark>餐飲業營業額</mark>。</p>
+            <p>以時間序列預測兩組資料：<em>外銷大陸及香港電子產品訂單金額</em>與<em>餐飲業營業額</em>。</p>
             <p>之後在系統分析課應用同樣的方法分析 YouBike 使用趨勢，更貼近實務。</p>
-            <dl class="mini-facts">
-              <div><dt>頁數</dt><dd class="num">14 頁</dd></div>
-              <div><dt>完成</dt><dd class="num">2022 / 06</dd></div>
+            <dl class="mini">
+              <div><dt>pages</dt><dd>14</dd></div>
+              <div><dt>date</dt><dd>2022-06</dd></div>
             </dl>
-            <a class="btn btn-ink" href="./code/report.pdf" target="_blank" rel="noopener">開啟完整報告 <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-amber" href="./code/report.pdf" target="_blank" rel="noopener">開啟完整報告 ↗</a>
           </div>
-          <figure class="panel-media panel-doc">
-            <img src="./image/web/report_cover.jpg" alt="商業經濟及預測期末研究報告封面" loading="lazy">
-          </figure>
+          <figure class="panel-media panel-doc"><img src="./image/web/report_cover.jpg" alt="商業經濟及預測期末研究報告封面" loading="lazy"></figure>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section class="sec" id="contact">
-      <header class="sec-head">
-        <p class="path">~/contact.txt</p>
-        <h2>來聊聊吧</h2>
+  <!-- ===== CONTACT ===== -->
+  <section class="sec" id="contact">
+    <div class="wrap">
+      <header class="head">
+        <div>
+          <p class="cmd"><span class="ps1">~$</span> ping mingan --say-hi</p>
+          <h2>來聊聊吧</h2>
+          <p class="sub">合作、工作機會，或只是想打聲招呼都歡迎，我都會回。</p>
+        </div>
+        <img class="head-3d" src="./assets/3d/icon_envelope.png" alt="" width="640" height="640" loading="lazy">
       </header>
-      <p class="contact-lede">合作、工作機會，或只是想打聲招呼都歡迎。</p>
 
       <ul class="contact">
         <li>
-          <svg><use href="#i-mail"/></svg>
-          <span class="c-label">Email</span>
+          <svg><use href="#i-mail"/></svg><span class="c-label">email</span>
           <a class="c-value" href="mailto:asd0389wsx0216@gmail.com">asd0389wsx0216@gmail.com</a>
-          <button type="button" class="copy" data-copy="asd0389wsx0216@gmail.com" aria-label="複製 Email"><svg><use href="#i-copy"/></svg><span>複製</span></button>
+          <button type="button" class="copy" data-copy="asd0389wsx0216@gmail.com" aria-label="複製 Email"><svg><use href="#i-copy"/></svg><span>copy</span></button>
         </li>
         <li>
-          <svg><use href="#i-phone"/></svg>
-          <span class="c-label">電話</span>
-          <a class="c-value num" href="tel:0978581189">0978-581-189</a>
-          <button type="button" class="copy" data-copy="0978581189" aria-label="複製電話"><svg><use href="#i-copy"/></svg><span>複製</span></button>
+          <svg><use href="#i-phone"/></svg><span class="c-label">phone</span>
+          <a class="c-value" href="tel:0978581189">0978-581-189</a>
+          <button type="button" class="copy" data-copy="0978581189" aria-label="複製電話"><svg><use href="#i-copy"/></svg><span>copy</span></button>
         </li>
         <li>
-          <svg><use href="#i-github"/></svg>
-          <span class="c-label">GitHub</span>
+          <svg><use href="#i-github"/></svg><span class="c-label">github</span>
           <a class="c-value" href="https://github.com/minggg1030" target="_blank" rel="noopener">minggg1030</a>
-          <svg class="out"><use href="#i-arrow"/></svg>
+          <span class="out">↗</span>
         </li>
         <li>
-          <svg><use href="#i-ig"/></svg>
-          <span class="c-label">Instagram</span>
+          <svg><use href="#i-ig"/></svg><span class="c-label">instagram</span>
           <a class="c-value" href="https://www.instagram.com/andy__901030/" target="_blank" rel="noopener">@andy__901030</a>
-          <svg class="out"><use href="#i-arrow"/></svg>
+          <span class="out">↗</span>
         </li>
         <li>
-          <svg><use href="#i-fb"/></svg>
-          <span class="c-label">Facebook</span>
+          <svg><use href="#i-fb"/></svg><span class="c-label">facebook</span>
           <a class="c-value" href="https://www.facebook.com/profile.php?id=100027464161391" target="_blank" rel="noopener">陳洺安</a>
-          <svg class="out"><use href="#i-arrow"/></svg>
+          <span class="out">↗</span>
         </li>
       </ul>
+    </div>
+  </section>
+</main>
 
-      <footer class="foot">© 2024–2026 陳洺安 Ming-An Chen</footer>
-    </section>
-  </main>
-</div>
+<footer class="status">
+  <div class="status-in">
+    <span class="mode">NORMAL</span>
+    <span>© 2024–2026 陳洺安</span>
+    <span class="hide-sm">3D: Blender · three.js</span>
+    <span class="right"><span class="hide-sm">按 1–6 跳到各區 · </span><span id="clock">--:--</span></span>
+  </div>
+</footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -391,11 +406,14 @@
   <button type="button" class="lb-btn lb-prev" aria-label="上一張"><svg><use href="#i-left"/></svg></button>
   <figure>
     <img alt="">
-    <figcaption><span class="lb-title"></span><span class="lb-count num"></span></figcaption>
+    <figcaption><span class="lb-title"></span><span class="lb-count"></span></figcaption>
   </figure>
   <button type="button" class="lb-btn lb-next" aria-label="下一張"><svg><use href="#i-right"/></svg></button>
 </div>
 
 <script src="./script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="./three-scenes.js"></script>
 </body>
 </html>
